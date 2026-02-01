@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Orbitron', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -56,6 +60,14 @@ export default {
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
+        },
+        neon: {
+          DEFAULT: "hsl(var(--neon-green))",
+          glow: "hsl(var(--neon-green-glow))",
+        },
+        dark: {
+          surface: "hsl(var(--dark-surface))",
+          card: "hsl(var(--dark-card))",
         },
       },
       borderRadius: {
