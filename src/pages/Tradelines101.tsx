@@ -32,7 +32,7 @@ const Tradelines101 = () => {
             <h1 className="text-4xl md:text-6xl font-display text-primary text-glow mb-6">
               Tradelines 101
             </h1>
-            <p className="text-xl text-foreground/80 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Learn what tradelines are, who they may help, and what to realistically expect. 
               No hype—just the facts you need to make an informed decision.
             </p>
@@ -45,7 +45,7 @@ const Tradelines101 = () => {
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-8">
               What Is a Tradeline?
             </h2>
-            <div className="space-y-6 text-foreground/80 text-lg leading-relaxed">
+            <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
               <p>
                 A <span className="text-primary font-semibold">tradeline</span> is any credit account 
                 that appears on your credit report. This includes credit cards, auto loans, mortgages, 
@@ -60,7 +60,7 @@ const Tradelines101 = () => {
                 ].map((item, index) => (
                   <div key={index} className="flex items-center gap-3 p-4 rounded-lg bg-secondary/20">
                     <item.icon className="w-5 h-5 text-primary" />
-                    <span className="text-foreground">{item.text}</span>
+                    <span className="text-white">{item.text}</span>
                   </div>
                 ))}
               </div>
@@ -88,7 +88,7 @@ const Tradelines101 = () => {
                     Young/Thin Credit Profile
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4 text-foreground/80">
+                <CardContent className="space-y-4 text-gray-300">
                   <p>
                     If you're new to credit (under 2 years of history) or have very few accounts, 
                     you likely have a "thin file." Credit scoring models have limited data to 
@@ -121,14 +121,14 @@ const Tradelines101 = () => {
                     Established Credit Profile
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4 text-foreground/80">
+                <CardContent className="space-y-4 text-gray-300">
                   <p>
                     If you have 5+ years of credit history with multiple accounts, you already 
                     have a solid foundation. Your score is influenced by many factors already 
                     on your report.
                   </p>
                   <div className="p-4 bg-secondary/20 rounded-lg border border-border">
-                    <p className="text-foreground font-semibold mb-2">Potential Tradeline Benefit:</p>
+                    <p className="text-white font-semibold mb-2">Potential Tradeline Benefit:</p>
                     <p className="text-foreground/70">
                       May still help with utilization or adding positive accounts, but impact is 
                       typically more modest since existing history already provides most factors.
@@ -156,7 +156,7 @@ const Tradelines101 = () => {
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-8">
               Understanding Credit Utilization
             </h2>
-            <div className="space-y-6 text-foreground/80 text-lg leading-relaxed">
+            <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
               <p>
                 <span className="text-primary font-semibold">Credit utilization</span> is the 
                 percentage of your available credit that you're currently using. It's one of the 
@@ -189,8 +189,8 @@ const Tradelines101 = () => {
               
               <div className="p-6 bg-secondary/20 rounded-lg border border-border">
                 <h3 className="font-display text-primary text-xl mb-3">Best Practice</h3>
-                <p className="text-foreground/80">
-                  Most experts recommend keeping utilization <span className="text-primary font-semibold">below 30%</span>, 
+                <p className="text-gray-300">
+                  Most experts recommend keeping utilization <span className="text-primary font-semibold">below 30%</span>,
                   with <span className="text-primary font-semibold">under 10%</span> being ideal. 
                   High-limit tradelines may help improve your overall utilization ratio by adding 
                   available credit to your profile.
@@ -206,7 +206,7 @@ const Tradelines101 = () => {
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-8">
               Negative Items on Your Credit Report
             </h2>
-            <div className="space-y-6 text-foreground/80 text-lg leading-relaxed">
+            <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
               <p>
                 Negative items like late payments, collections, charge-offs, and bankruptcies can 
                 significantly impact your credit score. While tradelines can add positive history, 
@@ -221,7 +221,7 @@ const Tradelines101 = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <ul className="grid md:grid-cols-2 gap-3 text-foreground/80">
+                  <ul className="grid md:grid-cols-2 gap-3 text-gray-300">
                     <li className="flex items-center gap-2">
                       <span className="text-destructive">•</span> Late payments (30, 60, 90+ days)
                     </li>
@@ -249,7 +249,7 @@ const Tradelines101 = () => {
                   <ExternalLink className="w-5 h-5" />
                   Remove Incorrect Negative Items
                 </h3>
-                <p className="text-foreground/80 mb-4">
+                <p className="text-gray-300 mb-4">
                   If you have items on your credit report that are inaccurate, outdated, or 
                   reporting incorrectly, you have the right to dispute them. We recommend 
                   <span className="text-primary font-semibold"> Dispute Beast</span>—a powerful 
@@ -288,29 +288,29 @@ const Tradelines101 = () => {
                       <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
                         <span className="text-primary font-display font-bold">1-2</span>
                       </div>
-                      <p className="text-foreground font-semibold mb-1">Weeks</p>
-                      <p className="text-foreground/60 text-sm">Account added as authorized user</p>
+                      <p className="text-white font-semibold mb-1">Weeks</p>
+                      <p className="text-gray-400 text-sm">Account added as authorized user</p>
                     </div>
                     <div className="text-center p-4">
                       <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
                         <span className="text-primary font-display font-bold">1-2</span>
                       </div>
-                      <p className="text-foreground font-semibold mb-1">Statement Cycles</p>
-                      <p className="text-foreground/60 text-sm">Tradeline reports to bureaus</p>
+                      <p className="text-white font-semibold mb-1">Statement Cycles</p>
+                      <p className="text-gray-400 text-sm">Tradeline reports to bureaus</p>
                     </div>
                     <div className="text-center p-4">
                       <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
                         <span className="text-primary font-display font-bold">30-60</span>
                       </div>
-                      <p className="text-foreground font-semibold mb-1">Days</p>
-                      <p className="text-foreground/60 text-sm">Visible on your credit report</p>
+                      <p className="text-white font-semibold mb-1">Days</p>
+                      <p className="text-gray-400 text-sm">Visible on your credit report</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
               
               <div className="p-6 bg-secondary/20 rounded-lg border border-border">
-                <h3 className="font-display text-foreground text-xl mb-3">Important Note</h3>
+                <h3 className="font-display text-white text-xl mb-3">Important Note</h3>
                 <p className="text-foreground/70">
                   Results vary depending on your credit profile, the specific tradeline, and how 
                   lenders evaluate your application. Tradelines are just one factor among many 
@@ -328,7 +328,7 @@ const Tradelines101 = () => {
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-6">
               Ready to See If Tradelines Are Right for You?
             </h2>
-            <p className="text-foreground/70 mb-8">
+            <p className="text-gray-300 mb-8">
               Get a free assessment to evaluate your credit situation and learn your options.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

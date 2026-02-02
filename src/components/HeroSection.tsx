@@ -24,7 +24,7 @@ const HeroSection = () => {
           A1 TRADELINES
         </h1>
         
-        <p className="text-xl md:text-2xl text-foreground/80 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
           Tradelines guidance for real credit goals. Learn what tradelines are, whether they fit 
           your situation, and what to expect—without hype.
         </p>
@@ -61,7 +61,7 @@ const HeroSection = () => {
           </Link>
         </div>
         
-        <div className="flex items-center justify-center gap-8 pt-4 text-foreground/60">
+        <div className="flex items-center justify-center gap-8 pt-4 text-gray-400">
           <div className="flex items-center gap-2">
             <TrendingUp className="w-5 h-5 text-primary" />
             <span>500+ Happy Clients</span>

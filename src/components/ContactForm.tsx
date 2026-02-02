@@ -44,7 +44,7 @@ const ContactForm = () => {
           <h2 className="text-3xl md:text-5xl font-display text-primary text-glow mb-4">
             Get In Touch
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             Ready to improve your credit? Contact us today for a free consultation.
           </p>
         </div>
