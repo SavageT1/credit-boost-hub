@@ -1,8 +1,19 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, TrendingUp } from "lucide-react";
+import ContactFormModal from "./ContactFormModal";
 
 const HeroSection = () => {
+  const [isContactOpen, setIsContactOpen] = useState(false);
+  const [modalTitle, setModalTitle] = useState("Get Started");
+
+  const openModal = (title: string) => {
+    setModalTitle(title);
+    setIsContactOpen(true);
+  };
+
   return (
+    <>
     <section className="min-h-screen gradient-dark flex flex-col items-center justify-center p-8 relative overflow-hidden">
       {/* Background glow effects */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
@@ -24,7 +35,11 @@ const HeroSection = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-          <Button size="lg" className="font-display text-lg box-glow group">
+          <Button 
+            size="lg" 
+            className="font-display text-lg box-glow group"
+            onClick={() => openModal("Get Started")}
+          >
             Get Started
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
@@ -32,6 +47,7 @@ const HeroSection = () => {
             size="lg" 
             variant="outline" 
             className="font-display text-lg border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+            onClick={() => openModal("Learn More")}
           >
             Learn More
           </Button>
@@ -50,6 +66,13 @@ const HeroSection = () => {
         </div>
       </div>
     </section>
+
+    <ContactFormModal 
+      open={isContactOpen} 
+      onOpenChange={setIsContactOpen} 
+      title={modalTitle}
+    />
+    </>
   );
 };
 
