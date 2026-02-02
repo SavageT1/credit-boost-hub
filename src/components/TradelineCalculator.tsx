@@ -1,72 +1,116 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Slider } from "@/components/ui/slider";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Calculator, TrendingUp, AlertCircle, CheckCircle2 } from "lucide-react";
+import { Calculator, TrendingUp, Plus, Minus, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ContactFormModal from "@/components/ContactFormModal";
 
 const TradelineCalculator = () => {
-  const [currentScore, setCurrentScore] = useState(620);
-  const [creditAge, setCreditAge] = useState("1-2");
-  const [totalAccounts, setTotalAccounts] = useState(3);
-  const [utilization, setUtilization] = useState(65);
-  const [negativeItems, setNegativeItems] = useState("1-2");
-  const [tradelineCount, setTradelineCount] = useState(1);
-  const [projectedScore, setProjectedScore] = useState(0);
+  // Credit profile inputs
+  const [scoreRange, setScoreRange] = useState("580-619");
+  const [currentTradelines, setCurrentTradelines] = useState("1-2");
+  const [oldestAccount, setOldestAccount] = useState("0-1");
+  const [missedPayments, setMissedPayments] = useState("1-2");
+  const [utilizationRange, setUtilization] = useState("50-75");
+  
+  // Calculator state
+  const [tradelinesAdded, setTradelinesAdded] = useState(0);
   const [interactionCount, setInteractionCount] = useState(0);
   const [showContactModal, setShowContactModal] = useState(false);
 
-  useEffect(() => {
-    calculateProjectedScore();
-  }, [currentScore, creditAge, totalAccounts, utilization, negativeItems, tradelineCount]);
+  // Get base score from range
+  const getBaseScore = () => {
+    const scores: Record<string, number> = {
+      "300-499": 450,
+      "500-579": 540,
+      "580-619": 600,
+      "620-659": 640,
+      "660-699": 680,
+      "700-749": 725,
+      "750+": 770,
+    };
+    return scores[scoreRange] || 600;
+  };
 
-  // Track interactions and show modal after 3+ interactions
+  // Calculate projected score with tradelines
+  const calculateProjectedScore = () => {
+    if (tradelinesAdded === 0) return getBaseScore();
+    
+    let boost = 0;
+    
+    // Oldest account impact (younger = more benefit from aged tradeline)
+    const ageBoost: Record<string, number> = {
+      "0-1": 45,
+      "1-2": 35,
+      "3-5": 25,
+      "5-10": 15,
+      "10+": 10,
+    };
+    boost += ageBoost[oldestAccount] || 25;
+    
+    // Current tradelines impact (fewer = more benefit)
+    const tradelineBoost: Record<string, number> = {
+      "0": 50,
+      "1-2": 40,
+      "3-5": 30,
+      "6-10": 20,
+      "10+": 10,
+    };
+    boost += tradelineBoost[currentTradelines] || 30;
+    
+    // Missed payments impact (reduces potential)
+    const paymentPenalty: Record<string, number> = {
+      "0": 20,
+      "1-2": 10,
+      "3-5": 0,
+      "6+": -10,
+    };
+    boost += paymentPenalty[missedPayments] || 0;
+    
+    // Utilization impact
+    const utilBoost: Record<string, number> = {
+      "0-9": 5,
+      "10-29": 10,
+      "30-49": 20,
+      "50-75": 30,
+      "76-100": 25,
+    };
+    boost += utilBoost[utilizationRange] || 20;
+    
+    // Apply multiplier for multiple tradelines (diminishing returns)
+    if (tradelinesAdded === 2) {
+      boost = Math.round(boost * 1.65);
+    } else if (tradelinesAdded === 3) {
+      boost = Math.round(boost * 2.1);
+    }
+    
+    return Math.min(850, getBaseScore() + boost);
+  };
+
   const handleInteraction = () => {
     const newCount = interactionCount + 1;
     setInteractionCount(newCount);
-    if (newCount >= 3 && !showContactModal) {
-      setTimeout(() => setShowContactModal(true), 500);
+    if (newCount >= 4 && !showContactModal) {
+      setTimeout(() => setShowContactModal(true), 800);
     }
   };
 
-  const calculateProjectedScore = () => {
-    let boost = 0;
-    
-    // Base multiplier based on tradeline count
-    const tradelineMultiplier = tradelineCount === 2 ? 1.6 : 1;
-    
-    // Credit age impact (adding aged tradeline helps thin files most)
-    if (creditAge === "0-1") boost += 55;
-    else if (creditAge === "1-2") boost += 45;
-    else if (creditAge === "3-5") boost += 35;
-    else boost += 20;
-    
-    // Account mix impact (fewer accounts = bigger impact)
-    if (totalAccounts <= 2) boost += 50;
-    else if (totalAccounts <= 4) boost += 40;
-    else if (totalAccounts <= 6) boost += 25;
-    else boost += 15;
-    
-    // Utilization impact
-    if (utilization > 50) boost += 35;
-    else if (utilization > 30) boost += 20;
-    else boost += 10;
-    
-    // Negative items reduce potential
-    if (negativeItems === "0") boost += 25;
-    else if (negativeItems === "1-2") boost += 15;
-    else if (negativeItems === "3-4") boost -= 5;
-    else boost -= 10;
-    
-    // Apply tradeline multiplier
-    boost = Math.round(boost * tradelineMultiplier);
-    
-    // Cap the score at 850
-    const newScore = Math.min(850, currentScore + boost);
-    setProjectedScore(newScore);
+  const addTradeline = () => {
+    if (tradelinesAdded < 3) {
+      setTradelinesAdded(prev => prev + 1);
+      handleInteraction();
+    }
   };
+
+  const removeTradeline = () => {
+    if (tradelinesAdded > 0) {
+      setTradelinesAdded(prev => prev - 1);
+    }
+  };
+
+  const projectedScore = calculateProjectedScore();
+  const improvement = projectedScore - getBaseScore();
 
   const getScoreColor = (score: number) => {
     if (score >= 750) return "text-green-400";
@@ -84,85 +128,83 @@ const TradelineCalculator = () => {
     return "Very Poor";
   };
 
-  const improvement = projectedScore - currentScore;
-
   return (
     <>
       <section className="py-24 px-8 bg-background" id="calculator">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center gap-2 text-primary mb-4">
               <Calculator className="w-6 h-6" />
               <span className="text-sm font-medium tracking-wider uppercase">Free Tool</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-display text-primary text-glow mb-4">
-              Tradeline Calculator
+              Credit Score Calculator
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Get an estimate of how premium tradelines could impact your credit score.
+              Enter your credit profile details to see how tradelines may impact your score.
             </p>
           </div>
           
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Input Form */}
-            <Card className="gradient-card border-border">
+          <div className="grid lg:grid-cols-5 gap-8">
+            {/* Input Form - Takes 3 columns */}
+            <Card className="gradient-card border-border lg:col-span-3">
               <CardHeader>
-                <CardTitle className="font-display text-primary flex items-center gap-2">
-                  <AlertCircle className="w-5 h-5" />
-                  Your Current Profile
-                </CardTitle>
-                <CardDescription>Enter your credit details for a personalized estimate.</CardDescription>
+                <CardTitle className="font-display text-primary">Your Credit Profile</CardTitle>
+                <CardDescription>Tell us about your current credit situation.</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                {/* Tradeline Count */}
+                {/* Current Score Range */}
                 <div className="space-y-3">
-                  <Label className="text-foreground">Number of Tradelines</Label>
+                  <Label className="text-foreground font-medium">Current Credit Score Range</Label>
                   <RadioGroup 
-                    value={tradelineCount.toString()} 
-                    onValueChange={(val) => { setTradelineCount(parseInt(val)); handleInteraction(); }} 
-                    className="grid grid-cols-2 gap-2"
+                    value={scoreRange} 
+                    onValueChange={(val) => { setScoreRange(val); handleInteraction(); }} 
+                    className="grid grid-cols-2 sm:grid-cols-4 gap-2"
                   >
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="1" id="tl-1" />
-                      <Label htmlFor="tl-1" className="cursor-pointer text-sm text-muted-foreground">
-                        1 Tradeline
-                      </Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="2" id="tl-2" />
-                      <Label htmlFor="tl-2" className="cursor-pointer text-sm text-muted-foreground">
-                        2 Tradelines
-                      </Label>
-                    </div>
+                    {["300-499", "500-579", "580-619", "620-659", "660-699", "700-749", "750+"].map((range) => (
+                      <div key={range} className="flex items-center space-x-2">
+                        <RadioGroupItem value={range} id={`score-${range}`} />
+                        <Label htmlFor={`score-${range}`} className="cursor-pointer text-sm text-muted-foreground">
+                          {range}
+                        </Label>
+                      </div>
+                    ))}
                   </RadioGroup>
                 </div>
 
-                {/* Current Score */}
+                {/* Current Tradelines */}
                 <div className="space-y-3">
-                  <Label className="text-foreground">Current Credit Score: {currentScore}</Label>
-                  <Slider
-                    value={[currentScore]}
-                    onValueChange={(value) => { setCurrentScore(value[0]); handleInteraction(); }}
-                    min={300}
-                    max={750}
-                    step={10}
-                    className="py-2"
-                  />
-                  <div className="flex justify-between text-xs text-muted-foreground">
-                    <span>300</span>
-                    <span>750</span>
-                  </div>
+                  <Label className="text-foreground font-medium">How Many Credit Accounts Do You Have?</Label>
+                  <RadioGroup 
+                    value={currentTradelines} 
+                    onValueChange={(val) => { setCurrentTradelines(val); handleInteraction(); }} 
+                    className="grid grid-cols-2 sm:grid-cols-5 gap-2"
+                  >
+                    {["0", "1-2", "3-5", "6-10", "10+"].map((count) => (
+                      <div key={count} className="flex items-center space-x-2">
+                        <RadioGroupItem value={count} id={`tl-${count}`} />
+                        <Label htmlFor={`tl-${count}`} className="cursor-pointer text-sm text-muted-foreground">
+                          {count === "0" ? "None" : count}
+                        </Label>
+                      </div>
+                    ))}
+                  </RadioGroup>
                 </div>
                 
-                {/* Credit Age */}
+                {/* Oldest Account */}
                 <div className="space-y-3">
-                  <Label className="text-foreground">Average Age of Credit History</Label>
-                  <RadioGroup value={creditAge} onValueChange={(val) => { setCreditAge(val); handleInteraction(); }} className="grid grid-cols-2 gap-2">
+                  <Label className="text-foreground font-medium">Age of Your Oldest Account</Label>
+                  <RadioGroup 
+                    value={oldestAccount} 
+                    onValueChange={(val) => { setOldestAccount(val); handleInteraction(); }} 
+                    className="grid grid-cols-2 sm:grid-cols-5 gap-2"
+                  >
                     {[
-                      { value: "0-1", label: "0–1 years" },
-                      { value: "1-2", label: "1–2 years" },
-                      { value: "3-5", label: "3–5 years" },
-                      { value: "5+", label: "5+ years" },
+                      { value: "0-1", label: "0-1 yr" },
+                      { value: "1-2", label: "1-2 yrs" },
+                      { value: "3-5", label: "3-5 yrs" },
+                      { value: "5-10", label: "5-10 yrs" },
+                      { value: "10+", label: "10+ yrs" },
                     ].map((option) => (
                       <div key={option.value} className="flex items-center space-x-2">
                         <RadioGroupItem value={option.value} id={`age-${option.value}`} />
@@ -174,48 +216,48 @@ const TradelineCalculator = () => {
                   </RadioGroup>
                 </div>
                 
-                {/* Total Accounts */}
+                {/* Missed Payments */}
                 <div className="space-y-3">
-                  <Label className="text-foreground">Total Credit Accounts: {totalAccounts}</Label>
-                  <Slider
-                    value={[totalAccounts]}
-                    onValueChange={(value) => { setTotalAccounts(value[0]); handleInteraction(); }}
-                    min={0}
-                    max={15}
-                    step={1}
-                    className="py-2"
-                  />
+                  <Label className="text-foreground font-medium">Late or Missed Payments (Past 2 Years)</Label>
+                  <RadioGroup 
+                    value={missedPayments} 
+                    onValueChange={(val) => { setMissedPayments(val); handleInteraction(); }} 
+                    className="grid grid-cols-2 sm:grid-cols-4 gap-2"
+                  >
+                    {[
+                      { value: "0", label: "None" },
+                      { value: "1-2", label: "1-2" },
+                      { value: "3-5", label: "3-5" },
+                      { value: "6+", label: "6+" },
+                    ].map((option) => (
+                      <div key={option.value} className="flex items-center space-x-2">
+                        <RadioGroupItem value={option.value} id={`missed-${option.value}`} />
+                        <Label htmlFor={`missed-${option.value}`} className="cursor-pointer text-sm text-muted-foreground">
+                          {option.label}
+                        </Label>
+                      </div>
+                    ))}
+                  </RadioGroup>
                 </div>
                 
                 {/* Utilization */}
                 <div className="space-y-3">
-                  <Label className="text-foreground">Credit Utilization: {utilization}%</Label>
-                  <Slider
-                    value={[utilization]}
-                    onValueChange={(value) => { setUtilization(value[0]); handleInteraction(); }}
-                    min={0}
-                    max={100}
-                    step={5}
-                    className="py-2"
-                  />
-                  <p className="text-xs text-muted-foreground">
-                    {utilization <= 30 ? "✓ Good – Under 30%" : utilization <= 50 ? "⚠ Fair – Consider lowering" : "⚠ High – Negatively impacts your score"}
-                  </p>
-                </div>
-                
-                {/* Negative Items */}
-                <div className="space-y-3">
-                  <Label className="text-foreground">Negative Items (Late Payments, Collections)</Label>
-                  <RadioGroup value={negativeItems} onValueChange={(val) => { setNegativeItems(val); handleInteraction(); }} className="grid grid-cols-2 gap-2">
+                  <Label className="text-foreground font-medium">Credit Utilization (Balances vs. Limits)</Label>
+                  <RadioGroup 
+                    value={utilizationRange} 
+                    onValueChange={(val) => { setUtilization(val); handleInteraction(); }} 
+                    className="grid grid-cols-2 sm:grid-cols-5 gap-2"
+                  >
                     {[
-                      { value: "0", label: "None" },
-                      { value: "1-2", label: "1–2 items" },
-                      { value: "3-4", label: "3–4 items" },
-                      { value: "5+", label: "5+ items" },
+                      { value: "0-9", label: "0-9%" },
+                      { value: "10-29", label: "10-29%" },
+                      { value: "30-49", label: "30-49%" },
+                      { value: "50-75", label: "50-75%" },
+                      { value: "76-100", label: "76-100%" },
                     ].map((option) => (
                       <div key={option.value} className="flex items-center space-x-2">
-                        <RadioGroupItem value={option.value} id={`neg-${option.value}`} />
-                        <Label htmlFor={`neg-${option.value}`} className="cursor-pointer text-sm text-muted-foreground">
+                        <RadioGroupItem value={option.value} id={`util-${option.value}`} />
+                        <Label htmlFor={`util-${option.value}`} className="cursor-pointer text-sm text-muted-foreground">
                           {option.label}
                         </Label>
                       </div>
@@ -225,37 +267,66 @@ const TradelineCalculator = () => {
               </CardContent>
             </Card>
             
-            {/* Results */}
-            <Card className="gradient-card border-border h-fit sticky top-8">
+            {/* Results - Takes 2 columns */}
+            <Card className="gradient-card border-border lg:col-span-2 h-fit lg:sticky lg:top-8">
               <CardHeader>
                 <CardTitle className="font-display text-primary flex items-center gap-2">
                   <TrendingUp className="w-5 h-5" />
-                  Projected Results
+                  Your Results
                 </CardTitle>
-                <CardDescription>
-                  Estimated impact with {tradelineCount} premium tradeline{tradelineCount > 1 ? "s" : ""}.
-                </CardDescription>
+                <CardDescription>See how tradelines may help your profile.</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-8">
+              <CardContent className="space-y-6">
                 {/* Score Display */}
-                <div className="text-center py-8 rounded-lg bg-background/50 border border-border">
-                  <p className="text-sm text-muted-foreground mb-2">Projected Score</p>
-                  <p className={`text-6xl font-display font-bold ${getScoreColor(projectedScore)}`}>
+                <div className="text-center py-6 rounded-lg bg-background/50 border border-border">
+                  <p className="text-sm text-muted-foreground mb-1">
+                    {tradelinesAdded === 0 ? "Current Score" : "Projected Score"}
+                  </p>
+                  <p className={`text-5xl font-display font-bold ${getScoreColor(projectedScore)}`}>
                     {projectedScore}
                   </p>
-                  <p className={`text-lg font-medium mt-2 ${getScoreColor(projectedScore)}`}>
+                  <p className={`text-sm font-medium mt-1 ${getScoreColor(projectedScore)}`}>
                     {getScoreLabel(projectedScore)}
                   </p>
                 </div>
-                
-                {/* Improvement Badge */}
-                <div className="flex items-center justify-center gap-3 p-4 rounded-lg bg-primary/10 border border-primary/20">
-                  <CheckCircle2 className="w-6 h-6 text-primary" />
-                  <div>
-                    <p className="text-sm text-muted-foreground">Potential Improvement</p>
-                    <p className="text-2xl font-display text-primary font-bold">+{improvement} Points</p>
+
+                {/* Add/Remove Tradelines */}
+                <div className="space-y-3">
+                  <Label className="text-foreground font-medium text-center block">
+                    Tradelines Added: {tradelinesAdded}
+                  </Label>
+                  <div className="flex gap-3 justify-center">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={removeTradeline}
+                      disabled={tradelinesAdded === 0}
+                      className="h-12 w-12"
+                    >
+                      <Minus className="w-5 h-5" />
+                    </Button>
+                    <Button
+                      onClick={addTradeline}
+                      disabled={tradelinesAdded >= 3}
+                      className="h-12 px-6 font-display box-glow"
+                      data-cta="add-tradeline"
+                    >
+                      <Plus className="w-5 h-5 mr-2" />
+                      Add Tradeline
+                    </Button>
                   </div>
                 </div>
+                
+                {/* Improvement Badge */}
+                {tradelinesAdded > 0 && (
+                  <div className="flex items-center justify-center gap-3 p-4 rounded-lg bg-primary/10 border border-primary/20">
+                    <CheckCircle2 className="w-5 h-5 text-primary" />
+                    <div className="text-center">
+                      <p className="text-xs text-muted-foreground">Potential Improvement</p>
+                      <p className="text-xl font-display text-primary font-bold">+{improvement} Points</p>
+                    </div>
+                  </div>
+                )}
 
                 {/* CTA Button */}
                 <Button 
@@ -267,10 +338,9 @@ const TradelineCalculator = () => {
                 </Button>
                 
                 {/* Disclaimer */}
-                <div className="text-xs text-muted-foreground p-4 rounded bg-background/50 border border-border">
-                  <p className="font-medium text-foreground/80 mb-1">Disclaimer:</p>
-                  <p>This calculator provides an estimate only. Actual results may vary based on your individual credit profile and bureau reporting. Contact us for a personalized consultation.</p>
-                </div>
+                <p className="text-xs text-muted-foreground text-center">
+                  Results are estimates only. Actual impact varies by credit profile.
+                </p>
               </CardContent>
             </Card>
           </div>
