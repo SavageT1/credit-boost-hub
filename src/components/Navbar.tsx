@@ -28,25 +28,31 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-6">
             <Link 
               to="/about"
-              className="text-foreground/70 hover:text-primary transition-colors"
+              className="text-gray-300 hover:text-primary transition-colors"
             >
               About Us
             </Link>
             <Link 
               to="/tradelines-101"
-              className="text-foreground/70 hover:text-primary transition-colors"
+              className="text-gray-300 hover:text-primary transition-colors"
             >
               Tradelines 101
             </Link>
+            <Link 
+              to="/blog"
+              className="text-gray-300 hover:text-primary transition-colors"
+            >
+              Blog
+            </Link>
             <button 
               onClick={() => scrollToSection("calculator")}
-              className="text-foreground/70 hover:text-primary transition-colors"
+              className="text-gray-300 hover:text-primary transition-colors"
             >
               Calculator
             </button>
             <Link 
               to="/contact"
-              className="text-foreground/70 hover:text-primary transition-colors"
+              className="text-gray-300 hover:text-primary transition-colors"
             >
               Contact
             </Link>
@@ -75,27 +81,34 @@ const Navbar = () => {
           <div className="md:hidden mt-4 pb-4 space-y-4">
             <Link 
               to="/about"
-              className="block w-full text-left text-foreground/70 hover:text-primary transition-colors py-2"
+              className="block w-full text-left text-gray-300 hover:text-primary transition-colors py-2"
               onClick={() => setIsOpen(false)}
             >
               About Us
             </Link>
             <Link 
               to="/tradelines-101"
-              className="block w-full text-left text-foreground/70 hover:text-primary transition-colors py-2"
+              className="block w-full text-left text-gray-300 hover:text-primary transition-colors py-2"
               onClick={() => setIsOpen(false)}
             >
               Tradelines 101
             </Link>
+            <Link 
+              to="/blog"
+              className="block w-full text-left text-gray-300 hover:text-primary transition-colors py-2"
+              onClick={() => setIsOpen(false)}
+            >
+              Blog
+            </Link>
             <button 
               onClick={() => scrollToSection("calculator")}
-              className="block w-full text-left text-foreground/70 hover:text-primary transition-colors py-2"
+              className="block w-full text-left text-gray-300 hover:text-primary transition-colors py-2"
             >
               Calculator
             </button>
             <Link 
               to="/contact"
-              className="block w-full text-left text-foreground/70 hover:text-primary transition-colors py-2"
+              className="block w-full text-left text-gray-300 hover:text-primary transition-colors py-2"
               onClick={() => setIsOpen(false)}
             >
               Contact

@@ -1,8 +1,11 @@
+# A1 Tradelines robots.txt
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Twitterbot
 Allow: /
@@ -10,5 +13,11 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: LinkedInBot
+Allow: /
+
 User-agent: *
 Allow: /
+Crawl-delay: 2
+
+Sitemap: https://a1tradelines.lovable.app/sitemap.xml
