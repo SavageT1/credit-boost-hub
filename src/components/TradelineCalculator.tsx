@@ -96,7 +96,7 @@ const TradelineCalculator = () => {
             <CardContent className="space-y-6">
               {/* Current Score */}
               <div className="space-y-3">
-                <Label className="text-foreground">Current Credit Score: {currentScore}</Label>
+                <Label className="text-white">Current Credit Score: {currentScore}</Label>
                 <Slider
                   value={[currentScore]}
                   onValueChange={(value) => setCurrentScore(value[0])}
@@ -105,7 +105,7 @@ const TradelineCalculator = () => {
                   step={10}
                   className="py-2"
                 />
-                <div className="flex justify-between text-xs text-muted-foreground">
+                <div className="flex justify-between text-xs text-gray-400">
                   <span>300</span>
                   <span>750</span>
                 </div>
@@ -113,17 +113,17 @@ const TradelineCalculator = () => {
               
               {/* Credit Age */}
               <div className="space-y-3">
-                <Label className="text-foreground">Average Age of Credit History</Label>
+                <Label className="text-white">Average Age of Credit History</Label>
                 <RadioGroup value={creditAge} onValueChange={setCreditAge} className="grid grid-cols-2 gap-2">
                   {[
-                    { value: "0-1", label: "0-1 years" },
-                    { value: "1-2", label: "1-2 years" },
-                    { value: "3-5", label: "3-5 years" },
+                    { value: "0-1", label: "0–1 years" },
+                    { value: "1-2", label: "1–2 years" },
+                    { value: "3-5", label: "3–5 years" },
                     { value: "5+", label: "5+ years" },
                   ].map((option) => (
                     <div key={option.value} className="flex items-center space-x-2">
                       <RadioGroupItem value={option.value} id={`age-${option.value}`} />
-                      <Label htmlFor={`age-${option.value}`} className="cursor-pointer text-sm text-foreground">
+                      <Label htmlFor={`age-${option.value}`} className="cursor-pointer text-sm text-gray-300">
                         {option.label}
                       </Label>
                     </div>
@@ -133,7 +133,7 @@ const TradelineCalculator = () => {
               
               {/* Total Accounts */}
               <div className="space-y-3">
-                <Label className="text-foreground">Total Credit Accounts: {totalAccounts}</Label>
+                <Label className="text-white">Total Credit Accounts: {totalAccounts}</Label>
                 <Slider
                   value={[totalAccounts]}
                   onValueChange={(value) => setTotalAccounts(value[0])}
@@ -146,7 +146,7 @@ const TradelineCalculator = () => {
               
               {/* Utilization */}
               <div className="space-y-3">
-                <Label className="text-foreground">Credit Utilization: {utilization}%</Label>
+                <Label className="text-white">Credit Utilization: {utilization}%</Label>
                 <Slider
                   value={[utilization]}
                   onValueChange={(value) => setUtilization(value[0])}
@@ -155,24 +155,24 @@ const TradelineCalculator = () => {
                   step={5}
                   className="py-2"
                 />
-                <p className="text-xs text-muted-foreground">
-                  {utilization <= 30 ? "✓ Good - Under 30%" : utilization <= 50 ? "⚠ Fair - Consider lowering" : "⚠ High - Impacts score negatively"}
+                <p className="text-xs text-gray-400">
+                  {utilization <= 30 ? "✓ Good – Under 30%" : utilization <= 50 ? "⚠ Fair – Consider lowering" : "⚠ High – Negatively impacts your score"}
                 </p>
               </div>
               
               {/* Negative Items */}
               <div className="space-y-3">
-                <Label className="text-foreground">Negative Items (Late Payments, Collections)</Label>
+                <Label className="text-white">Negative Items (Late Payments, Collections)</Label>
                 <RadioGroup value={negativeItems} onValueChange={setNegativeItems} className="grid grid-cols-2 gap-2">
                   {[
                     { value: "0", label: "None" },
-                    { value: "1-2", label: "1-2 items" },
-                    { value: "3-4", label: "3-4 items" },
+                    { value: "1-2", label: "1–2 items" },
+                    { value: "3-4", label: "3–4 items" },
                     { value: "5+", label: "5+ items" },
                   ].map((option) => (
                     <div key={option.value} className="flex items-center space-x-2">
                       <RadioGroupItem value={option.value} id={`neg-${option.value}`} />
-                      <Label htmlFor={`neg-${option.value}`} className="cursor-pointer text-sm text-foreground">
+                      <Label htmlFor={`neg-${option.value}`} className="cursor-pointer text-sm text-gray-300">
                         {option.label}
                       </Label>
                     </div>
@@ -194,7 +194,7 @@ const TradelineCalculator = () => {
             <CardContent className="space-y-8">
               {/* Score Display */}
               <div className="text-center py-8 rounded-lg bg-background/50 border border-border">
-                <p className="text-sm text-muted-foreground mb-2">Projected Score</p>
+                <p className="text-sm text-gray-400 mb-2">Projected Score</p>
                 <p className={`text-6xl font-display font-bold ${getScoreColor(projectedScore)}`}>
                   {projectedScore}
                 </p>
@@ -207,15 +207,15 @@ const TradelineCalculator = () => {
               <div className="flex items-center justify-center gap-3 p-4 rounded-lg bg-primary/10 border border-primary/20">
                 <CheckCircle2 className="w-6 h-6 text-primary" />
                 <div>
-                  <p className="text-sm text-muted-foreground">Potential Improvement</p>
+                  <p className="text-sm text-gray-400">Potential Improvement</p>
                   <p className="text-2xl font-display text-primary font-bold">+{improvement} Points</p>
                 </div>
               </div>
               
               {/* Disclaimer */}
-              <div className="text-xs text-muted-foreground p-4 rounded bg-background/50 border border-border">
-                <p className="font-medium mb-1">Disclaimer:</p>
-                <p>This calculator provides an estimate only. Actual results may vary based on individual credit profiles and bureau reporting. Contact us for a personalized consultation.</p>
+              <div className="text-xs text-gray-400 p-4 rounded bg-background/50 border border-border">
+                <p className="font-medium text-gray-300 mb-1">Disclaimer:</p>
+                <p>This calculator provides an estimate only. Actual results may vary based on your individual credit profile and bureau reporting. Contact us for a personalized consultation.</p>
               </div>
             </CardContent>
           </Card>
