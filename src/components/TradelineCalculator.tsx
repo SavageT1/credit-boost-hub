@@ -155,7 +155,7 @@ const TradelineCalculator = () => {
               <CardContent className="space-y-6">
                 {/* Current Score Range */}
                 <div className="space-y-3">
-                  <Label className="text-foreground font-medium">Current Credit Score Range</Label>
+                  <Label className="text-white font-medium">Current Credit Score Range</Label>
                   <RadioGroup 
                     value={scoreRange} 
                     onValueChange={setScoreRange} 
@@ -164,7 +164,7 @@ const TradelineCalculator = () => {
                     {["300-499", "500-579", "580-619", "620-659", "660-699", "700-749", "750+"].map((range) => (
                       <div key={range} className="flex items-center space-x-2">
                         <RadioGroupItem value={range} id={`score-${range}`} />
-                        <Label htmlFor={`score-${range}`} className="cursor-pointer text-sm text-foreground/70">
+                        <Label htmlFor={`score-${range}`} className="cursor-pointer text-sm text-white">
                           {range}
                         </Label>
                       </div>
@@ -174,7 +174,7 @@ const TradelineCalculator = () => {
 
                 {/* Current Tradelines */}
                 <div className="space-y-3">
-                  <Label className="text-foreground font-medium">How Many Credit Accounts Do You Have?</Label>
+                  <Label className="text-white font-medium">How Many Credit Accounts Do You Have?</Label>
                   <RadioGroup 
                     value={currentTradelines} 
                     onValueChange={setCurrentTradelines} 
@@ -183,7 +183,7 @@ const TradelineCalculator = () => {
                     {["0", "1-2", "3-5", "6-10", "10+"].map((count) => (
                       <div key={count} className="flex items-center space-x-2">
                         <RadioGroupItem value={count} id={`tl-${count}`} />
-                        <Label htmlFor={`tl-${count}`} className="cursor-pointer text-sm text-foreground/70">
+                        <Label htmlFor={`tl-${count}`} className="cursor-pointer text-sm text-white">
                           {count === "0" ? "None" : count}
                         </Label>
                       </div>
@@ -193,7 +193,7 @@ const TradelineCalculator = () => {
                 
                 {/* Oldest Account */}
                 <div className="space-y-3">
-                  <Label className="text-foreground font-medium">Age of Your Oldest Account</Label>
+                  <Label className="text-white font-medium">Age of Your Oldest Account</Label>
                   <RadioGroup 
                     value={oldestAccount} 
                     onValueChange={setOldestAccount} 
@@ -208,7 +208,7 @@ const TradelineCalculator = () => {
                     ].map((option) => (
                       <div key={option.value} className="flex items-center space-x-2">
                         <RadioGroupItem value={option.value} id={`age-${option.value}`} />
-                        <Label htmlFor={`age-${option.value}`} className="cursor-pointer text-sm text-foreground/70">
+                        <Label htmlFor={`age-${option.value}`} className="cursor-pointer text-sm text-white">
                           {option.label}
                         </Label>
                       </div>
@@ -218,7 +218,7 @@ const TradelineCalculator = () => {
                 
                 {/* Missed Payments */}
                 <div className="space-y-3">
-                  <Label className="text-foreground font-medium">Late or Missed Payments (Past 2 Years)</Label>
+                  <Label className="text-white font-medium">Late or Missed Payments (Past 2 Years)</Label>
                   <RadioGroup 
                     value={missedPayments} 
                     onValueChange={setMissedPayments} 
@@ -232,7 +232,7 @@ const TradelineCalculator = () => {
                     ].map((option) => (
                       <div key={option.value} className="flex items-center space-x-2">
                         <RadioGroupItem value={option.value} id={`missed-${option.value}`} />
-                        <Label htmlFor={`missed-${option.value}`} className="cursor-pointer text-sm text-foreground/70">
+                        <Label htmlFor={`missed-${option.value}`} className="cursor-pointer text-sm text-white">
                           {option.label}
                         </Label>
                       </div>
@@ -242,7 +242,7 @@ const TradelineCalculator = () => {
                 
                 {/* Utilization */}
                 <div className="space-y-3">
-                  <Label className="text-foreground font-medium">Credit Utilization (Balances vs. Limits)</Label>
+                  <Label className="text-white font-medium">Credit Utilization (Balances vs. Limits)</Label>
                   <RadioGroup 
                     value={utilizationRange} 
                     onValueChange={setUtilization} 
@@ -257,7 +257,7 @@ const TradelineCalculator = () => {
                     ].map((option) => (
                       <div key={option.value} className="flex items-center space-x-2">
                         <RadioGroupItem value={option.value} id={`util-${option.value}`} />
-                        <Label htmlFor={`util-${option.value}`} className="cursor-pointer text-sm text-foreground/70">
+                        <Label htmlFor={`util-${option.value}`} className="cursor-pointer text-sm text-white">
                           {option.label}
                         </Label>
                       </div>
@@ -292,7 +292,7 @@ const TradelineCalculator = () => {
 
                 {/* Add/Remove Tradelines */}
                 <div className="space-y-3">
-                  <Label className="text-foreground font-medium text-center block">
+                  <Label className="text-white font-medium text-center block">
                     Tradelines Added: {tradelinesAdded}
                   </Label>
                   <div className="flex gap-3 justify-center">
