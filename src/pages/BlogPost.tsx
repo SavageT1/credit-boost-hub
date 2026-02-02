@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
+import DOMPurify from "dompurify";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, Share2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -16,6 +17,29 @@ interface BlogPostData {
   meta_description: string | null;
   published_at: string;
 }
+
+// Separate component for sanitized content to ensure proper memoization
+const SanitizedContent = ({ content }: { content: string }) => {
+  const sanitizedContent = useMemo(() => {
+    return DOMPurify.sanitize(content, {
+      ALLOWED_TAGS: ['h2', 'h3', 'h4', 'p', 'ul', 'ol', 'li', 'strong', 'em', 'a', 'br', 'span'],
+      ALLOWED_ATTR: ['href', 'target', 'rel', 'class'],
+      ALLOW_DATA_ATTR: false,
+    });
+  }, [content]);
+
+  return (
+    <div 
+      className="prose prose-invert prose-lg max-w-none
+        prose-headings:font-display prose-headings:text-primary
+        prose-p:text-gray-300 prose-p:leading-relaxed
+        prose-li:text-gray-300
+        prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+        prose-strong:text-white"
+      dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+    />
+  );
+};
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -154,15 +178,7 @@ const BlogPost = () => {
         {/* Content */}
         <section className="py-12 px-8">
           <article className="max-w-3xl mx-auto">
-            <div 
-              className="prose prose-invert prose-lg max-w-none
-                prose-headings:font-display prose-headings:text-primary
-                prose-p:text-gray-300 prose-p:leading-relaxed
-                prose-li:text-gray-300
-                prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-                prose-strong:text-white"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+            <SanitizedContent content={post.content} />
 
             {/* Disclaimer */}
             <div className="mt-12 p-6 bg-muted/20 rounded-lg border border-border">
