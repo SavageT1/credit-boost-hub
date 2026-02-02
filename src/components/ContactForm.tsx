@@ -54,7 +54,7 @@ const ContactForm = () => {
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-display text-primary mb-6">Contact Information</h3>
-              <p className="text-muted-foreground mb-8">
+              <p className="text-gray-300 mb-8">
                 Our team is ready to answer your questions and help you get started on your credit journey.
               </p>
             </div>
@@ -65,8 +65,8 @@ const ContactForm = () => {
                   <Phone className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Text or Call</p>
-                  <p className="text-foreground font-medium">(908) 767-5309</p>
+                  <p className="text-sm text-gray-400">Text or Call</p>
+                  <p className="text-white font-medium">(908) 767-5309</p>
                 </div>
               </div>
               
@@ -75,8 +75,8 @@ const ContactForm = () => {
                   <Mail className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Email</p>
-                  <p className="text-foreground font-medium">info@a1tradelines.com</p>
+                  <p className="text-sm text-gray-400">Email</p>
+                  <p className="text-white font-medium">info@a1tradelines.com</p>
                 </div>
               </div>
               
@@ -85,8 +85,8 @@ const ContactForm = () => {
                   <MapPin className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Location</p>
-                  <p className="text-foreground font-medium">Serving Clients Nationwide</p>
+                  <p className="text-sm text-gray-400">Location</p>
+                  <p className="text-white font-medium">Serving Clients Nationwide</p>
                 </div>
               </div>
             </div>
@@ -102,7 +102,7 @@ const ContactForm = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Full Name</Label>
+                    <Label htmlFor="name" className="text-gray-300">Full Name</Label>
                     <Input
                       id="name"
                       name="name"
@@ -110,11 +110,11 @@ const ContactForm = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="bg-background/50"
+                      className="bg-background/50 text-white placeholder:text-gray-500"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number</Label>
+                    <Label htmlFor="phone" className="text-gray-300">Phone Number</Label>
                     <Input
                       id="phone"
                       name="phone"
@@ -122,13 +122,13 @@ const ContactForm = () => {
                       placeholder="(555) 123-4567"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="bg-background/50"
+                      className="bg-background/50 text-white placeholder:text-gray-500"
                     />
                   </div>
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email Address</Label>
+                  <Label htmlFor="email" className="text-gray-300">Email Address</Label>
                   <Input
                     id="email"
                     name="email"
@@ -137,12 +137,12 @@ const ContactForm = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="bg-background/50"
+                    className="bg-background/50 text-white placeholder:text-gray-500"
                   />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
+                  <Label htmlFor="message" className="text-gray-300">Message</Label>
                   <Textarea
                     id="message"
                     name="message"
@@ -151,7 +151,7 @@ const ContactForm = () => {
                     onChange={handleChange}
                     required
                     rows={4}
-                    className="bg-background/50"
+                    className="bg-background/50 text-white placeholder:text-gray-500"
                   />
                 </div>
                 
