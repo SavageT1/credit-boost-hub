@@ -49,7 +49,7 @@ const Contact = () => {
             <h1 className="text-4xl md:text-6xl font-display text-primary text-glow mb-6">
               Contact Us
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Have questions about improving your credit? Our team is here to help you every step of the way.
             </p>
           </div>
