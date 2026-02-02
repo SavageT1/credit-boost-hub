@@ -30,12 +30,27 @@ serve(async (req) => {
   }
 
   try {
+    // Verify secret token for authorization
+    const BLOG_GENERATION_SECRET = Deno.env.get("BLOG_GENERATION_SECRET");
+    const providedToken = req.headers.get("X-Secret-Token");
+
+    if (!BLOG_GENERATION_SECRET || providedToken !== BLOG_GENERATION_SECRET) {
+      return new Response(
+        JSON.stringify({ error: "Unauthorized" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
     const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 
     if (!LOVABLE_API_KEY || !SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
-      throw new Error("Missing required environment variables");
+      console.error("Missing required environment variables");
+      return new Response(
+        JSON.stringify({ error: "Service temporarily unavailable" }),
+        { status: 503, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
     }
 
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
@@ -156,11 +171,13 @@ Format your response as JSON with these fields:
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (error) {
+    // Log detailed error server-side only
     console.error("Error generating blog post:", error);
-    const errorMessage = error instanceof Error ? error.message : "Unknown error";
-    return new Response(JSON.stringify({ error: errorMessage }), {
-      status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    
+    // Return generic error to client - never expose internal details
+    return new Response(
+      JSON.stringify({ error: "Failed to generate blog post. Please try again later." }),
+      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
   }
 });
