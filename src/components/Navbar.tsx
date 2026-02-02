@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const Navbar = () => {
@@ -15,35 +16,49 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-lg border-b border-border/50">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border/50">
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <img src={logo} alt="A1 Tradelines" className="h-10 w-auto" />
-          </a>
+          </Link>
           
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
-            <button 
-              onClick={() => scrollToSection("features")}
-              className="text-secondary hover:text-primary transition-colors"
+          <div className="hidden md:flex items-center gap-6">
+            <Link 
+              to="/about"
+              className="text-foreground/70 hover:text-primary transition-colors"
             >
-              Features
-            </button>
+              About Us
+            </Link>
+            <Link 
+              to="/tradelines-101"
+              className="text-foreground/70 hover:text-primary transition-colors"
+            >
+              Tradelines 101
+            </Link>
             <button 
               onClick={() => scrollToSection("calculator")}
-              className="text-secondary hover:text-primary transition-colors"
+              className="text-foreground/70 hover:text-primary transition-colors"
             >
               Calculator
             </button>
-            <a 
-              href="/contact"
-              className="text-secondary hover:text-primary transition-colors"
+            <Link 
+              to="/contact"
+              className="text-foreground/70 hover:text-primary transition-colors"
             >
               Contact
+            </Link>
+            <a href="tel:9087675309">
+              <Button variant="outline" className="font-display border-primary text-primary hover:bg-primary hover:text-primary-foreground" data-cta="call">
+                <Phone className="w-4 h-4 mr-2" />
+                Call Us
+              </Button>
             </a>
-            <Button className="font-display box-glow">Get Started</Button>
+            <Link to="/contact">
+              <Button className="font-display box-glow" data-cta="assessment">Get Started</Button>
+            </Link>
           </div>
           
           {/* Mobile Menu Button */}
@@ -58,25 +73,42 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4">
-            <button 
-              onClick={() => scrollToSection("features")}
-              className="block w-full text-left text-secondary hover:text-primary transition-colors py-2"
+            <Link 
+              to="/about"
+              className="block w-full text-left text-foreground/70 hover:text-primary transition-colors py-2"
+              onClick={() => setIsOpen(false)}
             >
-              Features
-            </button>
+              About Us
+            </Link>
+            <Link 
+              to="/tradelines-101"
+              className="block w-full text-left text-foreground/70 hover:text-primary transition-colors py-2"
+              onClick={() => setIsOpen(false)}
+            >
+              Tradelines 101
+            </Link>
             <button 
               onClick={() => scrollToSection("calculator")}
-              className="block w-full text-left text-secondary hover:text-primary transition-colors py-2"
+              className="block w-full text-left text-foreground/70 hover:text-primary transition-colors py-2"
             >
               Calculator
             </button>
-            <a 
-              href="/contact"
-              className="block w-full text-left text-secondary hover:text-primary transition-colors py-2"
+            <Link 
+              to="/contact"
+              className="block w-full text-left text-foreground/70 hover:text-primary transition-colors py-2"
+              onClick={() => setIsOpen(false)}
             >
               Contact
+            </Link>
+            <a href="tel:9087675309" className="block">
+              <Button variant="outline" className="w-full font-display border-primary text-primary hover:bg-primary hover:text-primary-foreground" data-cta="call">
+                <Phone className="w-4 h-4 mr-2" />
+                Call (908) 767-5309
+              </Button>
             </a>
-            <Button className="w-full font-display box-glow">Get Started</Button>
+            <Link to="/contact" className="block" onClick={() => setIsOpen(false)}>
+              <Button className="w-full font-display box-glow" data-cta="assessment">Get Started</Button>
+            </Link>
           </div>
         )}
       </div>

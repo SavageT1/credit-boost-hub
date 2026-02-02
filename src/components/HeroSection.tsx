@@ -1,16 +1,11 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, TrendingUp } from "lucide-react";
+import { ArrowRight, Shield, TrendingUp, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 import ContactFormModal from "./ContactFormModal";
 
 const HeroSection = () => {
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const [modalTitle, setModalTitle] = useState("Get Started");
-
-  const openModal = (title: string) => {
-    setModalTitle(title);
-    setIsContactOpen(true);
-  };
 
   return (
     <>
@@ -29,31 +24,44 @@ const HeroSection = () => {
           A1 TRADELINES
         </h1>
         
-        <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-          Boost Your Credit Profile with Premium Authorized User Tradelines. 
-          Fast results, secure process, and expert support every step of the way.
+        <p className="text-xl md:text-2xl text-foreground/80 max-w-3xl mx-auto leading-relaxed">
+          Tradelines guidance for real credit goals. Learn what tradelines are, whether they fit 
+          your situation, and what to expect—without hype.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
           <Button 
             size="lg" 
             className="font-display text-lg box-glow group"
-            onClick={() => openModal("Get Started")}
+            onClick={() => setIsContactOpen(true)}
+            data-cta="assessment"
           >
-            Get Started
+            Start Free Assessment
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
-          <Button 
-            size="lg" 
-            variant="outline" 
-            className="font-display text-lg border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-            onClick={() => openModal("Learn More")}
-          >
-            Learn More
-          </Button>
+          <a href="tel:9087675309">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="font-display text-lg border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              data-cta="call"
+            >
+              <Phone className="w-5 h-5 mr-2" />
+              Call / Text Now
+            </Button>
+          </a>
         </div>
         
-        <div className="flex items-center justify-center gap-8 pt-8 text-muted-foreground">
+        <div className="pt-4">
+          <Link 
+            to="/tradelines-101"
+            className="text-primary hover:text-primary/80 transition-colors underline underline-offset-4"
+          >
+            Learn more about how tradelines work →
+          </Link>
+        </div>
+        
+        <div className="flex items-center justify-center gap-8 pt-4 text-foreground/60">
           <div className="flex items-center gap-2">
             <TrendingUp className="w-5 h-5 text-primary" />
             <span>500+ Happy Clients</span>
@@ -70,7 +78,7 @@ const HeroSection = () => {
     <ContactFormModal 
       open={isContactOpen} 
       onOpenChange={setIsContactOpen} 
-      title={modalTitle}
+      title="Start Free Assessment"
     />
     </>
   );
