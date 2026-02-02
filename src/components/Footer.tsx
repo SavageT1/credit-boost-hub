@@ -16,7 +16,7 @@ const Footer = () => {
         
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <a href="/" className="flex items-center gap-2">
-            <img src={logo} alt="A1 Tradelines" className="h-12 w-auto" />
+            <img src={logo} alt="A1 Tradelines" className="h-20 md:h-24 w-auto" />
           </a>
           
           <div className="flex items-center gap-6 text-sm text-gray-400">
