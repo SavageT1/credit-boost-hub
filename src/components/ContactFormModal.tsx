@@ -30,9 +30,10 @@ const ContactFormModal = ({ open, onOpenChange, title = "Get Started" }: Contact
     message: "",
   });
 
-  // HubSpot Form Configuration - Replace with your actual values
-  const HUBSPOT_PORTAL_ID = "YOUR_PORTAL_ID";
-  const HUBSPOT_FORM_ID = "YOUR_FORM_ID";
+  // HubSpot Form Configuration
+  const HUBSPOT_PORTAL_ID = "244921424";
+  const HUBSPOT_FORM_ID = "f738963e-9243-43e3-848c-df584038fa1a";
+  const HUBSPOT_REGION = "na2";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
