@@ -9,6 +9,7 @@ import AboutUs from "./pages/AboutUs";
 import Tradelines101 from "./pages/Tradelines101";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import Install from "./pages/Install";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/tradelines-101" element={<Tradelines101 />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/install" element={<Install />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
