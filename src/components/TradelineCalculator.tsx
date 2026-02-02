@@ -96,7 +96,7 @@ const TradelineCalculator = () => {
             <CardContent className="space-y-6">
               {/* Current Score */}
               <div className="space-y-3">
-                <Label>Current Credit Score: {currentScore}</Label>
+                <Label className="text-foreground">Current Credit Score: {currentScore}</Label>
                 <Slider
                   value={[currentScore]}
                   onValueChange={(value) => setCurrentScore(value[0])}
@@ -113,7 +113,7 @@ const TradelineCalculator = () => {
               
               {/* Credit Age */}
               <div className="space-y-3">
-                <Label>Average Age of Credit History</Label>
+                <Label className="text-foreground">Average Age of Credit History</Label>
                 <RadioGroup value={creditAge} onValueChange={setCreditAge} className="grid grid-cols-2 gap-2">
                   {[
                     { value: "0-1", label: "0-1 years" },
@@ -123,7 +123,7 @@ const TradelineCalculator = () => {
                   ].map((option) => (
                     <div key={option.value} className="flex items-center space-x-2">
                       <RadioGroupItem value={option.value} id={`age-${option.value}`} />
-                      <Label htmlFor={`age-${option.value}`} className="cursor-pointer text-sm">
+                      <Label htmlFor={`age-${option.value}`} className="cursor-pointer text-sm text-foreground">
                         {option.label}
                       </Label>
                     </div>
@@ -133,7 +133,7 @@ const TradelineCalculator = () => {
               
               {/* Total Accounts */}
               <div className="space-y-3">
-                <Label>Total Credit Accounts: {totalAccounts}</Label>
+                <Label className="text-foreground">Total Credit Accounts: {totalAccounts}</Label>
                 <Slider
                   value={[totalAccounts]}
                   onValueChange={(value) => setTotalAccounts(value[0])}
@@ -146,7 +146,7 @@ const TradelineCalculator = () => {
               
               {/* Utilization */}
               <div className="space-y-3">
-                <Label>Credit Utilization: {utilization}%</Label>
+                <Label className="text-foreground">Credit Utilization: {utilization}%</Label>
                 <Slider
                   value={[utilization]}
                   onValueChange={(value) => setUtilization(value[0])}
@@ -162,7 +162,7 @@ const TradelineCalculator = () => {
               
               {/* Negative Items */}
               <div className="space-y-3">
-                <Label>Negative Items (Late Payments, Collections)</Label>
+                <Label className="text-foreground">Negative Items (Late Payments, Collections)</Label>
                 <RadioGroup value={negativeItems} onValueChange={setNegativeItems} className="grid grid-cols-2 gap-2">
                   {[
                     { value: "0", label: "None" },
@@ -172,7 +172,7 @@ const TradelineCalculator = () => {
                   ].map((option) => (
                     <div key={option.value} className="flex items-center space-x-2">
                       <RadioGroupItem value={option.value} id={`neg-${option.value}`} />
-                      <Label htmlFor={`neg-${option.value}`} className="cursor-pointer text-sm">
+                      <Label htmlFor={`neg-${option.value}`} className="cursor-pointer text-sm text-foreground">
                         {option.label}
                       </Label>
                     </div>

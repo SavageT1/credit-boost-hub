@@ -64,8 +64,8 @@ const Contact = () => {
                   <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                     <Phone className="w-6 h-6 text-primary" />
                   </div>
-                  <h3 className="font-display text-primary mb-2">Phone</h3>
-                  <p className="text-muted-foreground">(555) 123-4567</p>
+                  <h3 className="font-display text-primary mb-2">Text or Call</h3>
+                  <p className="text-foreground">(908) 767-5309</p>
                 </CardContent>
               </Card>
 

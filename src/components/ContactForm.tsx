@@ -65,8 +65,8 @@ const ContactForm = () => {
                   <Phone className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Phone</p>
-                  <p className="text-foreground font-medium">(555) 123-4567</p>
+                  <p className="text-sm text-muted-foreground">Text or Call</p>
+                  <p className="text-foreground font-medium">(908) 767-5309</p>
                 </div>
               </div>
               
