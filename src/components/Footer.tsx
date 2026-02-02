@@ -1,14 +1,13 @@
-import { Shield } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
     <footer className="py-12 px-8 border-t border-border bg-background">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-2">
-            <Shield className="w-5 h-5 text-primary" />
-            <span className="font-display text-primary text-glow">A1 TRADELINES</span>
-          </div>
+          <a href="/" className="flex items-center gap-2">
+            <img src={logo} alt="A1 Tradelines" className="h-12 w-auto" />
+          </a>
           
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,9 +20,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="/" className="flex items-center gap-2">
-            <span className="text-2xl font-display text-primary tracking-wider">
-              A1 TRADELINES
-            </span>
+            <img src={logo} alt="A1 Tradelines" className="h-10 w-auto" />
           </a>
           
           {/* Desktop Nav */}
