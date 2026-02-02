@@ -16,7 +16,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border/50">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-b border-gray-200">
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -28,31 +28,31 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-6">
             <Link 
               to="/about"
-              className="text-gray-300 hover:text-primary transition-colors"
+              className="text-gray-700 hover:text-primary transition-colors font-medium"
             >
               About Us
             </Link>
             <Link 
               to="/tradelines-101"
-              className="text-gray-300 hover:text-primary transition-colors"
+              className="text-gray-700 hover:text-primary transition-colors font-medium"
             >
               Tradelines 101
             </Link>
             <Link 
               to="/blog"
-              className="text-gray-300 hover:text-primary transition-colors"
+              className="text-gray-700 hover:text-primary transition-colors font-medium"
             >
               Blog
             </Link>
             <button 
               onClick={() => scrollToSection("calculator")}
-              className="text-gray-300 hover:text-primary transition-colors"
+              className="text-gray-700 hover:text-primary transition-colors font-medium"
             >
               Calculator
             </button>
             <Link 
               to="/contact"
-              className="text-gray-300 hover:text-primary transition-colors"
+              className="text-gray-700 hover:text-primary transition-colors font-medium"
             >
               Contact
             </Link>
@@ -69,7 +69,7 @@ const Navbar = () => {
           
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden text-foreground"
+            className="md:hidden text-gray-700"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -78,37 +78,37 @@ const Navbar = () => {
         
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-4">
+          <div className="md:hidden mt-4 pb-4 space-y-4 bg-white">
             <Link 
               to="/about"
-              className="block w-full text-left text-gray-300 hover:text-primary transition-colors py-2"
+              className="block w-full text-left text-gray-700 hover:text-primary transition-colors py-2 font-medium"
               onClick={() => setIsOpen(false)}
             >
               About Us
             </Link>
             <Link 
               to="/tradelines-101"
-              className="block w-full text-left text-gray-300 hover:text-primary transition-colors py-2"
+              className="block w-full text-left text-gray-700 hover:text-primary transition-colors py-2 font-medium"
               onClick={() => setIsOpen(false)}
             >
               Tradelines 101
             </Link>
             <Link 
               to="/blog"
-              className="block w-full text-left text-gray-300 hover:text-primary transition-colors py-2"
+              className="block w-full text-left text-gray-700 hover:text-primary transition-colors py-2 font-medium"
               onClick={() => setIsOpen(false)}
             >
               Blog
             </Link>
             <button 
               onClick={() => scrollToSection("calculator")}
-              className="block w-full text-left text-gray-300 hover:text-primary transition-colors py-2"
+              className="block w-full text-left text-gray-700 hover:text-primary transition-colors py-2 font-medium"
             >
               Calculator
             </button>
             <Link 
               to="/contact"
-              className="block w-full text-left text-gray-300 hover:text-primary transition-colors py-2"
+              className="block w-full text-left text-gray-700 hover:text-primary transition-colors py-2 font-medium"
               onClick={() => setIsOpen(false)}
             >
               Contact
