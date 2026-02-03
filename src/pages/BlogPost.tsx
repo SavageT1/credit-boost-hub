@@ -107,7 +107,7 @@ const BlogPost = () => {
       <div className="min-h-screen bg-background">
         <Navbar />
         <main className="pt-20">
-          <div className="max-w-3xl mx-auto px-8 py-16">
+          <div className="max-w-3xl mx-auto px-4 sm:px-8 py-16">
             <div className="animate-pulse">
               <div className="h-10 bg-muted rounded w-3/4 mb-4"></div>
               <div className="h-4 bg-muted rounded w-1/4 mb-8"></div>
@@ -129,9 +129,9 @@ const BlogPost = () => {
       <div className="min-h-screen bg-background">
         <Navbar />
         <main className="pt-20">
-          <div className="max-w-3xl mx-auto px-8 py-16 text-center">
+          <div className="max-w-3xl mx-auto px-4 sm:px-8 py-16 text-center">
             <h1 className="text-3xl font-display text-primary mb-4">Article Not Found</h1>
-            <p className="text-gray-300 mb-8">The article you're looking for doesn't exist or has been removed.</p>
+            <p className="text-muted-foreground mb-8">The article you're looking for doesn't exist or has been removed.</p>
             <Link to="/blog">
               <Button className="font-display">
                 <ArrowLeft className="w-4 h-4 mr-2" />
@@ -150,7 +150,7 @@ const BlogPost = () => {
       <Navbar />
       <main className="pt-20">
         {/* Header */}
-        <section className="py-12 px-8 gradient-dark">
+        <section className="py-12 px-4 sm:px-8 gradient-dark">
           <div className="max-w-3xl mx-auto">
             <Link to="/blog" className="inline-flex items-center text-primary hover:underline mb-6">
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -159,7 +159,7 @@ const BlogPost = () => {
             <h1 className="text-3xl md:text-5xl font-display text-primary text-glow mb-4">
               {post.title}
             </h1>
-            <div className="flex items-center gap-4 text-foreground/60">
+            <div className="flex items-center gap-4 text-[hsl(var(--on-dark))] opacity-70">
               <span className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
                 {formatDate(post.published_at)}
@@ -176,7 +176,7 @@ const BlogPost = () => {
         </section>
 
         {/* Content */}
-        <section className="py-12 px-8">
+        <section className="py-12 px-4 sm:px-8">
           <article className="max-w-3xl mx-auto">
             <SanitizedContent content={post.content} />
 
@@ -191,12 +191,12 @@ const BlogPost = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 px-8 gradient-dark">
+        <section className="py-16 px-4 sm:px-8 gradient-dark">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-display text-primary mb-4">
               Have Questions About Your Credit?
             </h2>
-            <p className="text-foreground/80 mb-8">
+            <p className="text-[hsl(var(--on-dark))] opacity-80 mb-8">
               Get a free assessment to learn how tradelines may help your situation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

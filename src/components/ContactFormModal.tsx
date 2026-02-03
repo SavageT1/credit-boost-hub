@@ -120,7 +120,7 @@ const ContactFormModal = ({ open, onOpenChange, title = "Get Started" }: Contact
       <DialogContent className="sm:max-w-[500px] gradient-card border-border">
         <DialogHeader>
           <DialogTitle className="font-display text-2xl text-primary">{title}</DialogTitle>
-          <DialogDescription className="text-gray-400">
+            <DialogDescription className="text-[hsl(var(--on-dark))] opacity-80">
             Fill out the form below and our team will reach out within 24 hours.
           </DialogDescription>
         </DialogHeader>
@@ -128,7 +128,7 @@ const ContactFormModal = ({ open, onOpenChange, title = "Get Started" }: Contact
         <form onSubmit={handleSubmit} className="space-y-4 mt-4">
           <div className="grid sm:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="firstName" className="text-gray-300">
+              <Label htmlFor="firstName" className="text-[hsl(var(--on-dark))] opacity-80">
                 First Name *
               </Label>
               <Input
@@ -138,11 +138,11 @@ const ContactFormModal = ({ open, onOpenChange, title = "Get Started" }: Contact
                 value={formData.firstName}
                 onChange={handleChange}
                 required
-                className="bg-background/50 text-white placeholder:text-gray-500 border-border"
+                className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="lastName" className="text-gray-300">
+              <Label htmlFor="lastName" className="text-[hsl(var(--on-dark))] opacity-80">
                 Last Name *
               </Label>
               <Input
@@ -152,13 +152,13 @@ const ContactFormModal = ({ open, onOpenChange, title = "Get Started" }: Contact
                 value={formData.lastName}
                 onChange={handleChange}
                 required
-                className="bg-background/50 text-white placeholder:text-gray-500 border-border"
+                className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
               />
             </div>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="modalEmail" className="text-gray-300">
+            <Label htmlFor="modalEmail" className="text-[hsl(var(--on-dark))] opacity-80">
               Email Address *
             </Label>
             <Input
@@ -169,12 +169,12 @@ const ContactFormModal = ({ open, onOpenChange, title = "Get Started" }: Contact
               value={formData.email}
               onChange={handleChange}
               required
-              className="bg-background/50 text-white placeholder:text-gray-500 border-border"
+              className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="modalPhone" className="text-gray-300">
+            <Label htmlFor="modalPhone" className="text-[hsl(var(--on-dark))] opacity-80">
               Phone Number
             </Label>
             <Input
@@ -184,12 +184,12 @@ const ContactFormModal = ({ open, onOpenChange, title = "Get Started" }: Contact
               placeholder="(908) 767-5309"
               value={formData.phone}
               onChange={handleChange}
-              className="bg-background/50 text-white placeholder:text-gray-500 border-border"
+              className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="modalMessage" className="text-gray-300">
+            <Label htmlFor="modalMessage" className="text-[hsl(var(--on-dark))] opacity-80">
               How can we help? *
             </Label>
             <Textarea
@@ -200,7 +200,7 @@ const ContactFormModal = ({ open, onOpenChange, title = "Get Started" }: Contact
               onChange={handleChange}
               required
               rows={4}
-              className="bg-background/50 text-white placeholder:text-gray-500 border-border"
+              className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
             />
           </div>
 

@@ -57,7 +57,7 @@ const Install = () => {
       <Navbar />
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="py-16 px-8 gradient-dark">
+        <section className="py-16 px-4 sm:px-8 gradient-dark">
           <div className="max-w-4xl mx-auto text-center">
             <div className="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
               <Smartphone className="w-10 h-10 text-primary" />
@@ -65,14 +65,14 @@ const Install = () => {
             <h1 className="text-4xl md:text-6xl font-display text-primary text-glow mb-6">
               Install Our App
             </h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            <p className="text-xl text-[hsl(var(--on-dark))] opacity-80 max-w-2xl mx-auto">
               Get quick access to A1 Tradelines right from your home screen. No app store needed—install directly from your browser.
             </p>
           </div>
         </section>
 
         {/* Install Options */}
-        <section className="py-16 px-8">
+        <section className="py-16 px-4 sm:px-8">
           <div className="max-w-4xl mx-auto">
             {isInstalled ? (
               <Card className="gradient-card border-border text-center">
@@ -81,7 +81,7 @@ const Install = () => {
                     <Download className="w-8 h-8 text-primary" />
                   </div>
                   <h2 className="text-2xl font-display text-primary mb-2">Already Installed!</h2>
-                  <p className="text-gray-300">
+                  <p className="text-[hsl(var(--on-dark))] opacity-80">
                     You're already using the installed version of A1 Tradelines. Enjoy the full app experience!
                   </p>
                 </CardContent>
@@ -95,7 +95,7 @@ const Install = () => {
                       <Chrome className="w-8 h-8 text-primary" />
                       <CardTitle className="font-display text-primary">Android / Chrome</CardTitle>
                     </div>
-                    <CardDescription className="text-gray-400">
+                    <CardDescription className="text-[hsl(var(--on-dark))] opacity-70">
                       Install using Chrome browser on Android
                     </CardDescription>
                   </CardHeader>
@@ -114,7 +114,7 @@ const Install = () => {
                           <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                             <span className="text-xs font-bold text-primary">1</span>
                           </div>
-                          <p className="text-gray-300 text-sm">
+                          <p className="text-[hsl(var(--on-dark))] opacity-80 text-sm">
                             Tap the menu icon <MoreVertical className="w-4 h-4 inline" /> in Chrome
                           </p>
                         </div>
@@ -122,7 +122,7 @@ const Install = () => {
                           <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                             <span className="text-xs font-bold text-primary">2</span>
                           </div>
-                          <p className="text-gray-300 text-sm">
+                          <p className="text-[hsl(var(--on-dark))] opacity-80 text-sm">
                             Select "Add to Home screen" or "Install app"
                           </p>
                         </div>
@@ -130,7 +130,7 @@ const Install = () => {
                           <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                             <span className="text-xs font-bold text-primary">3</span>
                           </div>
-                          <p className="text-gray-300 text-sm">
+                          <p className="text-[hsl(var(--on-dark))] opacity-80 text-sm">
                             Tap "Install" to add the app to your home screen
                           </p>
                         </div>
@@ -146,7 +146,7 @@ const Install = () => {
                       <Apple className="w-8 h-8 text-primary" />
                       <CardTitle className="font-display text-primary">iPhone / iPad</CardTitle>
                     </div>
-                    <CardDescription className="text-gray-400">
+                    <CardDescription className="text-[hsl(var(--on-dark))] opacity-70">
                       Install using Safari browser on iOS
                     </CardDescription>
                   </CardHeader>
@@ -156,7 +156,7 @@ const Install = () => {
                         <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                           <span className="text-xs font-bold text-primary">1</span>
                         </div>
-                        <p className="text-gray-300 text-sm">
+                        <p className="text-[hsl(var(--on-dark))] opacity-80 text-sm">
                           Open this page in Safari (not Chrome or other browsers)
                         </p>
                       </div>
@@ -164,7 +164,7 @@ const Install = () => {
                         <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                           <span className="text-xs font-bold text-primary">2</span>
                         </div>
-                        <p className="text-gray-300 text-sm">
+                        <p className="text-[hsl(var(--on-dark))] opacity-80 text-sm">
                           Tap the Share button <Share className="w-4 h-4 inline" /> at the bottom
                         </p>
                       </div>
@@ -172,7 +172,7 @@ const Install = () => {
                         <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                           <span className="text-xs font-bold text-primary">3</span>
                         </div>
-                        <p className="text-gray-300 text-sm">
+                        <p className="text-[hsl(var(--on-dark))] opacity-80 text-sm">
                           Scroll down and tap "Add to Home Screen" <PlusSquare className="w-4 h-4 inline" />
                         </p>
                       </div>
@@ -180,7 +180,7 @@ const Install = () => {
                         <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                           <span className="text-xs font-bold text-primary">4</span>
                         </div>
-                        <p className="text-gray-300 text-sm">
+                        <p className="text-[hsl(var(--on-dark))] opacity-80 text-sm">
                           Tap "Add" in the top right corner
                         </p>
                       </div>
@@ -193,7 +193,7 @@ const Install = () => {
         </section>
 
         {/* Benefits */}
-        <section className="py-16 px-8 gradient-dark">
+        <section className="py-16 px-4 sm:px-8 gradient-dark">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-display text-primary mb-8">Why Install?</h2>
             <div className="grid sm:grid-cols-3 gap-6">
@@ -202,21 +202,21 @@ const Install = () => {
                   <Smartphone className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="font-display text-white mb-2">Quick Access</h3>
-                <p className="text-gray-400 text-sm">Launch instantly from your home screen like any other app</p>
+                <p className="text-[hsl(var(--on-dark))] opacity-70 text-sm">Launch instantly from your home screen like any other app</p>
               </div>
               <div className="p-6">
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                   <Download className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="font-display text-white mb-2">Works Offline</h3>
-                <p className="text-gray-400 text-sm">Access content even without an internet connection</p>
+                <p className="text-[hsl(var(--on-dark))] opacity-70 text-sm">Access content even without an internet connection</p>
               </div>
               <div className="p-6">
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                   <Chrome className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="font-display text-white mb-2">No App Store</h3>
-                <p className="text-gray-400 text-sm">Install directly from your browser—no downloads needed</p>
+                <p className="text-[hsl(var(--on-dark))] opacity-70 text-sm">Install directly from your browser—no downloads needed</p>
               </div>
             </div>
           </div>

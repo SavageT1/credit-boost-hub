@@ -16,12 +16,11 @@ const HeroSection = () => {
       
       <div className="text-center space-y-6 md:space-y-8 max-w-5xl mx-auto px-4 relative z-10">
         <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display text-glow text-primary tracking-wider">
-          A1 TRADELINES
+          A-1 Tradelines
         </h1>
         
         <p className="text-lg sm:text-xl md:text-2xl text-[hsl(var(--on-dark))] opacity-80 max-w-xs sm:max-w-xl md:max-w-3xl mx-auto leading-relaxed">
-          Tradelines guidance for real credit goals. Learn what tradelines are, whether they fit 
-          your situation, and what to expect—without hype.
+          We provide clear, compliant guidance on tradelines—helping you understand your options, match your goals to the right approach, and walk you through the process end-to-end. Experienced specialists, responsive service, and realistic expectations.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
