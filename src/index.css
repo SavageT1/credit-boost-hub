@@ -56,6 +56,9 @@
     --neon-green-glow: 120 100% 50%;
     --dark-surface: 120 10% 8%;
     --dark-card: 120 10% 12%;
+
+    /* Text color for any dark surface (ensures legibility even if theme changes) */
+    --on-dark: 0 0% 98%;
   }
 
   .dark {
@@ -95,6 +98,9 @@
     --sidebar-accent-foreground: 0 0% 95%;
     --sidebar-border: 120 10% 15%;
     --sidebar-ring: 120 100% 45%;
+
+    /* Keep on-dark consistent in dark mode */
+    --on-dark: 0 0% 98%;
   }
 }
 
@@ -129,9 +135,11 @@
 
   .gradient-dark {
     background: linear-gradient(180deg, hsl(120 10% 8%) 0%, hsl(120 10% 4%) 100%);
+    color: hsl(var(--on-dark));
   }
 
   .gradient-card {
     background: linear-gradient(145deg, hsl(120 10% 12%) 0%, hsl(120 10% 8%) 100%);
+    color: hsl(var(--on-dark));
   }
 }
