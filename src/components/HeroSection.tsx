@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, TrendingUp, Phone } from "lucide-react";
+import { ArrowRight, TrendingUp, Phone, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 import ContactFormModal from "./ContactFormModal";
 
@@ -14,17 +14,12 @@ const HeroSection = () => {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
       
-      <div className="text-center space-y-8 max-w-5xl relative z-10">
-        <div className="flex items-center justify-center gap-2 text-primary mb-4">
-          <Shield className="w-6 h-6" />
-          <span className="text-sm font-medium tracking-wider uppercase">Trusted Credit Solutions</span>
-        </div>
-        
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-display text-glow text-primary tracking-wider">
+      <div className="text-center space-y-6 md:space-y-8 max-w-5xl mx-auto px-4 relative z-10">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display text-glow text-primary tracking-wider">
           A1 TRADELINES
         </h1>
         
-        <p className="text-xl md:text-2xl text-foreground/80 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-lg sm:text-xl md:text-2xl text-[hsl(var(--on-dark))] opacity-80 max-w-xs sm:max-w-xl md:max-w-3xl mx-auto leading-relaxed">
           Tradelines guidance for real credit goals. Learn what tradelines are, whether they fit 
           your situation, and what to expect—without hype.
         </p>
@@ -52,24 +47,24 @@ const HeroSection = () => {
           </a>
         </div>
         
-        <div className="pt-4">
+        <div className="pt-2 md:pt-4">
           <Link 
             to="/tradelines-101"
-            className="text-primary hover:text-primary/80 transition-colors underline underline-offset-4"
+            className="text-primary hover:text-primary/80 transition-colors underline underline-offset-4 text-sm md:text-base"
           >
             Learn more about how tradelines work →
           </Link>
         </div>
         
-        <div className="flex items-center justify-center gap-8 pt-4 text-foreground/70">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 pt-4 text-[hsl(var(--on-dark))] opacity-70">
           <div className="flex items-center gap-2">
-            <TrendingUp className="w-5 h-5 text-primary" />
-            <span>500+ Happy Clients</span>
+            <TrendingUp className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+            <span className="text-sm md:text-base">500+ Happy Clients</span>
           </div>
-          <div className="w-px h-6 bg-border" />
+          <div className="hidden sm:block w-px h-6 bg-border" />
           <div className="flex items-center gap-2">
-            <Shield className="w-5 h-5 text-primary" />
-            <span>100% Secure</span>
+            <Shield className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+            <span className="text-sm md:text-base">100% Secure</span>
           </div>
         </div>
       </div>
