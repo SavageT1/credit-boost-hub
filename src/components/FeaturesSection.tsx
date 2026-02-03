@@ -41,7 +41,7 @@ const FeaturesSection = () => {
           <h2 className="text-3xl md:text-5xl font-display text-primary text-glow mb-4">
             Why Choose A1 Tradelines?
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
             We provide the highest quality tradelines with transparent pricing and exceptional service.
           </p>
         </div>
@@ -56,7 +56,7 @@ const FeaturesSection = () => {
                 <feature.icon className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-xl font-display text-primary mb-3">{feature.title}</h3>
-              <p className="text-gray-400 leading-relaxed">{feature.description}</p>
+              <p className="text-foreground/70 leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>
