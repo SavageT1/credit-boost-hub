@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Send, Phone, Mail, MapPin, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -22,12 +23,33 @@ const ContactForm = () => {
   const HUBSPOT_PORTAL_ID = "244921424";
   const HUBSPOT_FORM_ID = "f738963e-9243-43e3-848c-df584038fa1a";
 
+  const submitToBackend = async () => {
+    try {
+      const { error } = await supabase.functions.invoke("submit-contact-lead", {
+        body: {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          notes: formData.message,
+          source: "contact-page",
+        },
+      });
+      if (error) {
+        console.error("Backend submission failed");
+      }
+    } catch {
+      // Silently fail - HubSpot is the primary destination
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
     try {
-      const response = await fetch(
+      // Submit to both HubSpot and backend in parallel
+      const hubspotPromise = fetch(
         `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_ID}`,
         {
           method: "POST",
@@ -50,6 +72,11 @@ const ContactForm = () => {
         }
       );
 
+      // Fire backend submission without blocking
+      submitToBackend();
+
+      const response = await hubspotPromise;
+
       if (response.ok) {
         toast({
           title: "Message Sent!",
@@ -60,7 +87,7 @@ const ContactForm = () => {
         throw new Error("Form submission failed");
       }
     } catch (error) {
-      console.error("HubSpot form submission error:", error);
+      console.error("Form submission error");
       toast({
         title: "Submission Error",
         description: "There was an issue sending your message. Please try again or call us at (908) 767-5309.",
