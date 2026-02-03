@@ -40,7 +40,7 @@ const AboutUs = () => {
                     <Users className="w-8 h-8 text-primary" />
                   </div>
                   <h3 className="text-xl font-display text-primary mb-3">Education First</h3>
-                  <p className="text-foreground/80">
+                  <p className="text-[hsl(var(--on-dark))] opacity-80">
                     We believe in empowering you with knowledge. Understanding how tradelines work 
                     helps you make informed decisions about your credit journey.
                   </p>
@@ -52,7 +52,7 @@ const AboutUs = () => {
                     <TrendingUp className="w-8 h-8 text-primary" />
                   </div>
                   <h3 className="text-xl font-display text-primary mb-3">Personalized Assessment</h3>
-                  <p className="text-foreground/80">
+                  <p className="text-[hsl(var(--on-dark))] opacity-80">
                     Every credit profile is unique. We evaluate your specific situation to determine 
                     if tradelines may help strengthen your credit profile.
                   </p>
@@ -64,7 +64,7 @@ const AboutUs = () => {
                     <Shield className="w-8 h-8 text-primary" />
                   </div>
                   <h3 className="text-xl font-display text-primary mb-3">Transparent Process</h3>
-                  <p className="text-foreground/80">
+                  <p className="text-[hsl(var(--on-dark))] opacity-80">
                     No hidden fees, no unrealistic promises. We set clear expectations and keep you 
                     informed every step of the way.
                   </p>
@@ -133,10 +133,10 @@ const AboutUs = () => {
                         <Star key={i} className="w-5 h-5 fill-primary text-primary" />
                       ))}
                     </div>
-                    <p className="text-foreground/80 mb-4 italic">"{testimonial.text}"</p>
+                    <p className="text-[hsl(var(--on-dark))] opacity-80 mb-4 italic">"{testimonial.text}"</p>
                     <div className="border-t border-border pt-4">
                       <p className="font-display text-primary">{testimonial.name}</p>
-                      <p className="text-foreground/60 text-sm">{testimonial.location}</p>
+                      <p className="text-[hsl(var(--on-dark))] opacity-60 text-sm">{testimonial.location}</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -158,7 +158,7 @@ const AboutUs = () => {
                     <CheckCircle2 className="w-6 h-6" />
                     Good Fit For Tradelines
                   </h3>
-                  <ul className="space-y-3 text-foreground/80">
+                  <ul className="space-y-3 text-[hsl(var(--on-dark))] opacity-80">
                     <li className="flex items-start gap-2">
                       <span className="text-primary mt-1">•</span>
                       Thin credit files (few or no accounts)
@@ -188,7 +188,7 @@ const AboutUs = () => {
                     <Shield className="w-6 h-6" />
                     May Not Be Right For
                   </h3>
-                  <ul className="space-y-3 text-foreground/80">
+                  <ul className="space-y-3 text-[hsl(var(--on-dark))] opacity-80">
                     <li className="flex items-start gap-2">
                       <span className="text-destructive mt-1">•</span>
                       Active bankruptcies or recent charge-offs
