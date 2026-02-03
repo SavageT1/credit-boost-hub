@@ -20,7 +20,7 @@ const AboutUs = () => {
             <h1 className="text-4xl md:text-6xl font-display text-primary text-glow mb-6">
               Tradelines Guidance for Real Credit Goals
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-foreground/80 max-w-3xl mx-auto leading-relaxed">
               We help individuals understand tradelines, evaluate whether they're the right fit, 
               and navigate the process with transparency—no hype, just honest guidance.
             </p>
@@ -40,7 +40,7 @@ const AboutUs = () => {
                     <Users className="w-8 h-8 text-primary" />
                   </div>
                   <h3 className="text-xl font-display text-primary mb-3">Education First</h3>
-                  <p className="text-gray-300">
+                  <p className="text-foreground/80">
                     We believe in empowering you with knowledge. Understanding how tradelines work 
                     helps you make informed decisions about your credit journey.
                   </p>
@@ -52,7 +52,7 @@ const AboutUs = () => {
                     <TrendingUp className="w-8 h-8 text-primary" />
                   </div>
                   <h3 className="text-xl font-display text-primary mb-3">Personalized Assessment</h3>
-                  <p className="text-gray-300">
+                  <p className="text-foreground/80">
                     Every credit profile is unique. We evaluate your specific situation to determine 
                     if tradelines may help strengthen your credit profile.
                   </p>
@@ -64,7 +64,7 @@ const AboutUs = () => {
                     <Shield className="w-8 h-8 text-primary" />
                   </div>
                   <h3 className="text-xl font-display text-primary mb-3">Transparent Process</h3>
-                  <p className="text-gray-300">
+                  <p className="text-foreground/80">
                     No hidden fees, no unrealistic promises. We set clear expectations and keep you 
                     informed every step of the way.
                   </p>
@@ -92,7 +92,7 @@ const AboutUs = () => {
                     {item.step}
                   </div>
                   <h3 className="font-display text-primary mb-2">{item.title}</h3>
-                  <p className="text-gray-400 text-sm">{item.desc}</p>
+                  <p className="text-foreground/70 text-sm">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -133,7 +133,7 @@ const AboutUs = () => {
                         <Star key={i} className="w-5 h-5 fill-primary text-primary" />
                       ))}
                     </div>
-                    <p className="text-gray-300 mb-4 italic">"{testimonial.text}"</p>
+                    <p className="text-foreground/80 mb-4 italic">"{testimonial.text}"</p>
                     <div className="border-t border-border pt-4">
                       <p className="font-display text-primary">{testimonial.name}</p>
                       <p className="text-foreground/60 text-sm">{testimonial.location}</p>
@@ -158,7 +158,7 @@ const AboutUs = () => {
                     <CheckCircle2 className="w-6 h-6" />
                     Good Fit For Tradelines
                   </h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-foreground/80">
                     <li className="flex items-start gap-2">
                       <span className="text-primary mt-1">•</span>
                       Thin credit files (few or no accounts)
@@ -188,7 +188,7 @@ const AboutUs = () => {
                     <Shield className="w-6 h-6" />
                     May Not Be Right For
                   </h3>
-                  <ul className="space-y-3 text-gray-300">
+                  <ul className="space-y-3 text-foreground/80">
                     <li className="flex items-start gap-2">
                       <span className="text-destructive mt-1">•</span>
                       Active bankruptcies or recent charge-offs
@@ -222,7 +222,7 @@ const AboutUs = () => {
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-6">
               Ready to Learn More?
             </h2>
-            <p className="text-gray-300 mb-8">
+            <p className="text-foreground/80 mb-8">
               Get a free assessment to see if tradelines may help your credit situation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

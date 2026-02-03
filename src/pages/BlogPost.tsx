@@ -32,10 +32,10 @@ const SanitizedContent = ({ content }: { content: string }) => {
     <div 
       className="prose prose-invert prose-lg max-w-none
         prose-headings:font-display prose-headings:text-primary
-        prose-p:text-gray-300 prose-p:leading-relaxed
-        prose-li:text-gray-300
+        prose-p:text-foreground/80 prose-p:leading-relaxed
+        prose-li:text-foreground/80
         prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-        prose-strong:text-white"
+        prose-strong:text-foreground"
       dangerouslySetInnerHTML={{ __html: sanitizedContent }}
     />
   );
@@ -159,7 +159,7 @@ const BlogPost = () => {
             <h1 className="text-3xl md:text-5xl font-display text-primary text-glow mb-4">
               {post.title}
             </h1>
-            <div className="flex items-center gap-4 text-gray-400">
+            <div className="flex items-center gap-4 text-foreground/60">
               <span className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
                 {formatDate(post.published_at)}
@@ -182,8 +182,8 @@ const BlogPost = () => {
 
             {/* Disclaimer */}
             <div className="mt-12 p-6 bg-muted/20 rounded-lg border border-border">
-              <p className="text-sm text-gray-400">
-                <strong className="text-gray-300">Disclaimer:</strong> Results vary depending on your credit report and lender requirements. 
+              <p className="text-sm text-foreground/60">
+                <strong className="text-foreground/80">Disclaimer:</strong> Results vary depending on your credit report and lender requirements. 
                 A1 Tradelines is not affiliated with credit bureaus or lenders. No score increase is guaranteed.
               </p>
             </div>
@@ -196,7 +196,7 @@ const BlogPost = () => {
             <h2 className="text-3xl font-display text-primary mb-4">
               Have Questions About Your Credit?
             </h2>
-            <p className="text-gray-300 mb-8">
+            <p className="text-foreground/80 mb-8">
               Get a free assessment to learn how tradelines may help your situation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
