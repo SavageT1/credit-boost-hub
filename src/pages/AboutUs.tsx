@@ -11,7 +11,7 @@ const AboutUs = () => {
       <Navbar />
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="py-24 px-8 gradient-dark">
+        <section className="py-24 px-4 sm:px-8 gradient-dark">
           <div className="max-w-5xl mx-auto text-center">
             <div className="flex items-center justify-center gap-2 text-primary mb-4">
               <Shield className="w-6 h-6" />
@@ -20,7 +20,7 @@ const AboutUs = () => {
             <h1 className="text-4xl md:text-6xl font-display text-primary text-glow mb-6">
               Tradelines Guidance for Real Credit Goals
             </h1>
-            <p className="text-xl text-foreground/80 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-[hsl(var(--on-dark))] opacity-80 max-w-3xl mx-auto leading-relaxed">
               We help individuals understand tradelines, evaluate whether they're the right fit, 
               and navigate the process with transparency—no hype, just honest guidance.
             </p>
@@ -28,7 +28,7 @@ const AboutUs = () => {
         </section>
 
         {/* What We Do */}
-        <section className="py-20 px-8 bg-background">
+        <section className="py-20 px-4 sm:px-8 bg-background">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-12 text-center">
               What We Do
@@ -75,7 +75,7 @@ const AboutUs = () => {
         </section>
 
         {/* How It Works */}
-        <section className="py-20 px-8 gradient-dark">
+        <section className="py-20 px-4 sm:px-8 gradient-dark">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-12 text-center">
               How It Works
@@ -92,7 +92,7 @@ const AboutUs = () => {
                     {item.step}
                   </div>
                   <h3 className="font-display text-primary mb-2">{item.title}</h3>
-                  <p className="text-foreground/70 text-sm">{item.desc}</p>
+                  <p className="text-[hsl(var(--on-dark))] opacity-70 text-sm">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -100,7 +100,7 @@ const AboutUs = () => {
         </section>
 
         {/* Testimonials */}
-        <section className="py-20 px-8 bg-background">
+        <section className="py-20 px-4 sm:px-8 bg-background">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-12 text-center">
               What Our Clients Say
@@ -146,7 +146,7 @@ const AboutUs = () => {
         </section>
 
         {/* Who We Help */}
-        <section className="py-20 px-8 gradient-dark">
+        <section className="py-20 px-4 sm:px-8 gradient-dark">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-12 text-center">
               Who We Help
@@ -217,7 +217,7 @@ const AboutUs = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-8 bg-background">
+        <section className="py-20 px-4 sm:px-8 bg-background">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-6">
               Ready to Learn More?

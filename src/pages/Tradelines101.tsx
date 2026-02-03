@@ -23,7 +23,7 @@ const Tradelines101 = () => {
       <Navbar />
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="py-24 px-8 gradient-dark">
+        <section className="py-24 px-4 sm:px-8 gradient-dark">
           <div className="max-w-5xl mx-auto text-center">
             <div className="flex items-center justify-center gap-2 text-primary mb-4">
               <BookOpen className="w-6 h-6" />
@@ -32,7 +32,7 @@ const Tradelines101 = () => {
             <h1 className="text-4xl md:text-6xl font-display text-primary text-glow mb-6">
               Tradelines 101
             </h1>
-            <p className="text-xl text-foreground/80 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-[hsl(var(--on-dark))] opacity-80 max-w-3xl mx-auto leading-relaxed">
               Learn what tradelines are, who they may help, and what to realistically expect. 
               No hype—just the facts you need to make an informed decision.
             </p>
@@ -40,7 +40,7 @@ const Tradelines101 = () => {
         </section>
 
         {/* What Are Tradelines */}
-        <section className="py-20 px-8 bg-background">
+        <section className="py-20 px-4 sm:px-8 bg-background">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-8">
               What Is a Tradeline?
@@ -75,7 +75,7 @@ const Tradelines101 = () => {
         </section>
 
         {/* Young vs Established Profiles */}
-        <section className="py-20 px-8 gradient-dark">
+        <section className="py-20 px-4 sm:px-8 gradient-dark">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-12 text-center">
               Young vs. Established Credit Profiles
@@ -88,7 +88,7 @@ const Tradelines101 = () => {
                     Young/Thin Credit Profile
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4 text-foreground/80">
+                <CardContent className="space-y-4 text-[hsl(var(--on-dark))] opacity-80">
                   <p>
                     If you're new to credit (under 2 years of history) or have very few accounts, 
                     you likely have a "thin file." Credit scoring models have limited data to 
@@ -96,7 +96,7 @@ const Tradelines101 = () => {
                   </p>
                   <div className="p-4 bg-primary/10 rounded-lg border border-primary/20">
                     <p className="text-primary font-semibold mb-2">Potential Tradeline Benefit:</p>
-                    <p className="text-foreground/70">
+                      <p className="text-[hsl(var(--on-dark))] opacity-70">
                       Adding an aged tradeline may help by contributing years of positive history, 
                       increasing your average account age, and adding to your credit mix.
                     </p>
@@ -121,7 +121,7 @@ const Tradelines101 = () => {
                     Established Credit Profile
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4 text-foreground/80">
+                <CardContent className="space-y-4 text-[hsl(var(--on-dark))] opacity-80">
                   <p>
                     If you have 5+ years of credit history with multiple accounts, you already 
                     have a solid foundation. Your score is influenced by many factors already 
@@ -129,7 +129,7 @@ const Tradelines101 = () => {
                   </p>
                   <div className="p-4 bg-secondary/20 rounded-lg border border-border">
                     <p className="text-white font-semibold mb-2">Potential Tradeline Benefit:</p>
-                    <p className="text-foreground/70">
+                      <p className="text-[hsl(var(--on-dark))] opacity-70">
                       May still help with utilization or adding positive accounts, but impact is 
                       typically more modest since existing history already provides most factors.
                     </p>
@@ -151,7 +151,7 @@ const Tradelines101 = () => {
         </section>
 
         {/* Credit Utilization */}
-        <section className="py-20 px-8 bg-background">
+        <section className="py-20 px-4 sm:px-8 bg-background">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-8">
               Understanding Credit Utilization
@@ -201,7 +201,7 @@ const Tradelines101 = () => {
         </section>
 
         {/* Negative Items */}
-        <section className="py-20 px-8 gradient-dark">
+        <section className="py-20 px-4 sm:px-8 gradient-dark">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-8">
               Negative Items on Your Credit Report
@@ -275,7 +275,7 @@ const Tradelines101 = () => {
         </section>
 
         {/* Timeline Expectations */}
-        <section className="py-20 px-8 bg-background">
+        <section className="py-20 px-4 sm:px-8 bg-background">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-8">
               Timeline & Expectations
@@ -323,12 +323,12 @@ const Tradelines101 = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-8 gradient-dark">
+        <section className="py-20 px-4 sm:px-8 gradient-dark">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-6">
               Ready to See If Tradelines Are Right for You?
             </h2>
-            <p className="text-foreground/80 mb-8">
+            <p className="text-[hsl(var(--on-dark))] opacity-80 mb-8">
               Get a free assessment to evaluate your credit situation and learn your options.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

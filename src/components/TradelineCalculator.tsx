@@ -130,17 +130,17 @@ const TradelineCalculator = () => {
 
   return (
     <>
-      <section className="py-24 px-8 bg-background" id="calculator">
+      <section className="py-24 px-4 sm:px-8 bg-background" id="calculator">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="flex items-center justify-center gap-2 text-primary mb-4">
+            <div className="text-center mb-16">
+              <div className="flex items-center justify-center gap-2 text-primary mb-4">
               <Calculator className="w-6 h-6" />
               <span className="text-sm font-medium tracking-wider uppercase">Free Tool</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-display text-primary text-glow mb-4">
               Credit Score Calculator
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Enter your credit profile details to see how tradelines may impact your score.
             </p>
           </div>

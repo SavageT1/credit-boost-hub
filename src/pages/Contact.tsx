@@ -83,19 +83,19 @@ const Contact = () => {
       <Navbar />
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="py-16 px-8 gradient-dark">
+        <section className="py-16 px-4 sm:px-8 gradient-dark">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-display text-primary text-glow mb-6">
               Contact Us
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-[hsl(var(--on-dark))] opacity-80 max-w-2xl mx-auto">
               Have questions about improving your credit? Our team is here to help you every step of the way.
             </p>
           </div>
         </section>
 
         {/* Contact Info Cards */}
-        <section className="py-16 px-8">
+        <section className="py-16 px-4 sm:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-4 gap-6 mb-16">
               <Card className="gradient-card border-border text-center">
@@ -142,14 +142,14 @@ const Contact = () => {
         </section>
 
         {/* Contact Form Section */}
-        <section className="py-16 px-8 gradient-dark">
+        <section className="py-16 px-4 sm:px-8 gradient-dark">
           <div className="max-w-4xl mx-auto">
             <div className="grid lg:grid-cols-5 gap-12">
               {/* Left Side - Info */}
               <div className="lg:col-span-2 space-y-8">
                 <div>
                   <h2 className="text-3xl font-display text-primary mb-4">Let's Talk</h2>
-                  <p className="text-muted-foreground">
+                  <p className="text-[hsl(var(--on-dark))] opacity-80">
                     Whether you're ready to get started or just have questions, we're here to help you understand your options.
                   </p>
                 </div>
@@ -158,15 +158,15 @@ const Contact = () => {
                   <div className="flex items-start gap-4">
                     <MessageSquare className="w-5 h-5 text-primary mt-1" />
                     <div>
-                      <h4 className="font-medium text-foreground">Free Consultation</h4>
-                      <p className="text-sm text-muted-foreground">Get a personalized assessment of your credit situation.</p>
+                      <h4 className="font-medium text-[hsl(var(--on-dark))]">Free Consultation</h4>
+                      <p className="text-sm text-[hsl(var(--on-dark))] opacity-70">Get a personalized assessment of your credit situation.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <Clock className="w-5 h-5 text-primary mt-1" />
                     <div>
-                      <h4 className="font-medium text-foreground">Quick Response</h4>
-                      <p className="text-sm text-muted-foreground">We respond to all inquiries within 24 hours.</p>
+                      <h4 className="font-medium text-[hsl(var(--on-dark))]">Quick Response</h4>
+                      <p className="text-sm text-[hsl(var(--on-dark))] opacity-70">We respond to all inquiries within 24 hours.</p>
                     </div>
                   </div>
                 </div>
@@ -285,7 +285,7 @@ const Contact = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-16 px-8">
+        <section className="py-16 px-4 sm:px-8">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-display text-primary text-center mb-12">Frequently Asked Questions</h2>
             <div className="grid md:grid-cols-2 gap-6">
@@ -304,7 +304,7 @@ const Contact = () => {
               <Card className="gradient-card border-border">
                 <CardContent className="pt-6">
                   <h3 className="font-display text-primary mb-2">What information do you need from me?</h3>
-                  <p className="text-muted-foreground text-sm">We only need your legal name, date of birth, and Social Security number to add you as an authorized user.</p>
+                  <p className="text-muted-foreground text-sm">We only collect basic contact details here so we can follow up. We’ll explain any required information privately during your consultation.</p>
                 </CardContent>
               </Card>
               <Card className="gradient-card border-border">

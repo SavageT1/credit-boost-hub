@@ -35,7 +35,7 @@ const features = [
 
 const FeaturesSection = () => {
   return (
-    <section className="py-24 px-8 bg-background">
+    <section className="py-24 px-4 sm:px-8 bg-background">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-display text-primary text-glow mb-4">
@@ -56,7 +56,7 @@ const FeaturesSection = () => {
                 <feature.icon className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-xl font-display text-primary mb-3">{feature.title}</h3>
-              <p className="text-foreground/70 leading-relaxed">{feature.description}</p>
+              <p className="text-[hsl(var(--on-dark))] opacity-70 leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>

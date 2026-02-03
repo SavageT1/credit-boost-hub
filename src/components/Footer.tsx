@@ -3,7 +3,7 @@ import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
-    <footer className="py-12 px-8 border-t border-border bg-background">
+    <footer className="py-12 px-4 sm:px-8 border-t border-border bg-background">
       <div className="max-w-6xl mx-auto">
         {/* Disclaimer */}
         <div className="mb-8 p-4 bg-muted/20 rounded-lg border border-border">

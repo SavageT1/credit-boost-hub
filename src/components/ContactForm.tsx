@@ -103,13 +103,13 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="py-24 px-8 gradient-dark" id="contact">
+    <section className="py-24 px-4 sm:px-8 gradient-dark" id="contact">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-display text-primary text-glow mb-4">
             Get In Touch
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-[hsl(var(--on-dark))] opacity-80 max-w-2xl mx-auto">
             Ready to improve your credit? Contact us today for a free consultation.
           </p>
         </div>
@@ -119,7 +119,7 @@ const ContactForm = () => {
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-display text-primary mb-6">Contact Information</h3>
-              <p className="text-muted-foreground mb-8">
+                  <p className="text-[hsl(var(--on-dark))] opacity-80 mb-8">
                 Our team is ready to answer your questions and help you get started on your credit journey.
               </p>
             </div>
@@ -131,7 +131,7 @@ const ContactForm = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Text or Call</p>
-                  <p className="text-foreground font-medium">(908) 767-5309</p>
+                  <p className="text-[hsl(var(--on-dark))] font-medium">(908) 767-5309</p>
                 </div>
               </div>
               
@@ -141,7 +141,7 @@ const ContactForm = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Email</p>
-                  <p className="text-foreground font-medium">info@a1tradelines.com</p>
+                  <p className="text-[hsl(var(--on-dark))] font-medium">info@a1tradelines.com</p>
                 </div>
               </div>
               
@@ -151,7 +151,7 @@ const ContactForm = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Location</p>
-                  <p className="text-foreground font-medium">Serving Clients Nationwide</p>
+                  <p className="text-[hsl(var(--on-dark))] font-medium">Serving Clients Nationwide</p>
                 </div>
               </div>
             </div>
