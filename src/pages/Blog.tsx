@@ -51,19 +51,19 @@ const Blog = () => {
       <Navbar />
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="py-16 px-8 gradient-dark">
+        <section className="py-16 px-4 sm:px-8 gradient-dark">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-display text-primary text-glow mb-6">
               Credit Education Blog
             </h1>
-            <p className="text-xl text-foreground/80 max-w-2xl mx-auto">
+            <p className="text-xl text-[hsl(var(--on-dark))] opacity-80 max-w-2xl mx-auto">
               Stay informed with the latest insights on credit building, tradelines, and financial education. New articles published weekly.
             </p>
           </div>
         </section>
 
         {/* Blog Posts Grid */}
-        <section className="py-16 px-8">
+        <section className="py-16 px-4 sm:px-8">
           <div className="max-w-6xl mx-auto">
             {loading ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -124,12 +124,12 @@ const Blog = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 px-8 gradient-dark">
+        <section className="py-16 px-4 sm:px-8 gradient-dark">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-display text-primary mb-4">
               Ready to Strengthen Your Credit Profile?
             </h2>
-            <p className="text-foreground/80 mb-8">
+            <p className="text-[hsl(var(--on-dark))] opacity-80 mb-8">
               Get a free assessment to learn how tradelines may help your situation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
