@@ -5,32 +5,70 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Send, Phone, Mail, MapPin } from "lucide-react";
+import { Send, Phone, Mail, MapPin, Loader2 } from "lucide-react";
 
 const ContactForm = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     phone: "",
     message: "",
   });
 
+  // HubSpot Form Configuration (same as ContactFormModal)
+  const HUBSPOT_PORTAL_ID = "244921424";
+  const HUBSPOT_FORM_ID = "f738963e-9243-43e3-848c-df584038fa1a";
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
-    
-    setFormData({ name: "", email: "", phone: "", message: "" });
-    setIsSubmitting(false);
+    try {
+      const response = await fetch(
+        `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_ID}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fields: [
+              { name: "firstname", value: formData.firstName },
+              { name: "lastname", value: formData.lastName },
+              { name: "email", value: formData.email },
+              { name: "phone", value: formData.phone },
+              { name: "message", value: formData.message },
+            ],
+            context: {
+              pageUri: window.location.href,
+              pageName: document.title,
+            },
+          }),
+        }
+      );
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent!",
+          description: "We'll get back to you within 24 hours.",
+        });
+        setFormData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      console.error("HubSpot form submission error:", error);
+      toast({
+        title: "Submission Error",
+        description: "There was an issue sending your message. Please try again or call us at (908) 767-5309.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -44,7 +82,7 @@ const ContactForm = () => {
           <h2 className="text-3xl md:text-5xl font-display text-primary text-glow mb-4">
             Get In Touch
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Ready to improve your credit? Contact us today for a free consultation.
           </p>
         </div>
@@ -54,7 +92,7 @@ const ContactForm = () => {
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-display text-primary mb-6">Contact Information</h3>
-              <p className="text-gray-300 mb-8">
+              <p className="text-muted-foreground mb-8">
                 Our team is ready to answer your questions and help you get started on your credit journey.
               </p>
             </div>
@@ -65,8 +103,8 @@ const ContactForm = () => {
                   <Phone className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-400">Text or Call</p>
-                  <p className="text-white font-medium">(908) 767-5309</p>
+                  <p className="text-sm text-muted-foreground">Text or Call</p>
+                  <p className="text-foreground font-medium">(908) 767-5309</p>
                 </div>
               </div>
               
@@ -75,8 +113,8 @@ const ContactForm = () => {
                   <Mail className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-400">Email</p>
-                  <p className="text-white font-medium">info@a1tradelines.com</p>
+                  <p className="text-sm text-muted-foreground">Email</p>
+                  <p className="text-foreground font-medium">info@a1tradelines.com</p>
                 </div>
               </div>
               
@@ -85,8 +123,8 @@ const ContactForm = () => {
                   <MapPin className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-400">Location</p>
-                  <p className="text-white font-medium">Serving Clients Nationwide</p>
+                  <p className="text-sm text-muted-foreground">Location</p>
+                  <p className="text-foreground font-medium">Serving Clients Nationwide</p>
                 </div>
               </div>
             </div>
@@ -102,33 +140,46 @@ const ContactForm = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="name" className="text-gray-300">Full Name</Label>
+                    <Label htmlFor="firstName" className="text-muted-foreground">First Name *</Label>
                     <Input
-                      id="name"
-                      name="name"
-                      placeholder="John Doe"
-                      value={formData.name}
+                      id="firstName"
+                      name="firstName"
+                      placeholder="John"
+                      value={formData.firstName}
                       onChange={handleChange}
                       required
-                      className="bg-background/50 text-white placeholder:text-gray-500"
+                      className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="phone" className="text-gray-300">Phone Number</Label>
+                    <Label htmlFor="lastName" className="text-muted-foreground">Last Name *</Label>
                     <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      placeholder="(555) 123-4567"
-                      value={formData.phone}
+                      id="lastName"
+                      name="lastName"
+                      placeholder="Doe"
+                      value={formData.lastName}
                       onChange={handleChange}
-                      className="bg-background/50 text-white placeholder:text-gray-500"
+                      required
+                      className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
                     />
                   </div>
                 </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="phone" className="text-muted-foreground">Phone Number</Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="(908) 767-5309"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
+                  />
+                </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-gray-300">Email Address</Label>
+                  <Label htmlFor="email" className="text-muted-foreground">Email Address *</Label>
                   <Input
                     id="email"
                     name="email"
@@ -137,12 +188,12 @@ const ContactForm = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="bg-background/50 text-white placeholder:text-gray-500"
+                    className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
                   />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="message" className="text-gray-300">Message</Label>
+                  <Label htmlFor="message" className="text-muted-foreground">Message *</Label>
                   <Textarea
                     id="message"
                     name="message"
@@ -151,7 +202,7 @@ const ContactForm = () => {
                     onChange={handleChange}
                     required
                     rows={4}
-                    className="bg-background/50 text-white placeholder:text-gray-500"
+                    className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
                   />
                 </div>
                 
@@ -160,8 +211,17 @@ const ContactForm = () => {
                   className="w-full font-display box-glow"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Sending..." : "Send Message"}
-                  <Send className="w-4 h-4 ml-2" />
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <Send className="w-4 h-4 ml-2" />
+                    </>
+                  )}
                 </Button>
               </form>
             </CardContent>
