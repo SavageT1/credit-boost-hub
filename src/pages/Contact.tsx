@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Send, Phone, Mail, MapPin, Clock, MessageSquare } from "lucide-react";
+import { Send, Phone, Mail, MapPin, Clock, MessageSquare, Loader2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -13,26 +13,65 @@ const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     phone: "",
     subject: "",
     message: "",
   });
 
+  // HubSpot Form Configuration
+  const HUBSPOT_PORTAL_ID = "244921424";
+  const HUBSPOT_FORM_ID = "f738963e-9243-43e3-848c-df584038fa1a";
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
-    
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
-    setIsSubmitting(false);
+    try {
+      const response = await fetch(
+        `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_ID}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fields: [
+              { name: "firstname", value: formData.firstName },
+              { name: "lastname", value: formData.lastName },
+              { name: "email", value: formData.email },
+              { name: "phone", value: formData.phone },
+              { name: "message", value: `${formData.subject ? `Subject: ${formData.subject}\n\n` : ""}${formData.message}` },
+            ],
+            context: {
+              pageUri: window.location.href,
+              pageName: "Contact Page",
+            },
+          }),
+        }
+      );
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent!",
+          description: "We'll get back to you within 24 hours.",
+        });
+        setFormData({ firstName: "", lastName: "", email: "", phone: "", subject: "", message: "" });
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      console.error("HubSpot form submission error:", error);
+      toast({
+        title: "Submission Error",
+        description: "There was an issue sending your message. Please try again or call us at (908) 767-5309.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -49,7 +88,7 @@ const Contact = () => {
             <h1 className="text-4xl md:text-6xl font-display text-primary text-glow mb-6">
               Contact Us
             </h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Have questions about improving your credit? Our team is here to help you every step of the way.
             </p>
           </div>
@@ -65,7 +104,7 @@ const Contact = () => {
                     <Phone className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="font-display text-primary mb-2">Text or Call</h3>
-                  <p className="text-white">(908) 767-5309</p>
+                  <p className="text-foreground">(908) 767-5309</p>
                 </CardContent>
               </Card>
 
@@ -75,7 +114,7 @@ const Contact = () => {
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="font-display text-primary mb-2">Email</h3>
-                  <p className="text-white">info@a1tradelines.com</p>
+                  <p className="text-foreground">info@a1tradelines.com</p>
                 </CardContent>
               </Card>
 
@@ -85,7 +124,7 @@ const Contact = () => {
                     <Clock className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="font-display text-primary mb-2">Hours</h3>
-                  <p className="text-white">Mon–Fri: 9 AM – 6 PM EST</p>
+                  <p className="text-foreground">Mon–Fri: 9 AM – 6 PM EST</p>
                 </CardContent>
               </Card>
 
@@ -95,7 +134,7 @@ const Contact = () => {
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="font-display text-primary mb-2">Location</h3>
-                  <p className="text-white">Nationwide Service</p>
+                  <p className="text-foreground">Nationwide Service</p>
                 </CardContent>
               </Card>
             </div>
@@ -110,7 +149,7 @@ const Contact = () => {
               <div className="lg:col-span-2 space-y-8">
                 <div>
                   <h2 className="text-3xl font-display text-primary mb-4">Let's Talk</h2>
-                  <p className="text-gray-300">
+                  <p className="text-muted-foreground">
                     Whether you're ready to get started or just have questions, we're here to help you understand your options.
                   </p>
                 </div>
@@ -119,15 +158,15 @@ const Contact = () => {
                   <div className="flex items-start gap-4">
                     <MessageSquare className="w-5 h-5 text-primary mt-1" />
                     <div>
-                      <h4 className="font-medium text-white">Free Consultation</h4>
-                      <p className="text-sm text-gray-400">Get a personalized assessment of your credit situation.</p>
+                      <h4 className="font-medium text-foreground">Free Consultation</h4>
+                      <p className="text-sm text-muted-foreground">Get a personalized assessment of your credit situation.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <Clock className="w-5 h-5 text-primary mt-1" />
                     <div>
-                      <h4 className="font-medium text-white">Quick Response</h4>
-                      <p className="text-sm text-gray-400">We respond to all inquiries within 24 hours.</p>
+                      <h4 className="font-medium text-foreground">Quick Response</h4>
+                      <p className="text-sm text-muted-foreground">We respond to all inquiries within 24 hours.</p>
                     </div>
                   </div>
                 </div>
@@ -143,33 +182,46 @@ const Contact = () => {
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="name" className="text-gray-300">Full Name *</Label>
+                        <Label htmlFor="firstName" className="text-muted-foreground">First Name *</Label>
                         <Input
-                          id="name"
-                          name="name"
-                          placeholder="John Doe"
-                          value={formData.name}
+                          id="firstName"
+                          name="firstName"
+                          placeholder="John"
+                          value={formData.firstName}
                           onChange={handleChange}
                           required
-                          className="bg-background/50 text-white placeholder:text-gray-500"
+                          className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="phone" className="text-gray-300">Phone Number</Label>
+                        <Label htmlFor="lastName" className="text-muted-foreground">Last Name *</Label>
                         <Input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          placeholder="(908) 767-5309"
-                          value={formData.phone}
+                          id="lastName"
+                          name="lastName"
+                          placeholder="Doe"
+                          value={formData.lastName}
                           onChange={handleChange}
-                          className="bg-background/50 text-white placeholder:text-gray-500"
+                          required
+                          className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
                         />
                       </div>
                     </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="phone" className="text-muted-foreground">Phone Number</Label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        placeholder="(908) 767-5309"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
+                      />
+                    </div>
                     
                     <div className="space-y-2">
-                      <Label htmlFor="email" className="text-gray-300">Email Address *</Label>
+                      <Label htmlFor="email" className="text-muted-foreground">Email Address *</Label>
                       <Input
                         id="email"
                         name="email"
@@ -178,24 +230,24 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="bg-background/50 text-white placeholder:text-gray-500"
+                        className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="subject" className="text-gray-300">Subject</Label>
+                      <Label htmlFor="subject" className="text-muted-foreground">Subject</Label>
                       <Input
                         id="subject"
                         name="subject"
                         placeholder="How can we help?"
                         value={formData.subject}
                         onChange={handleChange}
-                        className="bg-background/50 text-white placeholder:text-gray-500"
+                        className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
                       />
                     </div>
                     
                     <div className="space-y-2">
-                      <Label htmlFor="message" className="text-gray-300">Message *</Label>
+                      <Label htmlFor="message" className="text-muted-foreground">Message *</Label>
                       <Textarea
                         id="message"
                         name="message"
@@ -204,7 +256,7 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         rows={5}
-                        className="bg-background/50 text-white placeholder:text-gray-500"
+                        className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
                       />
                     </div>
                     
@@ -213,8 +265,17 @@ const Contact = () => {
                       className="w-full font-display box-glow"
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? "Sending..." : "Send Message"}
-                      <Send className="w-4 h-4 ml-2" />
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          Send Message
+                          <Send className="w-4 h-4 ml-2" />
+                        </>
+                      )}
                     </Button>
                   </form>
                 </CardContent>
@@ -231,25 +292,25 @@ const Contact = () => {
               <Card className="gradient-card border-border">
                 <CardContent className="pt-6">
                   <h3 className="font-display text-primary mb-2">How long does it take to see results?</h3>
-                  <p className="text-gray-300 text-sm">Most clients see their tradeline appear on their credit report within 15–30 days after being added.</p>
+                  <p className="text-muted-foreground text-sm">Most clients see their tradeline appear on their credit report within 15–30 days after being added.</p>
                 </CardContent>
               </Card>
               <Card className="gradient-card border-border">
                 <CardContent className="pt-6">
                   <h3 className="font-display text-primary mb-2">Is this legal?</h3>
-                  <p className="text-gray-300 text-sm">Yes, becoming an authorized user on someone else's credit card is completely legal and a common credit-building strategy.</p>
+                  <p className="text-muted-foreground text-sm">Yes, becoming an authorized user on someone else's credit card is completely legal and a common credit-building strategy.</p>
                 </CardContent>
               </Card>
               <Card className="gradient-card border-border">
                 <CardContent className="pt-6">
                   <h3 className="font-display text-primary mb-2">What information do you need from me?</h3>
-                  <p className="text-gray-300 text-sm">We only need your legal name, date of birth, and Social Security number to add you as an authorized user.</p>
+                  <p className="text-muted-foreground text-sm">We only need your legal name, date of birth, and Social Security number to add you as an authorized user.</p>
                 </CardContent>
               </Card>
               <Card className="gradient-card border-border">
                 <CardContent className="pt-6">
                   <h3 className="font-display text-primary mb-2">Do you offer refunds?</h3>
-                  <p className="text-gray-300 text-sm">Yes, we offer a full refund if your tradeline doesn't post to your credit report within 60 days.</p>
+                  <p className="text-muted-foreground text-sm">Yes, we offer a full refund if your tradeline doesn't post to your credit report within 60 days.</p>
                 </CardContent>
               </Card>
             </div>
