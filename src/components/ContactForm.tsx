@@ -160,7 +160,7 @@ const ContactForm = () => {
           {/* Form */}
           <Card className="gradient-card border-border">
             <CardHeader>
-              <CardTitle className="font-display text-primary">Send Us a Message</CardTitle>
+              <CardTitle className="font-display text-primary">Free Expert Consultation</CardTitle>
               <CardDescription>Fill out the form below and we'll respond promptly.</CardDescription>
             </CardHeader>
             <CardContent>
