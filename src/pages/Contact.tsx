@@ -104,7 +104,7 @@ const Contact = () => {
                     <Phone className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="font-display text-primary mb-2">Text or Call</h3>
-                  <p className="text-foreground">(908) 767-5309</p>
+                  <a href="tel:9087675309" className="text-foreground hover:text-primary transition-colors">(908) 767-5309</a>
                 </CardContent>
               </Card>
 
@@ -114,7 +114,7 @@ const Contact = () => {
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="font-display text-primary mb-2">Email</h3>
-                  <p className="text-foreground">info@a1tradelines.com</p>
+                  <a href="mailto:info@a1tradelines.com" className="text-foreground hover:text-primary transition-colors">info@a1tradelines.com</a>
                 </CardContent>
               </Card>
 
