@@ -39,6 +39,12 @@ const Navbar = () => {
               Tradelines 101
             </Link>
             <Link 
+              to="/credit-monitoring"
+              className="text-gray-700 hover:text-primary transition-colors font-medium"
+            >
+              Credit Monitoring
+            </Link>
+            <Link 
               to="/blog"
               className="text-gray-700 hover:text-primary transition-colors font-medium"
             >
@@ -92,6 +98,13 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               Tradelines 101
+            </Link>
+            <Link 
+              to="/credit-monitoring"
+              className="block w-full text-left text-gray-700 hover:text-primary transition-colors py-2 font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              Credit Monitoring
             </Link>
             <Link 
               to="/blog"
