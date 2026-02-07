@@ -125,25 +125,25 @@ const ContactForm = () => {
             </div>
             
             <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+              <a href="tel:9087675309" className="flex items-center gap-4 group">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                   <Phone className="w-5 h-5 text-primary" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Text or Call</p>
-                  <p className="text-[hsl(var(--on-dark))] font-medium">(908) 767-5309</p>
+                  <p className="text-[hsl(var(--on-dark))] font-medium group-hover:text-primary transition-colors">(908) 767-5309</p>
                 </div>
-              </div>
+              </a>
               
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+              <a href="mailto:info@a1tradelines.com" className="flex items-center gap-4 group">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                   <Mail className="w-5 h-5 text-primary" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Email</p>
-                  <p className="text-[hsl(var(--on-dark))] font-medium">info@a1tradelines.com</p>
+                  <p className="text-[hsl(var(--on-dark))] font-medium group-hover:text-primary transition-colors">info@a1tradelines.com</p>
                 </div>
-              </div>
+              </a>
               
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
