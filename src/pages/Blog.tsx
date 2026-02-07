@@ -84,7 +84,7 @@ const Blog = () => {
               <div className="text-center py-16">
                 <BookOpen className="w-16 h-16 text-primary mx-auto mb-6" />
                 <h2 className="text-2xl font-display text-primary mb-4">Coming Soon</h2>
-                <p className="text-foreground/80 max-w-md mx-auto mb-8">
+                <p className="text-[hsl(var(--on-dark))] opacity-80 max-w-md mx-auto mb-8">
                   Our blog is launching soon with weekly articles on credit education, tradeline strategies, and financial tips.
                 </p>
                 <Link to="/contact">
@@ -102,13 +102,13 @@ const Blog = () => {
                         <CardTitle className="font-display text-primary text-lg line-clamp-2">
                           {post.title}
                         </CardTitle>
-                        <CardDescription className="flex items-center gap-2 text-foreground/60">
+                        <CardDescription className="flex items-center gap-2 text-[hsl(var(--on-dark))] opacity-60">
                           <Calendar className="w-4 h-4" />
                           {formatDate(post.published_at)}
                         </CardDescription>
                       </CardHeader>
                       <CardContent>
-                        <p className="text-foreground/80 text-sm line-clamp-3 mb-4">
+                        <p className="text-[hsl(var(--on-dark))] opacity-80 text-sm line-clamp-3 mb-4">
                           {post.excerpt}
                         </p>
                         <span className="text-primary text-sm font-medium flex items-center gap-1">
