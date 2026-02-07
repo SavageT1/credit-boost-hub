@@ -98,25 +98,29 @@ const Contact = () => {
         <section className="py-16 px-4 sm:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-4 gap-6 mb-16">
-              <Card className="gradient-card border-border text-center">
-                <CardContent className="pt-6">
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <Phone className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="font-display text-primary mb-2">Text or Call</h3>
-                  <a href="tel:9087675309" className="text-foreground hover:text-primary transition-colors">(908) 767-5309</a>
-                </CardContent>
-              </Card>
+              <a href="tel:9087675309" className="block">
+                <Card className="gradient-card border-border text-center hover:border-primary/50 transition-colors cursor-pointer">
+                  <CardContent className="pt-6">
+                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                      <Phone className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="font-display text-primary mb-2">Text or Call</h3>
+                    <p className="text-[hsl(var(--on-dark))] opacity-80">(908) 767-5309</p>
+                  </CardContent>
+                </Card>
+              </a>
 
-              <Card className="gradient-card border-border text-center">
-                <CardContent className="pt-6">
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <Mail className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="font-display text-primary mb-2">Email</h3>
-                  <a href="mailto:info@a1tradelines.com" className="text-foreground hover:text-primary transition-colors">info@a1tradelines.com</a>
-                </CardContent>
-              </Card>
+              <a href="mailto:info@a1tradelines.com" className="block">
+                <Card className="gradient-card border-border text-center hover:border-primary/50 transition-colors cursor-pointer">
+                  <CardContent className="pt-6">
+                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                      <Mail className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="font-display text-primary mb-2">Email</h3>
+                    <p className="text-[hsl(var(--on-dark))] opacity-80">info@a1tradelines.com</p>
+                  </CardContent>
+                </Card>
+              </a>
 
               <Card className="gradient-card border-border text-center">
                 <CardContent className="pt-6">
@@ -124,7 +128,7 @@ const Contact = () => {
                     <Clock className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="font-display text-primary mb-2">Hours</h3>
-                  <p className="text-foreground">Mon–Fri: 9 AM – 6 PM EST</p>
+                  <p className="text-[hsl(var(--on-dark))] opacity-80">Mon–Fri: 9 AM – 6 PM EST</p>
                 </CardContent>
               </Card>
 
@@ -134,7 +138,7 @@ const Contact = () => {
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="font-display text-primary mb-2">Location</h3>
-                  <p className="text-foreground">Nationwide Service</p>
+                  <p className="text-[hsl(var(--on-dark))] opacity-80">Nationwide Service</p>
                 </CardContent>
               </Card>
             </div>
