@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Shield, Users, TrendingUp, Star, CheckCircle2, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
+import AnimatedSection from "@/components/AnimatedSection";
 
 const AboutUs = () => {
   return (
@@ -12,7 +13,7 @@ const AboutUs = () => {
       <main className="pt-24 md:pt-32">
         {/* Hero Section */}
         <section className="py-16 md:py-24 px-4 sm:px-8 gradient-dark">
-          <div className="max-w-5xl mx-auto text-center animate-fade-in">
+          <AnimatedSection className="max-w-5xl mx-auto text-center">
             <div className="flex items-center justify-center gap-2 text-primary mb-4">
               <Shield className="w-6 h-6" />
               <span className="text-sm font-medium tracking-wider uppercase">About A1 Tradelines</span>
@@ -24,52 +25,60 @@ const AboutUs = () => {
               We help individuals understand tradelines, evaluate whether they're the right fit, 
               and navigate the process with transparency—no hype, just honest guidance.
             </p>
-          </div>
+          </AnimatedSection>
         </section>
 
         {/* What We Do */}
         <section className="py-16 md:py-20 px-4 sm:px-8 bg-background">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-12 text-center animate-fade-in">
-              What We Do
-            </h2>
+            <AnimatedSection>
+              <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-12 text-center">
+                What We Do
+              </h2>
+            </AnimatedSection>
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '100ms' }}>
-                <CardContent className="pt-8 text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Users className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-display text-primary mb-3">Education First</h3>
-                  <p className="text-[hsl(var(--on-dark))] opacity-80">
-                    We believe in empowering you with knowledge. Understanding how tradelines work 
-                    helps you make informed decisions about your credit journey.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '200ms' }}>
-                <CardContent className="pt-8 text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <TrendingUp className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-display text-primary mb-3">Personalized Assessment</h3>
-                  <p className="text-[hsl(var(--on-dark))] opacity-80">
-                    Every credit profile is unique. We evaluate your specific situation to determine 
-                    if tradelines may help strengthen your credit profile.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '300ms' }}>
-                <CardContent className="pt-8 text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Shield className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-display text-primary mb-3">Transparent Process</h3>
-                  <p className="text-[hsl(var(--on-dark))] opacity-80">
-                    No hidden fees, no unrealistic promises. We set clear expectations and keep you 
-                    informed every step of the way.
-                  </p>
-                </CardContent>
-              </Card>
+              <AnimatedSection delay={100}>
+                <Card className="gradient-card border-border h-full">
+                  <CardContent className="pt-8 text-center">
+                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Users className="w-8 h-8 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-display text-primary mb-3">Education First</h3>
+                    <p className="text-[hsl(var(--on-dark))] opacity-80">
+                      We believe in empowering you with knowledge. Understanding how tradelines work 
+                      helps you make informed decisions about your credit journey.
+                    </p>
+                  </CardContent>
+                </Card>
+              </AnimatedSection>
+              <AnimatedSection delay={200}>
+                <Card className="gradient-card border-border h-full">
+                  <CardContent className="pt-8 text-center">
+                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <TrendingUp className="w-8 h-8 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-display text-primary mb-3">Personalized Assessment</h3>
+                    <p className="text-[hsl(var(--on-dark))] opacity-80">
+                      Every credit profile is unique. We evaluate your specific situation to determine 
+                      if tradelines may help strengthen your credit profile.
+                    </p>
+                  </CardContent>
+                </Card>
+              </AnimatedSection>
+              <AnimatedSection delay={300}>
+                <Card className="gradient-card border-border h-full">
+                  <CardContent className="pt-8 text-center">
+                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Shield className="w-8 h-8 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-display text-primary mb-3">Transparent Process</h3>
+                    <p className="text-[hsl(var(--on-dark))] opacity-80">
+                      No hidden fees, no unrealistic promises. We set clear expectations and keep you 
+                      informed every step of the way.
+                    </p>
+                  </CardContent>
+                </Card>
+              </AnimatedSection>
             </div>
           </div>
         </section>

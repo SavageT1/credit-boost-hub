@@ -16,6 +16,7 @@ import {
   BarChart3
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import AnimatedSection from "@/components/AnimatedSection";
 
 const Tradelines101 = () => {
   return (
@@ -24,7 +25,7 @@ const Tradelines101 = () => {
       <main className="pt-24 md:pt-32">
         {/* Hero Section */}
         <section className="py-16 md:py-24 px-4 sm:px-8 gradient-dark">
-          <div className="max-w-5xl mx-auto text-center animate-fade-in">
+          <AnimatedSection className="max-w-5xl mx-auto text-center">
             <div className="flex items-center justify-center gap-2 text-primary mb-4">
               <BookOpen className="w-6 h-6" />
               <span className="text-sm font-medium tracking-wider uppercase">Education Center</span>
@@ -36,7 +37,7 @@ const Tradelines101 = () => {
               Learn what tradelines are, who they may help, and what to realistically expect. 
               No hype—just the facts you need to make an informed decision.
             </p>
-          </div>
+          </AnimatedSection>
         </section>
 
         {/* What Are Tradelines */}
