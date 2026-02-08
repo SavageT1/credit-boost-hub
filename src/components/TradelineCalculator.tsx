@@ -132,7 +132,7 @@ const TradelineCalculator = () => {
     <>
       <section className="py-24 px-4 sm:px-8 bg-background" id="calculator">
         <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 animate-fade-in">
               <div className="flex items-center justify-center gap-2 text-primary mb-4">
               <Calculator className="w-6 h-6" />
               <span className="text-sm font-medium tracking-wider uppercase">Free Tool</span>
@@ -145,7 +145,7 @@ const TradelineCalculator = () => {
             </p>
           </div>
           
-          <div className="grid lg:grid-cols-5 gap-8">
+          <div className="grid lg:grid-cols-5 gap-8 animate-fade-in" style={{ animationDelay: '150ms' }}>
             {/* Input Form - Takes 3 columns */}
             <Card className="gradient-card border-border lg:col-span-3">
               <CardHeader>

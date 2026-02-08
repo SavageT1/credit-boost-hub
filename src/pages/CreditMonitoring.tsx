@@ -13,8 +13,8 @@ const CreditMonitoring = () => {
       <Navbar />
       <main className="pt-24 md:pt-32">
         {/* Hero Section */}
-        <section className="gradient-dark py-16 md:py-24 px-4 sm:px-8">
-          <div className="max-w-4xl mx-auto text-center">
+        <section className="gradient-dark py-12 md:py-24 px-4 sm:px-8">
+          <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
               <Shield className="w-4 h-4 text-primary" />
               <span className="text-sm text-primary font-medium">Our Trusted Partner</span>
@@ -36,9 +36,9 @@ const CreditMonitoring = () => {
         </section>
 
         {/* Why Disputes First Section */}
-        <section className="py-16 md:py-24 px-4 sm:px-8 gradient-dark">
+        <section className="py-12 md:py-24 px-4 sm:px-8 gradient-dark">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
+            <div className="text-center mb-12 animate-fade-in">
               <h2 className="font-display text-2xl md:text-4xl text-primary mb-4">
                 Why Address Disputes First?
               </h2>
@@ -48,7 +48,7 @@ const CreditMonitoring = () => {
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
-              <Card className="gradient-card border-border">
+              <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '100ms' }}>
                 <CardContent className="pt-6">
                   <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                     <AlertTriangle className="w-7 h-7 text-primary" />
@@ -61,7 +61,7 @@ const CreditMonitoring = () => {
                 </CardContent>
               </Card>
 
-              <Card className="gradient-card border-border">
+              <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '200ms' }}>
                 <CardContent className="pt-6">
                   <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                     <Target className="w-7 h-7 text-primary" />
@@ -74,7 +74,7 @@ const CreditMonitoring = () => {
                 </CardContent>
               </Card>
 
-              <Card className="gradient-card border-border">
+              <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '300ms' }}>
                 <CardContent className="pt-6">
                   <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                     <CheckCircle className="w-7 h-7 text-primary" />
@@ -91,10 +91,10 @@ const CreditMonitoring = () => {
         </section>
 
         {/* About Our Partner Section */}
-        <section className="py-16 md:py-24 px-4 sm:px-8 gradient-dark border-t border-border">
+        <section className="py-12 md:py-24 px-4 sm:px-8 gradient-dark border-t border-border">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
+              <div className="animate-fade-in">
                 <h2 className="font-display text-2xl md:text-4xl text-primary mb-6">
                   Beast Credit Monitoring & Dispute Beast
                 </h2>
@@ -115,7 +115,7 @@ const CreditMonitoring = () => {
                 </div>
               </div>
 
-              <Card className="gradient-card border-border">
+              <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '200ms' }}>
                 <CardContent className="p-8">
                   <h3 className="font-display text-xl text-primary mb-6">What They Offer</h3>
                   <ul className="space-y-4">
@@ -146,9 +146,9 @@ const CreditMonitoring = () => {
         </section>
 
         {/* The Process Section */}
-        <section className="py-16 md:py-24 px-4 sm:px-8 gradient-dark border-t border-border">
+        <section className="py-12 md:py-24 px-4 sm:px-8 gradient-dark border-t border-border">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
+            <div className="text-center mb-12 animate-fade-in">
               <h2 className="font-display text-2xl md:text-4xl text-primary mb-4">
                 Our Recommended Process
               </h2>
@@ -180,7 +180,7 @@ const CreditMonitoring = () => {
                   description: "Once your credit report is cleaned up, contact us for a free assessment to discuss how tradelines may help strengthen your profile further."
                 }
               ].map((item, index) => (
-                <div key={index} className="flex gap-6 items-start">
+                <div key={index} className="flex gap-6 items-start animate-fade-in" style={{ animationDelay: `${(index + 1) * 100}ms` }}>
                   <div className="w-12 h-12 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center flex-shrink-0">
                     <span className="font-display text-primary text-lg">{item.step}</span>
                   </div>
@@ -195,8 +195,8 @@ const CreditMonitoring = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 md:py-24 px-4 sm:px-8 gradient-dark border-t border-border">
-          <div className="max-w-4xl mx-auto text-center">
+        <section className="py-12 md:py-24 px-4 sm:px-8 gradient-dark border-t border-border">
+          <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <Users className="w-12 h-12 text-primary mx-auto mb-6" />
             <h2 className="font-display text-2xl md:text-4xl text-primary mb-4">
               Ready to Get Started?

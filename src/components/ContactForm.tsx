@@ -105,7 +105,7 @@ const ContactForm = () => {
   return (
     <section className="py-24 px-4 sm:px-8 gradient-dark" id="contact">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-3xl md:text-5xl font-display text-primary text-glow mb-4">
             Get In Touch
           </h2>
@@ -114,7 +114,7 @@ const ContactForm = () => {
           </p>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12 animate-fade-in" style={{ animationDelay: '150ms' }}>
           {/* Contact Info */}
           <div className="space-y-8">
             <div>
