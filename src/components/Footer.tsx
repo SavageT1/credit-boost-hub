@@ -1,4 +1,5 @@
 import { Facebook } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
@@ -6,14 +7,14 @@ const Footer = () => {
     <footer className="py-12 px-4 sm:px-8 border-t border-border bg-background">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
-          <a href="/" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <img src={logo} alt="A1 Tradelines" className="h-20 md:h-24 w-auto" />
-          </a>
+          </Link>
           
           <div className="flex items-center gap-6 text-sm text-foreground/60">
-            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-primary transition-colors">Disclaimer</a>
+            <Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</Link>
+            <Link to="/disclaimer" className="hover:text-primary transition-colors">Disclaimer</Link>
           </div>
           
           <div className="flex items-center gap-4">
