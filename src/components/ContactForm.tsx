@@ -7,7 +7,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useToast } from "@/hooks/use-toast";
 import { Send, Phone, Mail, MapPin, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import AnimatedSection from "@/components/AnimatedSection";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -106,17 +105,16 @@ const ContactForm = () => {
   return (
     <section className="py-24 px-4 sm:px-8 gradient-dark" id="contact">
       <div className="max-w-6xl mx-auto">
-        <AnimatedSection className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-3xl md:text-5xl font-display text-primary text-glow mb-4">
             Get In Touch
           </h2>
           <p className="text-lg text-[hsl(var(--on-dark))] opacity-80 max-w-2xl mx-auto">
             Ready to improve your credit? Contact us today for a free consultation.
           </p>
-        </AnimatedSection>
+        </div>
         
-        <AnimatedSection delay={150}>
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12 animate-fade-in" style={{ animationDelay: '150ms' }}>
           {/* Contact Info */}
           <div className="space-y-8">
             <div>
@@ -256,7 +254,6 @@ const ContactForm = () => {
             </CardContent>
           </Card>
         </div>
-        </AnimatedSection>
       </div>
     </section>
   );

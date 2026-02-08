@@ -1,28 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, TrendingUp, Phone, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useInView } from "@/hooks/useInView";
-import { cn } from "@/lib/utils";
 
 const HeroSection = () => {
-  const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.1 });
-
   return (
     <section className="min-h-[100svh] md:min-h-screen gradient-dark flex flex-col items-center justify-start md:justify-center px-6 sm:px-8 pt-28 sm:pt-32 pb-16 relative overflow-hidden">
       {/* Background glow effects */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
       
-      <div 
-        ref={ref}
-        className={cn(
-          "text-center space-y-6 md:space-y-8 max-w-5xl mx-auto px-4 relative z-10 opacity-0",
-          isInView && "animate-fade-in opacity-100"
-        )}
-        style={{ animationFillMode: "forwards" }}
-      >
+      <div className="text-center space-y-6 md:space-y-8 max-w-5xl mx-auto px-4 relative z-10 animate-fade-in">
         <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display text-glow text-primary tracking-wider">
-          A1 Tradelines
+          A-1 Tradelines
         </h1>
         
         <p className="text-lg sm:text-xl md:text-2xl text-[hsl(var(--on-dark))] opacity-80 max-w-xs sm:max-w-xl md:max-w-3xl mx-auto leading-relaxed">
@@ -44,7 +33,7 @@ const HeroSection = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="font-display text-lg border-primary text-primary hover:bg-primary hover:text-black w-full sm:w-auto"
+              className="font-display text-lg border-primary text-primary hover:bg-primary hover:text-primary-foreground w-full sm:w-auto"
               data-cta="call"
             >
               <Phone className="w-5 h-5 mr-2" />

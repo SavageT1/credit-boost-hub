@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Shield, FileSearch, CheckCircle, ArrowRight, AlertTriangle, Target, Users } from "lucide-react";
 import { Link } from "react-router-dom";
-import AnimatedSection from "@/components/AnimatedSection";
 
 const CreditMonitoring = () => {
   const affiliateLink = "https://beastcreditmonitoring.com/redirect.asp?guid=FANE0CE1RV2J";
@@ -15,7 +14,7 @@ const CreditMonitoring = () => {
       <main className="pt-24 md:pt-32">
         {/* Hero Section */}
         <section className="gradient-dark py-12 md:py-24 px-4 sm:px-8">
-          <AnimatedSection className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
               <Shield className="w-4 h-4 text-primary" />
               <span className="text-sm text-primary font-medium">Our Trusted Partner</span>
@@ -33,66 +32,60 @@ const CreditMonitoring = () => {
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </a>
-          </AnimatedSection>
+          </div>
         </section>
 
         {/* Why Disputes First Section */}
         <section className="py-12 md:py-24 px-4 sm:px-8 gradient-dark">
           <div className="max-w-6xl mx-auto">
-            <AnimatedSection className="text-center mb-12">
+            <div className="text-center mb-12 animate-fade-in">
               <h2 className="font-display text-2xl md:text-4xl text-primary mb-4">
                 Why Address Disputes First?
               </h2>
               <p className="text-[hsl(var(--on-dark))] opacity-80 text-lg max-w-2xl mx-auto">
                 A clean foundation leads to better results when strengthening your credit profile.
               </p>
-            </AnimatedSection>
+            </div>
 
             <div className="grid md:grid-cols-3 gap-6">
-              <AnimatedSection delay={100}>
-                <Card className="gradient-card border-border h-full">
-                  <CardContent className="pt-6">
-                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                      <AlertTriangle className="w-7 h-7 text-primary" />
-                    </div>
-                    <h3 className="font-display text-xl text-primary mb-3">Remove Inaccuracies</h3>
-                    <p className="text-[hsl(var(--on-dark))] opacity-80">
-                      Incorrect information on your credit report can unfairly impact your profile. 
-                      Disputing these items may help correct your report.
-                    </p>
-                  </CardContent>
-                </Card>
-              </AnimatedSection>
+              <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '100ms' }}>
+                <CardContent className="pt-6">
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                    <AlertTriangle className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="font-display text-xl text-primary mb-3">Remove Inaccuracies</h3>
+                  <p className="text-[hsl(var(--on-dark))] opacity-80">
+                    Incorrect information on your credit report can unfairly impact your profile. 
+                    Disputing these items may help correct your report.
+                  </p>
+                </CardContent>
+              </Card>
 
-              <AnimatedSection delay={200}>
-                <Card className="gradient-card border-border h-full">
-                  <CardContent className="pt-6">
-                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                      <Target className="w-7 h-7 text-primary" />
-                    </div>
-                    <h3 className="font-display text-xl text-primary mb-3">Better Foundation</h3>
-                    <p className="text-[hsl(var(--on-dark))] opacity-80">
-                      Addressing negative items first creates a cleaner base for any credit-building 
-                      strategies you pursue afterward.
-                    </p>
-                  </CardContent>
-                </Card>
-              </AnimatedSection>
+              <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '200ms' }}>
+                <CardContent className="pt-6">
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                    <Target className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="font-display text-xl text-primary mb-3">Better Foundation</h3>
+                  <p className="text-[hsl(var(--on-dark))] opacity-80">
+                    Addressing negative items first creates a cleaner base for any credit-building 
+                    strategies you pursue afterward.
+                  </p>
+                </CardContent>
+              </Card>
 
-              <AnimatedSection delay={300}>
-                <Card className="gradient-card border-border h-full">
-                  <CardContent className="pt-6">
-                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                      <CheckCircle className="w-7 h-7 text-primary" />
-                    </div>
-                    <h3 className="font-display text-xl text-primary mb-3">Maximize Results</h3>
-                    <p className="text-[hsl(var(--on-dark))] opacity-80">
-                      When your report is accurate, tradelines and other credit strategies 
-                      may have a more meaningful impact on your profile.
-                    </p>
-                  </CardContent>
-                </Card>
-              </AnimatedSection>
+              <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '300ms' }}>
+                <CardContent className="pt-6">
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                    <CheckCircle className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="font-display text-xl text-primary mb-3">Maximize Results</h3>
+                  <p className="text-[hsl(var(--on-dark))] opacity-80">
+                    When your report is accurate, tradelines and other credit strategies 
+                    may have a more meaningful impact on your profile.
+                  </p>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
