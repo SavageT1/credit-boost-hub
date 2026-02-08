@@ -19,10 +19,21 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-b border-gray-200">
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
+          {/* Mobile Menu Button - Left on mobile */}
+          <button 
+            className="md:hidden text-gray-700"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+
+          {/* Logo - Centered on mobile */}
+          <Link to="/" className="flex items-center gap-2 md:order-first absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
             <img src={logo} alt="A1 Tradelines" className="h-16 md:h-20 w-auto" />
           </Link>
+          
+          {/* Spacer for mobile layout balance */}
+          <div className="w-6 md:hidden" />
           
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-6">
@@ -72,14 +83,6 @@ const Navbar = () => {
               <Button className="font-display box-glow" data-cta="assessment">Get Started</Button>
             </Link>
           </div>
-          
-          {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden text-gray-700"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
         </div>
         
         {/* Mobile Menu */}
