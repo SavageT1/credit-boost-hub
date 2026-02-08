@@ -9,7 +9,7 @@ const HeroSection = () => {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
       
-      <div className="text-center space-y-6 md:space-y-8 max-w-5xl mx-auto px-4 relative z-10">
+      <div className="text-center space-y-6 md:space-y-8 max-w-5xl mx-auto px-4 relative z-10 animate-fade-in">
         <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display text-glow text-primary tracking-wider">
           A-1 Tradelines
         </h1>

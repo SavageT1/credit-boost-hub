@@ -104,10 +104,10 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main className="pt-20">
+      <main className="pt-24 md:pt-32">
         {/* Hero Section */}
-        <section className="py-16 px-4 sm:px-8 gradient-dark">
-          <div className="max-w-4xl mx-auto text-center">
+        <section className="py-12 md:py-16 px-4 sm:px-8 gradient-dark">
+          <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <h1 className="text-4xl md:text-6xl font-display text-primary text-glow mb-6">
               Contact Us
             </h1>
@@ -118,10 +118,10 @@ const Contact = () => {
         </section>
 
         {/* Contact Info Cards */}
-        <section className="py-16 px-4 sm:px-8">
+        <section className="py-12 md:py-16 px-4 sm:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-4 gap-6 mb-16">
-              <a href="tel:9087675309" className="block">
+              <a href="tel:9087675309" className="block animate-fade-in" style={{ animationDelay: '100ms' }}>
                 <Card className="gradient-card border-border text-center hover:border-primary/50 transition-colors cursor-pointer">
                   <CardContent className="pt-6">
                     <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
@@ -133,7 +133,7 @@ const Contact = () => {
                 </Card>
               </a>
 
-              <a href="mailto:info@a1tradelines.com" className="block">
+              <a href="mailto:info@a1tradelines.com" className="block animate-fade-in" style={{ animationDelay: '200ms' }}>
                 <Card className="gradient-card border-border text-center hover:border-primary/50 transition-colors cursor-pointer">
                   <CardContent className="pt-6">
                     <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
@@ -145,7 +145,7 @@ const Contact = () => {
                 </Card>
               </a>
 
-              <Card className="gradient-card border-border text-center">
+              <Card className="gradient-card border-border text-center animate-fade-in" style={{ animationDelay: '300ms' }}>
                 <CardContent className="pt-6">
                   <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                     <Clock className="w-6 h-6 text-primary" />
@@ -155,7 +155,7 @@ const Contact = () => {
                 </CardContent>
               </Card>
 
-              <Card className="gradient-card border-border text-center">
+              <Card className="gradient-card border-border text-center animate-fade-in" style={{ animationDelay: '400ms' }}>
                 <CardContent className="pt-6">
                   <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                     <MapPin className="w-6 h-6 text-primary" />
@@ -169,9 +169,9 @@ const Contact = () => {
         </section>
 
         {/* Contact Form Section */}
-        <section className="py-16 px-4 sm:px-8 gradient-dark">
+        <section className="py-12 md:py-16 px-4 sm:px-8 gradient-dark">
           <div className="max-w-4xl mx-auto">
-            <div className="grid lg:grid-cols-5 gap-12">
+            <div className="grid lg:grid-cols-5 gap-12 animate-fade-in" style={{ animationDelay: '150ms' }}>
               {/* Left Side - Info */}
               <div className="lg:col-span-2 space-y-8">
                 <div>
@@ -312,29 +312,29 @@ const Contact = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-16 px-4 sm:px-8">
+        <section className="py-12 md:py-16 px-4 sm:px-8">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-display text-primary text-center mb-12">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-display text-primary text-center mb-12 animate-fade-in">Frequently Asked Questions</h2>
             <div className="grid md:grid-cols-2 gap-6">
-              <Card className="gradient-card border-border">
+              <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '100ms' }}>
                 <CardContent className="pt-6">
                   <h3 className="font-display text-primary mb-2">How long does it take to see results?</h3>
                   <p className="text-muted-foreground text-sm">Most clients see their tradeline appear on their credit report within 15–30 days after being added.</p>
                 </CardContent>
               </Card>
-              <Card className="gradient-card border-border">
+              <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '200ms' }}>
                 <CardContent className="pt-6">
                   <h3 className="font-display text-primary mb-2">Is this legal?</h3>
                   <p className="text-muted-foreground text-sm">Yes, becoming an authorized user on someone else's credit card is completely legal and a common credit-building strategy.</p>
                 </CardContent>
               </Card>
-              <Card className="gradient-card border-border">
+              <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '300ms' }}>
                 <CardContent className="pt-6">
                   <h3 className="font-display text-primary mb-2">What information do you need from me?</h3>
                   <p className="text-muted-foreground text-sm">We only collect basic contact details here so we can follow up. We’ll explain any required information privately during your consultation.</p>
                 </CardContent>
               </Card>
-              <Card className="gradient-card border-border">
+              <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '400ms' }}>
                 <CardContent className="pt-6">
                   <h3 className="font-display text-primary mb-2">Do you offer refunds?</h3>
                   <p className="text-muted-foreground text-sm">Yes, we offer a full refund if your tradeline doesn't post to your credit report within 60 days.</p>

@@ -49,10 +49,10 @@ const Blog = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main className="pt-20">
+      <main className="pt-24 md:pt-32">
         {/* Hero Section */}
-        <section className="py-16 px-4 sm:px-8 gradient-dark">
-          <div className="max-w-4xl mx-auto text-center">
+        <section className="py-12 md:py-16 px-4 sm:px-8 gradient-dark">
+          <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <h1 className="text-4xl md:text-6xl font-display text-primary text-glow mb-6">
               Credit Education Blog
             </h1>
@@ -63,7 +63,7 @@ const Blog = () => {
         </section>
 
         {/* Blog Posts Grid */}
-        <section className="py-16 px-4 sm:px-8">
+        <section className="py-12 md:py-16 px-4 sm:px-8">
           <div className="max-w-6xl mx-auto">
             {loading ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -124,8 +124,8 @@ const Blog = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 px-4 sm:px-8 gradient-dark">
-          <div className="max-w-4xl mx-auto text-center">
+        <section className="py-12 md:py-16 px-4 sm:px-8 gradient-dark">
+          <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <h2 className="text-3xl font-display text-primary mb-4">
               Ready to Strengthen Your Credit Profile?
             </h2>

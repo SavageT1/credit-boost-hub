@@ -106,7 +106,7 @@ const BlogPost = () => {
     return (
       <div className="min-h-screen bg-background">
         <Navbar />
-        <main className="pt-20">
+        <main className="pt-24 md:pt-32">
           <div className="max-w-3xl mx-auto px-4 sm:px-8 py-16">
             <div className="animate-pulse">
               <div className="h-10 bg-muted rounded w-3/4 mb-4"></div>
@@ -128,7 +128,7 @@ const BlogPost = () => {
     return (
       <div className="min-h-screen bg-background">
         <Navbar />
-        <main className="pt-20">
+        <main className="pt-24 md:pt-32">
           <div className="max-w-3xl mx-auto px-4 sm:px-8 py-16 text-center">
             <h1 className="text-3xl font-display text-primary mb-4">Article Not Found</h1>
             <p className="text-muted-foreground mb-8">The article you're looking for doesn't exist or has been removed.</p>
@@ -148,10 +148,10 @@ const BlogPost = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main className="pt-20">
+      <main className="pt-24 md:pt-32">
         {/* Header */}
-        <section className="py-12 px-4 sm:px-8 gradient-dark">
-          <div className="max-w-3xl mx-auto">
+        <section className="py-8 md:py-12 px-4 sm:px-8 gradient-dark">
+          <div className="max-w-3xl mx-auto animate-fade-in">
             <Link to="/blog" className="inline-flex items-center text-primary hover:underline mb-6">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Blog
@@ -176,8 +176,8 @@ const BlogPost = () => {
         </section>
 
         {/* Content */}
-        <section className="py-12 px-4 sm:px-8">
-          <article className="max-w-3xl mx-auto">
+        <section className="py-8 md:py-12 px-4 sm:px-8">
+          <article className="max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '150ms' }}>
             <SanitizedContent content={post.content} />
 
             {/* Disclaimer */}
@@ -191,8 +191,8 @@ const BlogPost = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 px-4 sm:px-8 gradient-dark">
-          <div className="max-w-4xl mx-auto text-center">
+        <section className="py-12 md:py-16 px-4 sm:px-8 gradient-dark">
+          <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <h2 className="text-3xl font-display text-primary mb-4">
               Have Questions About Your Credit?
             </h2>

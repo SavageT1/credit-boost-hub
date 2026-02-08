@@ -9,10 +9,10 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main className="pt-20">
+      <main className="pt-24 md:pt-32">
         {/* Hero Section */}
-        <section className="py-24 px-4 sm:px-8 gradient-dark">
-          <div className="max-w-5xl mx-auto text-center">
+        <section className="py-16 md:py-24 px-4 sm:px-8 gradient-dark">
+          <div className="max-w-5xl mx-auto text-center animate-fade-in">
             <div className="flex items-center justify-center gap-2 text-primary mb-4">
               <Shield className="w-6 h-6" />
               <span className="text-sm font-medium tracking-wider uppercase">About A1 Tradelines</span>
@@ -28,13 +28,13 @@ const AboutUs = () => {
         </section>
 
         {/* What We Do */}
-        <section className="py-20 px-4 sm:px-8 bg-background">
+        <section className="py-16 md:py-20 px-4 sm:px-8 bg-background">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-12 text-center animate-fade-in">
               What We Do
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="gradient-card border-border">
+              <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '100ms' }}>
                 <CardContent className="pt-8 text-center">
                   <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Users className="w-8 h-8 text-primary" />
@@ -46,7 +46,7 @@ const AboutUs = () => {
                   </p>
                 </CardContent>
               </Card>
-              <Card className="gradient-card border-border">
+              <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '200ms' }}>
                 <CardContent className="pt-8 text-center">
                   <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <TrendingUp className="w-8 h-8 text-primary" />
@@ -58,7 +58,7 @@ const AboutUs = () => {
                   </p>
                 </CardContent>
               </Card>
-              <Card className="gradient-card border-border">
+              <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '300ms' }}>
                 <CardContent className="pt-8 text-center">
                   <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Shield className="w-8 h-8 text-primary" />

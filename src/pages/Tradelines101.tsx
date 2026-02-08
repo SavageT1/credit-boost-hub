@@ -21,10 +21,10 @@ const Tradelines101 = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main className="pt-20">
+      <main className="pt-24 md:pt-32">
         {/* Hero Section */}
-        <section className="py-24 px-4 sm:px-8 gradient-dark">
-          <div className="max-w-5xl mx-auto text-center">
+        <section className="py-16 md:py-24 px-4 sm:px-8 gradient-dark">
+          <div className="max-w-5xl mx-auto text-center animate-fade-in">
             <div className="flex items-center justify-center gap-2 text-primary mb-4">
               <BookOpen className="w-6 h-6" />
               <span className="text-sm font-medium tracking-wider uppercase">Education Center</span>
@@ -40,8 +40,8 @@ const Tradelines101 = () => {
         </section>
 
         {/* What Are Tradelines */}
-        <section className="py-20 px-4 sm:px-8 gradient-dark">
-          <div className="max-w-4xl mx-auto">
+        <section className="py-16 md:py-20 px-4 sm:px-8 gradient-dark">
+          <div className="max-w-4xl mx-auto animate-fade-in">
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-8">
               What Is a Tradeline?
             </h2>
@@ -75,13 +75,13 @@ const Tradelines101 = () => {
         </section>
 
         {/* Young vs Established Profiles */}
-        <section className="py-20 px-4 sm:px-8 gradient-dark">
+        <section className="py-16 md:py-20 px-4 sm:px-8 gradient-dark">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-12 text-center animate-fade-in">
               Young vs. Established Credit Profiles
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
-              <Card className="gradient-card border-border">
+              <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '100ms' }}>
                 <CardHeader>
                   <CardTitle className="font-display text-primary flex items-center gap-2">
                     <Clock className="w-6 h-6" />
@@ -114,7 +114,7 @@ const Tradelines101 = () => {
                 </CardContent>
               </Card>
               
-              <Card className="gradient-card border-border">
+              <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '200ms' }}>
                 <CardHeader>
                   <CardTitle className="font-display text-primary flex items-center gap-2">
                     <Users className="w-6 h-6" />
@@ -151,8 +151,8 @@ const Tradelines101 = () => {
         </section>
 
         {/* Credit Utilization */}
-        <section className="py-20 px-4 sm:px-8 bg-background">
-          <div className="max-w-4xl mx-auto">
+        <section className="py-16 md:py-20 px-4 sm:px-8 bg-background">
+          <div className="max-w-4xl mx-auto animate-fade-in">
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-8">
               Understanding Credit Utilization
             </h2>
@@ -201,8 +201,8 @@ const Tradelines101 = () => {
         </section>
 
         {/* Negative Items */}
-        <section className="py-20 px-4 sm:px-8 gradient-dark">
-          <div className="max-w-4xl mx-auto">
+        <section className="py-16 md:py-20 px-4 sm:px-8 gradient-dark">
+          <div className="max-w-4xl mx-auto animate-fade-in">
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-8">
               Negative Items on Your Credit Report
             </h2>
@@ -275,8 +275,8 @@ const Tradelines101 = () => {
         </section>
 
         {/* Timeline Expectations */}
-        <section className="py-20 px-4 sm:px-8 bg-background">
-          <div className="max-w-4xl mx-auto">
+        <section className="py-16 md:py-20 px-4 sm:px-8 bg-background">
+          <div className="max-w-4xl mx-auto animate-fade-in">
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-8">
               Timeline & Expectations
             </h2>
@@ -323,8 +323,8 @@ const Tradelines101 = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-4 sm:px-8 gradient-dark">
-          <div className="max-w-3xl mx-auto text-center">
+        <section className="py-16 md:py-20 px-4 sm:px-8 gradient-dark">
+          <div className="max-w-3xl mx-auto text-center animate-fade-in">
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-6">
               Ready to See If Tradelines Are Right for You?
             </h2>
