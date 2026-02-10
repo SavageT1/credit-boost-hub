@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, TrendingUp, Phone, Shield } from "lucide-react";
+import { ArrowRight, Phone, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 import AnimatedSection from "@/components/AnimatedSection";
 
@@ -61,15 +61,10 @@ const HeroSection = () => {
         </AnimatedSection>
         
         <AnimatedSection delay={400}>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 pt-4 text-[hsl(var(--on-dark))] opacity-70">
+          <div className="hidden md:flex items-center justify-center gap-8 pt-4 text-[hsl(var(--on-dark))] opacity-80">
             <div className="flex items-center gap-2">
-              <TrendingUp className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-              <span className="text-sm md:text-base">500+ Happy Clients</span>
-            </div>
-            <div className="hidden sm:block w-px h-6 bg-border" />
-            <div className="flex items-center gap-2">
-              <Shield className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-              <span className="text-sm md:text-base">100% Secure</span>
+              <Shield className="w-5 h-5 text-primary" />
+              <span className="text-base">100% Secure</span>
             </div>
           </div>
         </AnimatedSection>

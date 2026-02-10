@@ -1,4 +1,4 @@
-import { Clock, Shield, Users, TrendingUp, CreditCard, HeadphonesIcon } from "lucide-react";
+import { Clock, Shield, Users, CreditCard, HeadphonesIcon } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 
 const features = [
@@ -17,11 +17,8 @@ const features = [
     title: "Expert Support",
     description: "Our dedicated team of credit specialists is here to guide you through every step of the process.",
   },
-  {
-    icon: TrendingUp,
-    title: "Proven Results",
-    description: "Join hundreds of satisfied clients who have successfully improved their credit profiles with us.",
-  },
+  // removed per mobile/claims simplification request,
+
   {
     icon: CreditCard,
     title: "Premium Tradelines",
@@ -43,7 +40,7 @@ const FeaturesSection = () => {
             <h2 className="text-3xl md:text-5xl font-display text-primary text-glow mb-4">
               Why Choose A1 Tradelines?
             </h2>
-            <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
+            <p className="text-lg text-foreground/85 max-w-2xl mx-auto">
               We provide the highest quality tradelines with transparent pricing and exceptional service.
             </p>
           </div>
@@ -59,7 +56,7 @@ const FeaturesSection = () => {
                   <feature.icon className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-display text-primary mb-3">{feature.title}</h3>
-                <p className="text-[hsl(var(--on-dark))] opacity-70 leading-relaxed">{feature.description}</p>
+                <p className="text-foreground/85 leading-relaxed">{feature.description}</p>
               </div>
             </AnimatedSection>
           ))}
