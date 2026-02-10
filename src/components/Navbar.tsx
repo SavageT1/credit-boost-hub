@@ -93,63 +93,63 @@ const Navbar = () => {
         
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-4 bg-white">
+          <div className="md:hidden mt-3 pb-3 space-y-2 bg-white">
             <Link 
               to="/"
-              className="block w-full text-left text-gray-700 hover:text-primary transition-colors py-2 font-medium"
+              className="block w-full text-left text-[15px] leading-6 text-gray-700 hover:text-primary transition-colors py-1.5 font-medium"
               onClick={() => setIsOpen(false)}
             >
               Home
             </Link>
             <Link 
               to="/about"
-              className="block w-full text-left text-gray-700 hover:text-primary transition-colors py-2 font-medium"
+              className="block w-full text-left text-[15px] leading-6 text-gray-700 hover:text-primary transition-colors py-1.5 font-medium"
               onClick={() => setIsOpen(false)}
             >
               About Us
             </Link>
             <Link 
               to="/tradelines-101"
-              className="block w-full text-left text-gray-700 hover:text-primary transition-colors py-2 font-medium"
+              className="block w-full text-left text-[15px] leading-6 text-gray-700 hover:text-primary transition-colors py-1.5 font-medium"
               onClick={() => setIsOpen(false)}
             >
               Tradelines 101
             </Link>
             <Link 
               to="/credit-monitoring"
-              className="block w-full text-left text-gray-700 hover:text-primary transition-colors py-2 font-medium"
+              className="block w-full text-left text-[15px] leading-6 text-gray-700 hover:text-primary transition-colors py-1.5 font-medium"
               onClick={() => setIsOpen(false)}
             >
               Credit Monitoring
             </Link>
             <Link 
               to="/blog"
-              className="block w-full text-left text-gray-700 hover:text-primary transition-colors py-2 font-medium"
+              className="block w-full text-left text-[15px] leading-6 text-gray-700 hover:text-primary transition-colors py-1.5 font-medium"
               onClick={() => setIsOpen(false)}
             >
               Blog
             </Link>
             <button 
               onClick={() => scrollToSection("calculator")}
-              className="block w-full text-left text-gray-700 hover:text-primary transition-colors py-2 font-medium"
+              className="block w-full text-left text-[15px] leading-6 text-gray-700 hover:text-primary transition-colors py-1.5 font-medium"
             >
               Calculator
             </button>
             <Link 
               to="/contact"
-              className="block w-full text-left text-gray-700 hover:text-primary transition-colors py-2 font-medium"
+              className="block w-full text-left text-[15px] leading-6 text-gray-700 hover:text-primary transition-colors py-1.5 font-medium"
               onClick={() => setIsOpen(false)}
             >
               Contact
             </Link>
-            <a href="tel:9087675309" className="block">
-              <Button variant="outline" className="w-full font-display border-primary text-primary hover:bg-primary hover:text-primary-foreground" data-cta="call">
+            <a href="tel:9087675309" className="block pt-1">
+              <Button variant="outline" className="w-full font-display text-[15px] border-primary text-primary hover:bg-primary hover:text-primary-foreground" data-cta="call">
                 <Phone className="w-4 h-4 mr-2" />
                 Call (908) 767-5309
               </Button>
             </a>
             <Link to="/contact" className="block" onClick={() => setIsOpen(false)}>
-              <Button className="w-full font-display box-glow" data-cta="assessment">Get Started</Button>
+              <Button className="w-full font-display text-[15px] box-glow" data-cta="assessment">Get Started</Button>
             </Link>
           </div>
         )}

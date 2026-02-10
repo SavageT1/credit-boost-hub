@@ -128,7 +128,7 @@ const Contact = () => {
                       <Phone className="w-6 h-6 text-primary" />
                     </div>
                     <h3 className="font-display text-primary mb-2">Text or Call</h3>
-                    <p className="text-[hsl(var(--on-dark))] opacity-80">(908) 767-5309</p>
+                    <p className="text-sm leading-6 text-[hsl(var(--on-dark))] opacity-90">(908) 767-5309</p>
                   </CardContent>
                 </Card>
               </a>
@@ -140,7 +140,7 @@ const Contact = () => {
                       <Mail className="w-6 h-6 text-primary" />
                     </div>
                     <h3 className="font-display text-primary mb-2">Email</h3>
-                    <p className="text-[hsl(var(--on-dark))] opacity-80">info@a1tradelines.com</p>
+                    <p className="text-sm leading-6 text-[hsl(var(--on-dark))] opacity-90">info@a1tradelines.com</p>
                   </CardContent>
                 </Card>
               </a>
@@ -151,7 +151,7 @@ const Contact = () => {
                     <Clock className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="font-display text-primary mb-2">Hours</h3>
-                  <p className="text-[hsl(var(--on-dark))] opacity-80">Mon–Fri: 9 AM – 6 PM EST</p>
+                  <p className="text-sm leading-6 text-[hsl(var(--on-dark))] opacity-90">Mon–Fri: 9 AM – 6 PM EST</p>
                 </CardContent>
               </Card>
 
@@ -161,7 +161,7 @@ const Contact = () => {
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="font-display text-primary mb-2">Location</h3>
-                  <p className="text-[hsl(var(--on-dark))] opacity-80">Nationwide Service</p>
+                  <p className="text-sm leading-6 text-[hsl(var(--on-dark))] opacity-90">Nationwide Service</p>
                 </CardContent>
               </Card>
             </div>
