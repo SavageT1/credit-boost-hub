@@ -133,10 +133,10 @@ const AboutUs = () => {
                         <Star key={i} className="w-5 h-5 fill-primary text-primary" />
                       ))}
                     </div>
-                    <p className="text-[hsl(var(--on-dark))] opacity-80 mb-4 italic">"{testimonial.text}"</p>
+                    <p className="text-foreground/90 mb-4 italic">"{testimonial.text}"</p>
                     <div className="border-t border-border pt-4">
                       <p className="font-display text-primary">{testimonial.name}</p>
-                      <p className="text-[hsl(var(--on-dark))] opacity-60 text-sm">{testimonial.location}</p>
+                      <p className="text-muted-foreground text-sm">{testimonial.location}</p>
                     </div>
                   </CardContent>
                 </Card>

@@ -84,7 +84,7 @@ const Blog = () => {
               <div className="text-center py-16">
                 <BookOpen className="w-16 h-16 text-primary mx-auto mb-6" />
                 <h2 className="text-2xl font-display text-primary mb-4">Coming Soon</h2>
-                <p className="text-[hsl(var(--on-dark))] opacity-80 max-w-md mx-auto mb-8">
+                <p className="text-foreground/85 max-w-md mx-auto mb-8">
                   Our blog is launching soon with weekly articles on credit education, tradeline strategies, and financial tips.
                 </p>
                 <Link to="/contact">
