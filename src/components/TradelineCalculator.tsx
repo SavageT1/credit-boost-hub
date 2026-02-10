@@ -33,51 +33,52 @@ const TradelineCalculator = () => {
   const getTargetScore = () => scoreMids[targetScoreRange] || 680;
 
   const estimateSingleTradelineImpact = () => {
+    // Conservative, real-world-style midpoint assumptions
     let boost = 0;
 
     const ageBoost: Record<string, number> = {
-      "0-1": 28,
-      "1-2": 22,
-      "3-5": 16,
-      "5-10": 10,
-      "10+": 6,
+      "0-1": 16,
+      "1-2": 13,
+      "3-5": 9,
+      "5-10": 6,
+      "10+": 3,
     };
-    boost += ageBoost[oldestAccount] || 16;
+    boost += ageBoost[oldestAccount] || 9;
 
     const tradelineBoost: Record<string, number> = {
-      "0": 24,
-      "1-2": 20,
-      "3-5": 14,
-      "6-10": 9,
-      "10+": 5,
+      "0": 15,
+      "1-2": 12,
+      "3-5": 8,
+      "6-10": 5,
+      "10+": 2,
     };
-    boost += tradelineBoost[currentTradelines] || 14;
+    boost += tradelineBoost[currentTradelines] || 8;
 
     const utilizationBoost: Record<string, number> = {
-      "0-9": 4,
-      "10-29": 8,
-      "30-49": 12,
-      "50-75": 16,
-      "76-100": 14,
+      "0-9": 2,
+      "10-29": 4,
+      "30-49": 8,
+      "50-75": 12,
+      "76-100": 10,
     };
-    boost += utilizationBoost[utilizationRange] || 10;
+    boost += utilizationBoost[utilizationRange] || 6;
 
     const paymentPenalty: Record<string, number> = {
-      "0": 4,
+      "0": 3,
       "1-2": 0,
-      "3-5": -8,
-      "6+": -15,
+      "3-5": -10,
+      "6+": -18,
     };
     boost += paymentPenalty[missedPayments] || 0;
 
     const negativePenalty: Record<string, number> = {
-      none: 4,
-      some: 0,
-      severe: -12,
+      none: 3,
+      some: -3,
+      severe: -14,
     };
     boost += negativePenalty[negativeItems] || 0;
 
-    return Math.max(6, boost);
+    return Math.max(2, boost);
   };
 
   const calculateProjectedScore = (added: number) => {
@@ -86,15 +87,29 @@ const TradelineCalculator = () => {
     const single = estimateSingleTradelineImpact();
     let totalBoost = single;
 
-    // Diminishing returns
-    if (added === 2) totalBoost = Math.round(single * 1.75);
-    if (added >= 3) totalBoost = Math.round(single * 2.35);
+    // Diminishing returns (conservative)
+    if (added === 2) totalBoost = Math.round(single * 1.6);
+    if (added >= 3) totalBoost = Math.round(single * 2.0);
 
     return Math.min(850, getBaseScore() + totalBoost);
   };
 
-  const projectedScore = calculateProjectedScore(tradelinesAdded);
-  const improvement = projectedScore - getBaseScore();
+  const needsRepairFirst =
+    negativeItems === "severe" ||
+    missedPayments === "6+" ||
+    (missedPayments === "3-5" && negativeItems !== "none");
+
+  const calculateProjectedRange = (added: number) => {
+    const mid = calculateProjectedScore(added);
+    const variability = needsRepairFirst ? 30 : 18;
+    const low = Math.max(300, mid - variability);
+    const high = Math.min(850, mid + variability);
+    return { low, mid, high };
+  };
+
+  const projected = calculateProjectedRange(tradelinesAdded);
+  const projectedScore = projected.mid;
+  const improvement = projected.mid - getBaseScore();
 
   const recommendedTradelines = useMemo(() => {
     const base = getBaseScore();
@@ -111,11 +126,6 @@ const TradelineCalculator = () => {
     if (with3 >= target) return 3;
     return 4; // 4 means likely needs profile cleanup first / more than 3
   }, [scoreRange, targetScoreRange, currentTradelines, oldestAccount, missedPayments, utilizationRange, negativeItems]);
-
-  const needsRepairFirst =
-    negativeItems === "severe" ||
-    missedPayments === "6+" ||
-    (missedPayments === "3-5" && negativeItems !== "none");
 
   const getScoreColor = (score: number) => {
     if (score >= 750) return "text-green-400";
@@ -294,8 +304,9 @@ const TradelineCalculator = () => {
                 <CardContent className="space-y-6">
                   <div className="text-center py-6 rounded-lg bg-background/50 border border-border">
                     <p className="text-sm text-muted-foreground mb-1">{tradelinesAdded === 0 ? "Current Estimate" : "Projected Estimate"}</p>
-                    <p className={`text-5xl font-display font-bold ${getScoreColor(projectedScore)}`}>{projectedScore}</p>
-                    <p className={`text-sm font-medium mt-1 ${getScoreColor(projectedScore)}`}>{getScoreLabel(projectedScore)}</p>
+                    <p className={`text-5xl font-display font-bold ${getScoreColor(projectedScore)}`}>{projected.mid}</p>
+                    <p className={`text-sm font-medium mt-1 ${getScoreColor(projected.mid)}`}>{getScoreLabel(projected.mid)}</p>
+                    <p className="text-xs text-muted-foreground mt-1">Estimated range: {projected.low}–{projected.high}</p>
                     <p className="text-xs text-muted-foreground mt-2">Target range: {targetScoreRange}</p>
                   </div>
 
@@ -316,8 +327,8 @@ const TradelineCalculator = () => {
                     <div className="flex items-center justify-center gap-3 p-4 rounded-lg bg-primary/10 border border-primary/20">
                       <CheckCircle2 className="w-5 h-5 text-primary" />
                       <div className="text-center">
-                        <p className="text-xs text-muted-foreground">Potential Improvement</p>
-                        <p className="text-xl font-display text-primary font-bold">+{improvement} Points</p>
+                        <p className="text-xs text-muted-foreground">Estimated Midpoint Change</p>
+                        <p className="text-xl font-display text-primary font-bold">+{improvement} pts</p>
                       </div>
                     </div>
                   )}
@@ -332,6 +343,9 @@ const TradelineCalculator = () => {
                       {recommendedTradelines > 0 && recommendedTradelines < 4 && `Estimated needed: ${recommendedTradelines} tradeline${recommendedTradelines > 1 ? "s" : ""} to approach your target.`}
                       {recommendedTradelines === 4 && "Likely more than 3 tradelines and/or cleanup needed before reaching this target."}
                     </p>
+                  <p className="text-xs text-muted-foreground mt-2">
+                    Confidence: {needsRepairFirst ? "Lower" : "Moderate"} (based on self-reported ranges)
+                  </p>
                   </div>
 
                   {needsRepairFirst && (
@@ -359,7 +373,7 @@ const TradelineCalculator = () => {
                   </Button>
 
                   <p className="text-xs text-muted-foreground text-center">
-                    Estimates only. Outcomes vary by report accuracy, utilization changes, lender model, and profile depth.
+                    Estimates are scenario-based (not guarantees). Highest accuracy is typically for clean/thin files; lower when there are negatives, recent lates, or major utilization swings.
                   </p>
                 </CardContent>
               </Card>
