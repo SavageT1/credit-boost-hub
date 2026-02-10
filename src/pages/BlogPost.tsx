@@ -32,7 +32,7 @@ const SanitizedContent = ({ content }: { content: string }) => {
   const sanitizedContent = useMemo(() => {
     return DOMPurify.sanitize(content, {
       ALLOWED_TAGS: ['h2', 'h3', 'h4', 'p', 'ul', 'ol', 'li', 'strong', 'em', 'a', 'br', 'span'],
-      ALLOWED_ATTR: ['href', 'target', 'rel', 'class'],
+      ALLOWED_ATTR: ['href', 'target', 'rel'],
       ALLOW_DATA_ATTR: false,
     });
   }, [content]);

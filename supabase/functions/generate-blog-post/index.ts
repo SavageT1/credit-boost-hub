@@ -6,6 +6,32 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
+
+const sanitizeText = (value: string, maxLen = 500) =>
+  value
+    .replace(/[\u0000-\u001F\u007F]/g, "")
+    .trim()
+    .slice(0, maxLen);
+
+const sanitizeSlug = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .slice(0, 90);
+
+const sanitizeHtml = (html: string) => {
+  return html
+    .replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, "")
+    .replace(/<iframe[\s\S]*?>[\s\S]*?<\/iframe>/gi, "")
+    .replace(/<(object|embed|link|meta|base)[^>]*>/gi, "")
+    .replace(/\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, "")
+    .replace(/\s(href|src)\s*=\s*("|')\s*javascript:[^"']*("|')/gi, " $1=$2#$3")
+    .trim();
+};
+
 const BLOG_TOPICS = [
   "Understanding credit utilization and how it affects your score",
   "The difference between authorized user tradelines and primary accounts",
@@ -147,15 +173,25 @@ Format your response as JSON with these fields:
 
     const blogData = JSON.parse(toolCall.function.arguments);
 
+    const safeTitle = sanitizeText(blogData.title || "", 120);
+    const safeSlug = sanitizeSlug(blogData.slug || safeTitle);
+    const safeExcerpt = sanitizeText(blogData.excerpt || "", 220);
+    const safeMetaDescription = sanitizeText(blogData.meta_description || safeExcerpt, 180);
+    const safeContent = sanitizeHtml(String(blogData.content || ""));
+
+    if (!safeTitle || !safeSlug || !safeExcerpt || !safeContent) {
+      throw new Error("Generated blog content failed validation");
+    }
+
     // Insert the blog post
     const { data: newPost, error: insertError } = await supabase
       .from("blog_posts")
       .insert({
-        title: blogData.title,
-        slug: blogData.slug,
-        excerpt: blogData.excerpt,
-        content: blogData.content,
-        meta_description: blogData.meta_description,
+        title: safeTitle,
+        slug: safeSlug,
+        excerpt: safeExcerpt,
+        content: safeContent,
+        meta_description: safeMetaDescription,
         published: true,
         published_at: new Date().toISOString()
       })
