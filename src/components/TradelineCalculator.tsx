@@ -368,11 +368,11 @@ const TradelineCalculator = () => {
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="text-center py-6 rounded-lg bg-background/50 border border-border">
-                    <p className="text-sm text-foreground/80 mb-1">{tradelinesAdded === 0 ? "Current Estimate" : "Projected Estimate"}</p>
+                    <p className="text-sm text-[hsl(var(--on-dark))] opacity-90 mb-1">{tradelinesAdded === 0 ? "Current Estimate" : "Projected Estimate"}</p>
                     <p className={`text-5xl font-display font-bold ${getScoreColor(projectedScore)}`}>{projected.mid}</p>
                     <p className={`text-sm font-medium mt-1 ${getScoreColor(projected.mid)}`}>{getScoreLabel(projected.mid)}</p>
-                    <p className="text-xs text-foreground/75 mt-1">Estimated range: {projected.low}–{projected.high}</p>
-                    <p className="text-xs text-foreground/75 mt-2">Target range: {targetScoreRange}</p>
+                    <p className="text-xs text-[hsl(var(--on-dark))] opacity-80 mt-1">Estimated range: {projected.low}–{projected.high}</p>
+                    <p className="text-xs text-[hsl(var(--on-dark))] opacity-80 mt-2">Target range: {targetScoreRange}</p>
                   </div>
 
                   <div className="space-y-3">
@@ -392,7 +392,7 @@ const TradelineCalculator = () => {
                     <div className="flex items-center justify-center gap-3 p-4 rounded-lg bg-primary/10 border border-primary/20">
                       <CheckCircle2 className="w-5 h-5 text-primary" />
                       <div className="text-center">
-                        <p className="text-xs text-muted-foreground">Estimated Midpoint Change</p>
+                        <p className="text-xs text-[hsl(var(--on-dark))] opacity-80">Estimated Midpoint Change</p>
                         <p className="text-xl font-display text-primary font-bold">+{improvement} pts</p>
                       </div>
                     </div>
@@ -403,12 +403,12 @@ const TradelineCalculator = () => {
                       <Target className="w-4 h-4" />
                       Recommended Tradelines
                     </p>
-                    <p className="text-sm text-foreground mt-2">
+                    <p className="text-sm text-[hsl(var(--on-dark))] opacity-95 mt-2">
                       {recommendedTradelines === 0 && "You may already be in your target range."}
                       {recommendedTradelines > 0 && recommendedTradelines < 4 && `Estimated needed: ${recommendedTradelines} tradeline${recommendedTradelines > 1 ? "s" : ""} to approach your target.`}
                       {recommendedTradelines === 4 && "Likely more than 3 tradelines and/or cleanup needed before reaching this target."}
                     </p>
-                  <p className="text-xs text-foreground/75 mt-2">
+                  <p className="text-xs text-[hsl(var(--on-dark))] opacity-80 mt-2">
                     Confidence: {needsRepairFirst ? "Lower" : "Moderate"} (based on self-reported ranges)
                   </p>
                   </div>
@@ -419,7 +419,7 @@ const TradelineCalculator = () => {
                         <ShieldAlert className="w-4 h-4" />
                         Repair First Recommendation
                       </p>
-                      <p className="text-sm text-foreground mt-2">
+                      <p className="text-sm text-[hsl(var(--on-dark))] opacity-95 mt-2">
                         Your profile suggests fixing negative items first. Start with Dispute Beast, then layer tradelines for better results.
                       </p>
                       <a
@@ -437,7 +437,7 @@ const TradelineCalculator = () => {
                     Get My Free Custom Plan
                   </Button>
 
-                  <p className="text-xs text-foreground/75 text-center">
+                  <p className="text-xs text-[hsl(var(--on-dark))] opacity-80 text-center">
                     Estimates are scenario-based (not guarantees). Highest accuracy is typically for clean/thin files; lower when there are negatives, recent lates, or major utilization swings.
                   </p>
                 </CardContent>
