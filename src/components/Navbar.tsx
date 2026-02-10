@@ -36,7 +36,7 @@ const Navbar = () => {
           <div className="w-6 md:hidden" />
           
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-3 lg:gap-4">
             <Link 
               to="/"
               className="text-gray-700 hover:text-primary transition-colors font-medium"

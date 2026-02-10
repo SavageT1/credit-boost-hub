@@ -121,9 +121,9 @@ const Contact = () => {
         <section className="py-12 md:py-16 px-4 sm:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-4 gap-6 mb-16">
-              <a href="tel:9087675309" className="block animate-fade-in" style={{ animationDelay: '100ms' }}>
-                <Card className="gradient-card border-border text-center hover:border-primary/50 transition-colors cursor-pointer">
-                  <CardContent className="pt-6">
+              <a href="tel:9087675309" className="block h-full animate-fade-in" style={{ animationDelay: '100ms' }}>
+                <Card className="h-full gradient-card border-border text-center hover:border-primary/50 transition-colors cursor-pointer">
+                  <CardContent className="pt-6 h-full flex flex-col justify-center">
                     <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                       <Phone className="w-6 h-6 text-primary" />
                     </div>
@@ -133,9 +133,9 @@ const Contact = () => {
                 </Card>
               </a>
 
-              <a href="mailto:info@a1tradelines.com" className="block animate-fade-in" style={{ animationDelay: '200ms' }}>
-                <Card className="gradient-card border-border text-center hover:border-primary/50 transition-colors cursor-pointer">
-                  <CardContent className="pt-6">
+              <a href="mailto:info@a1tradelines.com" className="block h-full animate-fade-in" style={{ animationDelay: '200ms' }}>
+                <Card className="h-full gradient-card border-border text-center hover:border-primary/50 transition-colors cursor-pointer">
+                  <CardContent className="pt-6 h-full flex flex-col justify-center">
                     <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                       <Mail className="w-6 h-6 text-primary" />
                     </div>
@@ -145,8 +145,8 @@ const Contact = () => {
                 </Card>
               </a>
 
-              <Card className="gradient-card border-border text-center animate-fade-in" style={{ animationDelay: '300ms' }}>
-                <CardContent className="pt-6">
+              <Card className="h-full gradient-card border-border text-center animate-fade-in" style={{ animationDelay: '300ms' }}>
+                <CardContent className="pt-6 h-full flex flex-col justify-center">
                   <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                     <Clock className="w-6 h-6 text-primary" />
                   </div>
@@ -155,8 +155,8 @@ const Contact = () => {
                 </CardContent>
               </Card>
 
-              <Card className="gradient-card border-border text-center animate-fade-in" style={{ animationDelay: '400ms' }}>
-                <CardContent className="pt-6">
+              <Card className="h-full gradient-card border-border text-center animate-fade-in" style={{ animationDelay: '400ms' }}>
+                <CardContent className="pt-6 h-full flex flex-col justify-center">
                   <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
