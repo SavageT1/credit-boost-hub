@@ -376,14 +376,31 @@ const TradelineCalculator = () => {
                   </div>
 
                   <div className="space-y-3">
-                    <Label className="text-white font-medium text-center block">Tradelines Added: {tradelinesAdded}</Label>
-                    <div className="flex gap-3 justify-center">
-                      <Button variant="outline" size="icon" onClick={removeTradeline} disabled={tradelinesAdded === 0} className="h-12 w-12">
+                    <Label className="text-white font-medium text-center block">Tradelines Added</Label>
+                    <div className="flex items-center justify-center gap-3">
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={removeTradeline}
+                        disabled={tradelinesAdded === 0}
+                        className="h-12 w-12"
+                        aria-label="Remove tradeline"
+                      >
                         <Minus className="w-5 h-5" />
                       </Button>
-                      <Button onClick={handleAddTradeline} disabled={tradelinesAdded >= 3} className="h-12 px-6 font-display box-glow" data-cta="add-tradeline">
-                        <Plus className="w-5 h-5 mr-2" />
-                        Add Tradeline
+
+                      <div className="min-w-14 h-12 px-4 rounded-md border border-border bg-background/60 flex items-center justify-center font-display text-lg text-[hsl(var(--on-dark))]">
+                        {tradelinesAdded}
+                      </div>
+
+                      <Button
+                        onClick={handleAddTradeline}
+                        disabled={tradelinesAdded >= 3}
+                        className="h-12 w-12 font-display box-glow"
+                        data-cta="add-tradeline"
+                        aria-label="Add tradeline"
+                      >
+                        <Plus className="w-5 h-5" />
                       </Button>
                     </div>
                   </div>
