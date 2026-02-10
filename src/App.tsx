@@ -18,6 +18,7 @@ import TradelinesForSale from "./pages/TradelinesForSale";
 import BuyTradelines from "./pages/BuyTradelines";
 import SeasonedTradelines from "./pages/SeasonedTradelines";
 import NotFound from "./pages/NotFound";
+import FloatingLeadButton from "@/components/FloatingLeadButton";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <FloatingLeadButton />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/contact" element={<Contact />} />
