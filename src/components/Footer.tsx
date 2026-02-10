@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="py-12 px-4 sm:px-8 border-t border-border bg-background">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-6">
           <Link to="/" aria-label="Go to home page" className="flex items-center gap-2">
             <img src={logo} alt="A1 Tradelines" className="h-20 md:h-24 w-auto" />
           </Link>
@@ -31,6 +31,12 @@ const Footer = () => {
               © {new Date().getFullYear()} A1 Tradelines. All rights reserved.
             </p>
           </div>
+        </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-foreground/70 mb-6">
+          <Link to="/tradelines-for-sale" className="hover:text-primary transition-colors">Tradelines for Sale</Link>
+          <Link to="/buy-tradelines" className="hover:text-primary transition-colors">Buy Tradelines</Link>
+          <Link to="/seasoned-tradelines" className="hover:text-primary transition-colors">Seasoned Tradelines</Link>
         </div>
 
         {/* Disclaimer - At the very bottom */}

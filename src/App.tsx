@@ -14,6 +14,9 @@ import Install from "./pages/Install";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import Disclaimer from "./pages/Disclaimer";
+import TradelinesForSale from "./pages/TradelinesForSale";
+import BuyTradelines from "./pages/BuyTradelines";
+import SeasonedTradelines from "./pages/SeasonedTradelines";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +39,9 @@ const App = () => (
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
+          <Route path="/tradelines-for-sale" element={<TradelinesForSale />} />
+          <Route path="/buy-tradelines" element={<BuyTradelines />} />
+          <Route path="/seasoned-tradelines" element={<SeasonedTradelines />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
