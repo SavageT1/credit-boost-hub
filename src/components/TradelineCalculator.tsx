@@ -378,16 +378,9 @@ const TradelineCalculator = () => {
                   <div className="space-y-3">
                     <Label className="text-white font-medium text-center block">Tradelines Added</Label>
                     <div className="flex items-center justify-center gap-3">
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        onClick={removeTradeline}
-                        disabled={tradelinesAdded === 0}
-                        className="h-12 w-12"
-                        aria-label="Remove tradeline"
-                      >
+                      <div className="h-12 w-12 rounded-md border border-border bg-background/60 flex items-center justify-center text-[hsl(var(--on-dark))]">
                         <Minus className="w-5 h-5" />
-                      </Button>
+                      </div>
 
                       <div className="min-w-14 h-12 px-4 rounded-md border border-border bg-background/60 flex items-center justify-center font-display text-lg text-[hsl(var(--on-dark))]">
                         {tradelinesAdded}
