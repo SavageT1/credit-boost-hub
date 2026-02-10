@@ -38,7 +38,7 @@ const Tradelines101 = () => {
             <h1 className="text-4xl md:text-6xl font-display text-primary text-glow mb-6">
               Tradelines 101
             </h1>
-            <p className="text-xl text-[hsl(var(--on-dark))] opacity-80 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-[hsl(var(--on-dark))] opacity-90 max-w-3xl mx-auto leading-relaxed">
               Learn what tradelines are, who they may help, and what to realistically expect. 
               No hype—just the facts you need to make an informed decision.
             </p>
@@ -51,7 +51,7 @@ const Tradelines101 = () => {
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-8">
               What Is a Tradeline?
             </h2>
-            <div className="space-y-6 text-[hsl(var(--on-dark))] opacity-90 text-lg leading-relaxed">
+            <div className="space-y-6 text-[hsl(var(--on-dark))] opacity-95 text-lg leading-relaxed">
               <p>
                 A <span className="text-primary font-semibold">tradeline</span> is any credit account 
                 that appears on your credit report. This includes credit cards, auto loans, mortgages, 
@@ -94,7 +94,7 @@ const Tradelines101 = () => {
                     Young/Thin Credit Profile
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4 text-[hsl(var(--on-dark))] opacity-80">
+                <CardContent className="space-y-4 text-[hsl(var(--on-dark))] opacity-95">
                   <p>
                     If you're new to credit (under 2 years of history) or have very few accounts, 
                     you likely have a "thin file." Credit scoring models have limited data to 
@@ -102,7 +102,7 @@ const Tradelines101 = () => {
                   </p>
                   <div className="p-4 bg-primary/10 rounded-lg border border-primary/20">
                     <p className="text-primary font-semibold mb-2">Potential Tradeline Benefit:</p>
-                      <p className="text-[hsl(var(--on-dark))] opacity-70">
+                      <p className="text-[hsl(var(--on-dark))] opacity-90">
                       Adding an aged tradeline may help by contributing years of positive history, 
                       increasing your average account age, and adding to your credit mix.
                     </p>
@@ -127,7 +127,7 @@ const Tradelines101 = () => {
                     Established Credit Profile
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4 text-[hsl(var(--on-dark))] opacity-80">
+                <CardContent className="space-y-4 text-[hsl(var(--on-dark))] opacity-95">
                   <p>
                     If you have 5+ years of credit history with multiple accounts, you already 
                     have a solid foundation. Your score is influenced by many factors already 
@@ -135,7 +135,7 @@ const Tradelines101 = () => {
                   </p>
                   <div className="p-4 bg-secondary/20 rounded-lg border border-border">
                     <p className="text-white font-semibold mb-2">Potential Tradeline Benefit:</p>
-                      <p className="text-[hsl(var(--on-dark))] opacity-70">
+                      <p className="text-[hsl(var(--on-dark))] opacity-90">
                       May still help with utilization or adding positive accounts, but impact is 
                       typically more modest since existing history already provides most factors.
                     </p>
@@ -212,7 +212,7 @@ const Tradelines101 = () => {
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-8">
               Negative Items on Your Credit Report
             </h2>
-            <div className="space-y-6 text-[hsl(var(--on-dark))] opacity-90 text-lg leading-relaxed">
+            <div className="space-y-6 text-[hsl(var(--on-dark))] opacity-95 text-lg leading-relaxed">
               <p>
                 Negative items like late payments, collections, charge-offs, and bankruptcies can 
                 significantly impact your credit score. While tradelines can add positive history, 
@@ -272,7 +272,7 @@ const Tradelines101 = () => {
                     Visit Dispute Beast
                   </Button>
                 </a>
-                <p className="text-[hsl(var(--on-dark))] opacity-60 text-sm mt-3">
+                <p className="text-[hsl(var(--on-dark))] opacity-80 text-sm mt-3">
                   *This is an affiliate link. We may earn a commission at no extra cost to you.
                 </p>
               </div>
@@ -334,7 +334,7 @@ const Tradelines101 = () => {
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-6">
               Ready to See If Tradelines Are Right for You?
             </h2>
-            <p className="text-[hsl(var(--on-dark))] opacity-80 mb-8">
+            <p className="text-[hsl(var(--on-dark))] opacity-90 mb-8">
               Get a free assessment to evaluate your credit situation and learn your options.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
