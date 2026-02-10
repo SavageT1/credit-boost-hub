@@ -156,7 +156,7 @@ const Tradelines101 = () => {
             <h2 className="text-3xl md:text-4xl font-display text-primary text-glow mb-8">
               Understanding Credit Utilization
             </h2>
-            <div className="space-y-6 text-[hsl(var(--on-dark))] opacity-90 text-lg leading-relaxed">
+            <div className="space-y-6 text-foreground text-lg leading-relaxed">
               <p>
                 <span className="text-primary font-semibold">Credit utilization</span> is the 
                 percentage of your available credit that you're currently using. It's one of the 
@@ -169,7 +169,7 @@ const Tradelines101 = () => {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="p-4 bg-destructive/10 rounded-lg border border-destructive/20">
                       <p className="text-destructive font-semibold mb-2">High Utilization (Bad)</p>
-                      <p className="text-[hsl(var(--on-dark))] opacity-80 text-base">
+                      <p className="text-foreground text-base">
                         Credit Limit: $5,000<br />
                         Balance: $4,500<br />
                         <span className="text-destructive font-bold">Utilization: 90%</span>
@@ -177,7 +177,7 @@ const Tradelines101 = () => {
                     </div>
                     <div className="p-4 bg-primary/10 rounded-lg border border-primary/20">
                       <p className="text-primary font-semibold mb-2">Low Utilization (Good)</p>
-                      <p className="text-[hsl(var(--on-dark))] opacity-80 text-base">
+                      <p className="text-foreground text-base">
                         Credit Limit: $5,000<br />
                         Balance: $500<br />
                         <span className="text-primary font-bold">Utilization: 10%</span>
@@ -189,7 +189,7 @@ const Tradelines101 = () => {
               
               <div className="p-6 bg-secondary/30 rounded-lg border border-border">
                 <h3 className="font-display text-primary text-xl mb-3">Best Practice</h3>
-                <p className="text-[hsl(var(--on-dark))] opacity-90">
+                <p className="text-foreground">
                   Most experts recommend keeping utilization <span className="text-primary font-semibold">below 30%</span>,
                   with <span className="text-primary font-semibold">under 10%</span> being ideal. 
                   High-limit tradelines may help improve your overall utilization ratio by adding 
@@ -288,30 +288,30 @@ const Tradelines101 = () => {
                       <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
                         <span className="text-primary font-display font-bold">1-2</span>
                       </div>
-                      <p className="text-[hsl(var(--on-dark))] font-semibold mb-1">Weeks</p>
-                      <p className="text-[hsl(var(--on-dark))] opacity-70 text-sm">Account added as authorized user</p>
+                      <p className="text-foreground font-semibold mb-1">Weeks</p>
+                      <p className="text-muted-foreground text-sm">Account added as authorized user</p>
                     </div>
                     <div className="text-center p-4">
                       <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
                         <span className="text-primary font-display font-bold">1-2</span>
                       </div>
-                      <p className="text-[hsl(var(--on-dark))] font-semibold mb-1">Statement Cycles</p>
-                      <p className="text-[hsl(var(--on-dark))] opacity-70 text-sm">Tradeline reports to bureaus</p>
+                      <p className="text-foreground font-semibold mb-1">Statement Cycles</p>
+                      <p className="text-muted-foreground text-sm">Tradeline reports to bureaus</p>
                     </div>
                     <div className="text-center p-4">
                       <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
                         <span className="text-primary font-display font-bold">30-60</span>
                       </div>
-                      <p className="text-[hsl(var(--on-dark))] font-semibold mb-1">Days</p>
-                      <p className="text-[hsl(var(--on-dark))] opacity-70 text-sm">Visible on your credit report</p>
+                      <p className="text-foreground font-semibold mb-1">Days</p>
+                      <p className="text-muted-foreground text-sm">Visible on your credit report</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
               
               <div className="p-6 bg-secondary/30 rounded-lg border border-border">
-                <h3 className="font-display text-[hsl(var(--on-dark))] text-xl mb-3">Important Note</h3>
-                <p className="text-[hsl(var(--on-dark))] opacity-80">
+                <h3 className="font-display text-foreground text-xl mb-3">Important Note</h3>
+                <p className="text-foreground/90">
                   Results vary depending on your credit profile, the specific tradeline, and how 
                   lenders evaluate your application. Tradelines are just one factor among many 
                   that influence credit decisions. We cannot guarantee specific score increases 
