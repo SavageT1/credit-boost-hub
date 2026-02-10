@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="py-12 px-4 sm:px-8 border-t border-border bg-background">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
-          <Link to="/" className="flex items-center gap-2">
+          <Link to="/" aria-label="Go to home page" className="flex items-center gap-2">
             <img src={logo} alt="A1 Tradelines" className="h-20 md:h-24 w-auto" />
           </Link>
           

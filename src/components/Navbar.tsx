@@ -28,7 +28,7 @@ const Navbar = () => {
           </button>
 
           {/* Logo - Centered on mobile */}
-          <Link to="/" className="flex items-center gap-2 md:order-first absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
+          <Link to="/" aria-label="Go to home page" className="flex items-center gap-2 md:order-first absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
             <img src={logo} alt="A1 Tradelines" className="h-16 md:h-20 w-auto" />
           </Link>
           
@@ -37,6 +37,12 @@ const Navbar = () => {
           
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-6">
+            <Link 
+              to="/"
+              className="text-gray-700 hover:text-primary transition-colors font-medium"
+            >
+              Home
+            </Link>
             <Link 
               to="/about"
               className="text-gray-700 hover:text-primary transition-colors font-medium"
@@ -88,6 +94,13 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4 bg-white">
+            <Link 
+              to="/"
+              className="block w-full text-left text-gray-700 hover:text-primary transition-colors py-2 font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              Home
+            </Link>
             <Link 
               to="/about"
               className="block w-full text-left text-gray-700 hover:text-primary transition-colors py-2 font-medium"
