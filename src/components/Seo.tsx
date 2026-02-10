@@ -10,7 +10,7 @@ interface SeoProps {
 }
 
 const SITE_URL = "https://a1tradelines.lovable.app";
-const DEFAULT_IMAGE = `${SITE_URL}/og-image.png`;
+const DEFAULT_IMAGE = `${SITE_URL}/og-image.jpg`;
 
 const upsertMeta = (selector: string, attributes: Record<string, string>) => {
   let element = document.head.querySelector(selector) as HTMLMetaElement | null;

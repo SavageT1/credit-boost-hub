@@ -19,6 +19,14 @@ interface BlogPostData {
   published_at: string;
 }
 
+interface RelatedPost {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  published_at: string;
+}
+
 // Separate component for sanitized content to ensure proper memoization
 const SanitizedContent = ({ content }: { content: string }) => {
   const sanitizedContent = useMemo(() => {
@@ -45,6 +53,7 @@ const SanitizedContent = ({ content }: { content: string }) => {
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const [post, setPost] = useState<BlogPostData | null>(null);
+  const [relatedPosts, setRelatedPosts] = useState<RelatedPost[]>([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
 
@@ -63,6 +72,16 @@ const BlogPost = () => {
         console.error("Error fetching post:", error);
       } else {
         setPost(data);
+
+        const { data: relatedData } = await supabase
+          .from("blog_posts")
+          .select("id, title, slug, excerpt, published_at")
+          .eq("published", true)
+          .neq("slug", slug)
+          .order("published_at", { ascending: false })
+          .limit(3);
+
+        setRelatedPosts(relatedData || []);
       }
       setLoading(false);
     };
@@ -213,6 +232,23 @@ const BlogPost = () => {
             </div>
           </article>
         </section>
+
+        {relatedPosts.length > 0 && (
+          <section className="py-6 md:py-10 px-4 sm:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-display text-primary mb-6">Related Articles</h2>
+              <div className="grid md:grid-cols-3 gap-4">
+                {relatedPosts.map((item) => (
+                  <Link key={item.id} to={`/blog/${item.slug}`} className="block rounded-lg border border-border p-4 bg-muted/20 hover:border-primary/50 transition-colors">
+                    <h3 className="font-display text-primary text-lg mb-2 line-clamp-2">{item.title}</h3>
+                    <p className="text-sm text-foreground/75 line-clamp-3 mb-2">{item.excerpt}</p>
+                    <p className="text-xs text-muted-foreground">{formatDate(item.published_at)}</p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* CTA Section */}
         <section className="py-12 md:py-16 px-4 sm:px-8 gradient-dark">
