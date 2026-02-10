@@ -4,12 +4,18 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Shield, Users, TrendingUp, Star, CheckCircle2, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
+import Seo from "@/components/Seo";
 
 const AboutUs = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="pt-24 md:pt-32">
+        <Seo
+          title="About A1 Tradelines | Transparent Tradeline Guidance"
+          description="Meet A1 Tradelines and learn our process for helping clients evaluate and purchase authorized-user tradelines with realistic expectations."
+          path="/about"
+        />
         {/* Hero Section */}
         <section className="py-16 md:py-24 px-4 sm:px-8 gradient-dark">
           <div className="max-w-5xl mx-auto text-center animate-fade-in">

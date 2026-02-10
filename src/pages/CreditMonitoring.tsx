@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Shield, FileSearch, CheckCircle, ArrowRight, AlertTriangle, Target, Users } from "lucide-react";
 import { Link } from "react-router-dom";
+import Seo from "@/components/Seo";
 
 const CreditMonitoring = () => {
   const affiliateLink = "https://beastcreditmonitoring.com/redirect.asp?guid=FANE0CE1RV2J";
@@ -12,6 +13,11 @@ const CreditMonitoring = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="pt-24 md:pt-32">
+        <Seo
+          title="Credit Monitoring & Disputes | A1 Tradelines"
+          description="Fix inaccurate credit-report items first, then strengthen your profile with tradelines. Learn our recommended credit monitoring and dispute workflow."
+          path="/credit-monitoring"
+        />
         {/* Hero Section */}
         <section className="gradient-dark py-12 md:py-24 px-4 sm:px-8">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">

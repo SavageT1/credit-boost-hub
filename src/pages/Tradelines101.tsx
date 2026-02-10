@@ -16,12 +16,18 @@ import {
   BarChart3
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import Seo from "@/components/Seo";
 
 const Tradelines101 = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="pt-24 md:pt-32">
+        <Seo
+          title="Tradelines 101 | What Tradelines Are & How They Work"
+          description="Understand what tradelines are, who they help, utilization basics, and realistic timelines before buying authorized-user tradelines."
+          path="/tradelines-101"
+        />
         {/* Hero Section */}
         <section className="py-16 md:py-24 px-4 sm:px-8 gradient-dark">
           <div className="max-w-5xl mx-auto text-center animate-fade-in">

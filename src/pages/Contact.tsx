@@ -9,6 +9,7 @@ import { Send, Phone, Mail, MapPin, Clock, MessageSquare, Loader2 } from "lucide
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { supabase } from "@/integrations/supabase/client";
+import Seo from "@/components/Seo";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -105,6 +106,11 @@ const Contact = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="pt-24 md:pt-32">
+        <Seo
+          title="Contact A1 Tradelines | Free Credit Assessment"
+          description="Contact A1 Tradelines for a free assessment. Ask questions about tradelines, credit profile strategy, and next steps."
+          path="/contact"
+        />
         {/* Hero Section */}
         <section className="py-12 md:py-16 px-4 sm:px-8 gradient-dark">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">

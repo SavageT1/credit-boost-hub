@@ -6,6 +6,7 @@ import { Calendar, ArrowRight, BookOpen } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
 
 interface BlogPost {
   id: string;
@@ -50,6 +51,11 @@ const Blog = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="pt-24 md:pt-32">
+        <Seo
+          title="Credit Education Blog | A1 Tradelines"
+          description="Read credit education articles on tradelines, utilization, and profile-building strategy from A1 Tradelines."
+          path="/blog"
+        />
         {/* Hero Section */}
         <section className="py-12 md:py-16 px-4 sm:px-8 gradient-dark">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
