@@ -3,7 +3,26 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-secret-token, x-request-timestamp, x-request-signature, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
+};
+
+
+const encoder = new TextEncoder();
+
+const safeEqual = (a: string, b: string) => {
+  if (a.length !== b.length) return false;
+  let out = 0;
+  for (let i = 0; i < a.length; i++) {
+    out |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  }
+  return out === 0;
+};
+
+const sha256Hex = async (input: string) => {
+  const hash = await crypto.subtle.digest("SHA-256", encoder.encode(input));
+  return Array.from(new Uint8Array(hash))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
 };
 
 
@@ -56,11 +75,29 @@ serve(async (req) => {
   }
 
   try {
-    // Verify secret token for authorization
+    // Verify signed request authorization (token + timestamp + signature)
     const BLOG_GENERATION_SECRET = Deno.env.get("BLOG_GENERATION_SECRET");
-    const providedToken = req.headers.get("X-Secret-Token");
+    const providedToken = req.headers.get("X-Secret-Token") || "";
+    const timestamp = req.headers.get("X-Request-Timestamp") || "";
+    const signature = req.headers.get("X-Request-Signature") || "";
 
-    if (!BLOG_GENERATION_SECRET || providedToken !== BLOG_GENERATION_SECRET) {
+    if (!BLOG_GENERATION_SECRET || !providedToken || !timestamp || !signature) {
+      return new Response(
+        JSON.stringify({ error: "Unauthorized" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const ts = Number(timestamp);
+    if (!Number.isFinite(ts) || Math.abs(Date.now() - ts) > 5 * 60 * 1000) {
+      return new Response(
+        JSON.stringify({ error: "Unauthorized" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const expectedSignature = await sha256Hex(`${BLOG_GENERATION_SECRET}.${timestamp}`);
+    if (!safeEqual(providedToken, BLOG_GENERATION_SECRET) || !safeEqual(signature, expectedSignature)) {
       return new Response(
         JSON.stringify({ error: "Unauthorized" }),
         { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -80,6 +117,24 @@ serve(async (req) => {
     }
 
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+
+    // Basic rate limiting: allow at most one generation every 15 minutes
+    const { data: latestPost } = await supabase
+      .from("blog_posts")
+      .select("created_at")
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    if (latestPost?.created_at) {
+      const diffMs = Date.now() - new Date(latestPost.created_at).getTime();
+      if (diffMs < 15 * 60 * 1000) {
+        return new Response(
+          JSON.stringify({ error: "Rate limited. Please wait before generating another post." }),
+          { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+    }
 
     // Get existing blog post titles to avoid duplicates
     const { data: existingPosts } = await supabase
