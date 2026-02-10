@@ -3,9 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "@/assets/logo.png";
+import ContactFormModal from "@/components/ContactFormModal";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showContactModal, setShowContactModal] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -24,8 +26,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-b border-gray-200">
-      <div className="max-w-6xl mx-auto px-6 py-4">
+    <>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-b border-gray-200">
+        <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Mobile Menu Button - Left on mobile */}
           <button 
@@ -93,9 +96,13 @@ const Navbar = () => {
                 Call Us
               </Button>
             </a>
-            <Link to="/contact">
-              <Button className="font-display box-glow" data-cta="assessment">Get Started</Button>
-            </Link>
+            <Button
+              className="font-display box-glow"
+              data-cta="assessment"
+              onClick={() => setShowContactModal(true)}
+            >
+              Get Started
+            </Button>
           </div>
         </div>
         
@@ -156,13 +163,26 @@ const Navbar = () => {
                 Call (908) 767-5309
               </Button>
             </a>
-            <Link to="/contact" className="block" onClick={() => setIsOpen(false)}>
-              <Button className="w-full font-display text-[15px] box-glow" data-cta="assessment">Get Started</Button>
-            </Link>
+            <Button
+              className="w-full font-display text-[15px] box-glow"
+              data-cta="assessment"
+              onClick={() => {
+                setIsOpen(false);
+                setShowContactModal(true);
+              }}
+            >
+              Get Started
+            </Button>
           </div>
         )}
-      </div>
-    </nav>
+        </div>
+      </nav>
+      <ContactFormModal
+        open={showContactModal}
+        onOpenChange={setShowContactModal}
+        title="Get Your Free Assessment"
+      />
+    </>
   );
 };
 
