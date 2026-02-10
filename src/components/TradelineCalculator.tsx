@@ -15,6 +15,9 @@ const TradelineCalculator = () => {
   const [missedPayments, setMissedPayments] = useState("1-2");
   const [utilizationRange, setUtilization] = useState("50-75");
   const [negativeItems, setNegativeItems] = useState("some");
+  const [openCollections, setOpenCollections] = useState("yes");
+  const [recentInquiries, setRecentInquiries] = useState("2-4");
+  const [paymentHistoryStrength, setPaymentHistoryStrength] = useState("90-96");
 
   const [tradelinesAdded, setTradelinesAdded] = useState(0);
   const [showContactModal, setShowContactModal] = useState(false);
@@ -78,7 +81,28 @@ const TradelineCalculator = () => {
     };
     boost += negativePenalty[negativeItems] || 0;
 
-    return Math.max(2, boost);
+    const collectionsPenalty: Record<string, number> = {
+      no: 2,
+      yes: -10,
+    };
+    boost += collectionsPenalty[openCollections] || 0;
+
+    const inquiryPenalty: Record<string, number> = {
+      "0-1": 2,
+      "2-4": 0,
+      "5+": -5,
+    };
+    boost += inquiryPenalty[recentInquiries] || 0;
+
+    const paymentHistoryBoost: Record<string, number> = {
+      "100": 4,
+      "97-99": 2,
+      "90-96": 0,
+      "<90": -9,
+    };
+    boost += paymentHistoryBoost[paymentHistoryStrength] || 0;
+
+    return Math.max(1, boost);
   };
 
   const calculateProjectedScore = (added: number) => {
@@ -96,6 +120,8 @@ const TradelineCalculator = () => {
 
   const needsRepairFirst =
     negativeItems === "severe" ||
+    openCollections === "yes" ||
+    paymentHistoryStrength === "<90" ||
     missedPayments === "6+" ||
     (missedPayments === "3-5" && negativeItems !== "none");
 
@@ -125,7 +151,7 @@ const TradelineCalculator = () => {
     if (with2 >= target) return 2;
     if (with3 >= target) return 3;
     return 4; // 4 means likely needs profile cleanup first / more than 3
-  }, [scoreRange, targetScoreRange, currentTradelines, oldestAccount, missedPayments, utilizationRange, negativeItems]);
+  }, [scoreRange, targetScoreRange, currentTradelines, oldestAccount, missedPayments, utilizationRange, negativeItems, openCollections, recentInquiries, paymentHistoryStrength]);
 
   const getScoreColor = (score: number) => {
     if (score >= 750) return "text-green-400";
@@ -266,6 +292,45 @@ const TradelineCalculator = () => {
                         <div key={option.value} className="flex items-center space-x-2">
                           <RadioGroupItem value={option.value} id={`neg-${option.value}`} />
                           <Label htmlFor={`neg-${option.value}`} className="cursor-pointer text-sm text-[hsl(var(--on-dark))] opacity-95">{option.label}</Label>
+                        </div>
+                      ))}
+                    </RadioGroup>
+                  </div>
+
+                  <div className="space-y-3">
+                    <Label className="text-[hsl(var(--on-dark))] font-semibold">Any Open Collections Right Now?</Label>
+                    <RadioGroup value={openCollections} onValueChange={setOpenCollections} className="grid grid-cols-2 gap-2">
+                      {[
+                        { value: "no", label: "No" },
+                        { value: "yes", label: "Yes" },
+                      ].map((option) => (
+                        <div key={option.value} className="flex items-center space-x-2">
+                          <RadioGroupItem value={option.value} id={`collections-${option.value}`} />
+                          <Label htmlFor={`collections-${option.value}`} className="cursor-pointer text-sm text-[hsl(var(--on-dark))] opacity-95">{option.label}</Label>
+                        </div>
+                      ))}
+                    </RadioGroup>
+                  </div>
+
+                  <div className="space-y-3">
+                    <Label className="text-[hsl(var(--on-dark))] font-semibold">Recent Hard Inquiries (last 12 months)</Label>
+                    <RadioGroup value={recentInquiries} onValueChange={setRecentInquiries} className="grid grid-cols-3 gap-2">
+                      {["0-1", "2-4", "5+"].map((value) => (
+                        <div key={value} className="flex items-center space-x-2">
+                          <RadioGroupItem value={value} id={`inq-${value}`} />
+                          <Label htmlFor={`inq-${value}`} className="cursor-pointer text-sm text-[hsl(var(--on-dark))] opacity-95">{value}</Label>
+                        </div>
+                      ))}
+                    </RadioGroup>
+                  </div>
+
+                  <div className="space-y-3">
+                    <Label className="text-[hsl(var(--on-dark))] font-semibold">On-Time Payment History</Label>
+                    <RadioGroup value={paymentHistoryStrength} onValueChange={setPaymentHistoryStrength} className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                      {["100", "97-99", "90-96", "<90"].map((value) => (
+                        <div key={value} className="flex items-center space-x-2">
+                          <RadioGroupItem value={value} id={`payhist-${value}`} />
+                          <Label htmlFor={`payhist-${value}`} className="cursor-pointer text-sm text-[hsl(var(--on-dark))] opacity-95">{value}%</Label>
                         </div>
                       ))}
                     </RadioGroup>
