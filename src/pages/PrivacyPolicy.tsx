@@ -1,12 +1,18 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
+import Seo from "@/components/Seo";
 
 const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="pt-24 md:pt-32 pb-16 px-4 sm:px-8">
+        <Seo
+          title="Privacy Policy | A1 Tradelines"
+          description="Read the A1 Tradelines privacy policy and how we collect, use, and protect your information."
+          path="/privacy-policy"
+        />
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
             <h1 className="text-3xl md:text-5xl font-display text-primary text-glow mb-8">

@@ -7,6 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
 
 interface BlogPostData {
   id: string;
@@ -62,10 +63,6 @@ const BlogPost = () => {
         console.error("Error fetching post:", error);
       } else {
         setPost(data);
-        // Update page title and meta
-        if (data) {
-          document.title = `${data.title} | A1 Tradelines Blog`;
-        }
       }
       setLoading(false);
     };
@@ -145,8 +142,35 @@ const BlogPost = () => {
     );
   }
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.meta_description || post.excerpt,
+    datePublished: post.published_at,
+    author: {
+      "@type": "Organization",
+      name: "A1 Tradelines",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "A1 Tradelines",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://a1tradelines.lovable.app/favicon-192.png",
+      },
+    },
+    mainEntityOfPage: `https://a1tradelines.lovable.app/blog/${post.slug}`,
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <Seo
+        title={`${post.title} | A1 Tradelines Blog`}
+        description={post.meta_description || post.excerpt}
+        path={`/blog/${post.slug}`}
+        jsonLd={articleSchema}
+      />
       <Navbar />
       <main className="pt-24 md:pt-32">
         {/* Header */}
