@@ -196,7 +196,7 @@ const TradelineCalculator = () => {
               <h2 className="text-3xl md:text-5xl font-display text-primary text-glow mb-4">
                 Credit Assessment & Tradeline Planner
               </h2>
-              <p className="text-lg text-foreground/90 max-w-2xl mx-auto">
+              <p className="text-lg text-[hsl(var(--on-dark))] opacity-90 max-w-2xl mx-auto">
                 Answer a few questions to see whether you should fix credit first (Dispute Beast) and how many tradelines may help you reach your target range.
               </p>
             </div>
