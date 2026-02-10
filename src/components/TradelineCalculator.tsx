@@ -170,7 +170,7 @@ const TradelineCalculator = () => {
               <h2 className="text-3xl md:text-5xl font-display text-primary text-glow mb-4">
                 Credit Assessment & Tradeline Planner
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-lg text-foreground/90 max-w-2xl mx-auto">
                 Answer a few questions to see whether you should fix credit first (Dispute Beast) and how many tradelines may help you reach your target range.
               </p>
             </div>
@@ -181,47 +181,47 @@ const TradelineCalculator = () => {
               <Card className="gradient-card border-border">
                 <CardHeader>
                   <CardTitle className="font-display text-primary">Your Credit Profile</CardTitle>
-                  <CardDescription>Choose the closest match for each question.</CardDescription>
+                  <CardDescription className="text-[hsl(var(--on-dark))] opacity-90">Choose the closest match for each question.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-3">
-                    <Label className="text-white font-medium">Current Credit Score Range</Label>
+                    <Label className="text-[hsl(var(--on-dark))] font-semibold">Current Credit Score Range</Label>
                     <RadioGroup value={scoreRange} onValueChange={setScoreRange} className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                       {["300-499", "500-579", "580-619", "620-659", "660-699", "700-749", "750+"].map((range) => (
                         <div key={range} className="flex items-center space-x-2">
                           <RadioGroupItem value={range} id={`score-${range}`} />
-                          <Label htmlFor={`score-${range}`} className="cursor-pointer text-sm text-white">{range}</Label>
+                          <Label htmlFor={`score-${range}`} className="cursor-pointer text-sm text-[hsl(var(--on-dark))] opacity-95">{range}</Label>
                         </div>
                       ))}
                     </RadioGroup>
                   </div>
 
                   <div className="space-y-3">
-                    <Label className="text-white font-medium">Target Score Range</Label>
+                    <Label className="text-[hsl(var(--on-dark))] font-semibold">Target Score Range</Label>
                     <RadioGroup value={targetScoreRange} onValueChange={setTargetScoreRange} className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                       {["620-659", "660-699", "700-749", "750+"].map((range) => (
                         <div key={range} className="flex items-center space-x-2">
                           <RadioGroupItem value={range} id={`target-${range}`} />
-                          <Label htmlFor={`target-${range}`} className="cursor-pointer text-sm text-white">{range}</Label>
+                          <Label htmlFor={`target-${range}`} className="cursor-pointer text-sm text-[hsl(var(--on-dark))] opacity-95">{range}</Label>
                         </div>
                       ))}
                     </RadioGroup>
                   </div>
 
                   <div className="space-y-3">
-                    <Label className="text-white font-medium">How Many Credit Accounts Do You Have?</Label>
+                    <Label className="text-[hsl(var(--on-dark))] font-semibold">How Many Credit Accounts Do You Have?</Label>
                     <RadioGroup value={currentTradelines} onValueChange={setCurrentTradelines} className="grid grid-cols-2 sm:grid-cols-5 gap-2">
                       {["0", "1-2", "3-5", "6-10", "10+"].map((count) => (
                         <div key={count} className="flex items-center space-x-2">
                           <RadioGroupItem value={count} id={`tl-${count}`} />
-                          <Label htmlFor={`tl-${count}`} className="cursor-pointer text-sm text-white">{count === "0" ? "None" : count}</Label>
+                          <Label htmlFor={`tl-${count}`} className="cursor-pointer text-sm text-[hsl(var(--on-dark))] opacity-95">{count === "0" ? "None" : count}</Label>
                         </div>
                       ))}
                     </RadioGroup>
                   </div>
 
                   <div className="space-y-3">
-                    <Label className="text-white font-medium">Age of Your Oldest Account</Label>
+                    <Label className="text-[hsl(var(--on-dark))] font-semibold">Age of Your Oldest Account</Label>
                     <RadioGroup value={oldestAccount} onValueChange={setOldestAccount} className="grid grid-cols-2 sm:grid-cols-5 gap-2">
                       {[
                         { value: "0-1", label: "0-1 yr" },
@@ -232,14 +232,14 @@ const TradelineCalculator = () => {
                       ].map((option) => (
                         <div key={option.value} className="flex items-center space-x-2">
                           <RadioGroupItem value={option.value} id={`age-${option.value}`} />
-                          <Label htmlFor={`age-${option.value}`} className="cursor-pointer text-sm text-white">{option.label}</Label>
+                          <Label htmlFor={`age-${option.value}`} className="cursor-pointer text-sm text-[hsl(var(--on-dark))] opacity-95">{option.label}</Label>
                         </div>
                       ))}
                     </RadioGroup>
                   </div>
 
                   <div className="space-y-3">
-                    <Label className="text-white font-medium">Late or Missed Payments (Past 2 Years)</Label>
+                    <Label className="text-[hsl(var(--on-dark))] font-semibold">Late or Missed Payments (Past 2 Years)</Label>
                     <RadioGroup value={missedPayments} onValueChange={setMissedPayments} className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                       {[
                         { value: "0", label: "None" },
@@ -249,14 +249,14 @@ const TradelineCalculator = () => {
                       ].map((option) => (
                         <div key={option.value} className="flex items-center space-x-2">
                           <RadioGroupItem value={option.value} id={`missed-${option.value}`} />
-                          <Label htmlFor={`missed-${option.value}`} className="cursor-pointer text-sm text-white">{option.label}</Label>
+                          <Label htmlFor={`missed-${option.value}`} className="cursor-pointer text-sm text-[hsl(var(--on-dark))] opacity-95">{option.label}</Label>
                         </div>
                       ))}
                     </RadioGroup>
                   </div>
 
                   <div className="space-y-3">
-                    <Label className="text-white font-medium">Negative Items on Report (collections/charge-offs/public records)</Label>
+                    <Label className="text-[hsl(var(--on-dark))] font-semibold">Negative Items on Report (collections/charge-offs/public records)</Label>
                     <RadioGroup value={negativeItems} onValueChange={setNegativeItems} className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                       {[
                         { value: "none", label: "None" },
@@ -265,14 +265,14 @@ const TradelineCalculator = () => {
                       ].map((option) => (
                         <div key={option.value} className="flex items-center space-x-2">
                           <RadioGroupItem value={option.value} id={`neg-${option.value}`} />
-                          <Label htmlFor={`neg-${option.value}`} className="cursor-pointer text-sm text-white">{option.label}</Label>
+                          <Label htmlFor={`neg-${option.value}`} className="cursor-pointer text-sm text-[hsl(var(--on-dark))] opacity-95">{option.label}</Label>
                         </div>
                       ))}
                     </RadioGroup>
                   </div>
 
                   <div className="space-y-3">
-                    <Label className="text-white font-medium">Credit Utilization (Balances vs. Limits)</Label>
+                    <Label className="text-[hsl(var(--on-dark))] font-semibold">Credit Utilization (Balances vs. Limits)</Label>
                     <RadioGroup value={utilizationRange} onValueChange={setUtilization} className="grid grid-cols-2 sm:grid-cols-5 gap-2">
                       {[
                         { value: "0-9", label: "0-9%" },
@@ -283,7 +283,7 @@ const TradelineCalculator = () => {
                       ].map((option) => (
                         <div key={option.value} className="flex items-center space-x-2">
                           <RadioGroupItem value={option.value} id={`util-${option.value}`} />
-                          <Label htmlFor={`util-${option.value}`} className="cursor-pointer text-sm text-white">{option.label}</Label>
+                          <Label htmlFor={`util-${option.value}`} className="cursor-pointer text-sm text-[hsl(var(--on-dark))] opacity-95">{option.label}</Label>
                         </div>
                       ))}
                     </RadioGroup>
@@ -299,15 +299,15 @@ const TradelineCalculator = () => {
                     <TrendingUp className="w-5 h-5" />
                     Assessment Results
                   </CardTitle>
-                  <CardDescription>Estimated path based on your inputs.</CardDescription>
+                  <CardDescription className="text-[hsl(var(--on-dark))] opacity-90">Estimated path based on your inputs.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="text-center py-6 rounded-lg bg-background/50 border border-border">
-                    <p className="text-sm text-muted-foreground mb-1">{tradelinesAdded === 0 ? "Current Estimate" : "Projected Estimate"}</p>
+                    <p className="text-sm text-foreground/80 mb-1">{tradelinesAdded === 0 ? "Current Estimate" : "Projected Estimate"}</p>
                     <p className={`text-5xl font-display font-bold ${getScoreColor(projectedScore)}`}>{projected.mid}</p>
                     <p className={`text-sm font-medium mt-1 ${getScoreColor(projected.mid)}`}>{getScoreLabel(projected.mid)}</p>
-                    <p className="text-xs text-muted-foreground mt-1">Estimated range: {projected.low}–{projected.high}</p>
-                    <p className="text-xs text-muted-foreground mt-2">Target range: {targetScoreRange}</p>
+                    <p className="text-xs text-foreground/75 mt-1">Estimated range: {projected.low}–{projected.high}</p>
+                    <p className="text-xs text-foreground/75 mt-2">Target range: {targetScoreRange}</p>
                   </div>
 
                   <div className="space-y-3">
@@ -343,7 +343,7 @@ const TradelineCalculator = () => {
                       {recommendedTradelines > 0 && recommendedTradelines < 4 && `Estimated needed: ${recommendedTradelines} tradeline${recommendedTradelines > 1 ? "s" : ""} to approach your target.`}
                       {recommendedTradelines === 4 && "Likely more than 3 tradelines and/or cleanup needed before reaching this target."}
                     </p>
-                  <p className="text-xs text-muted-foreground mt-2">
+                  <p className="text-xs text-foreground/75 mt-2">
                     Confidence: {needsRepairFirst ? "Lower" : "Moderate"} (based on self-reported ranges)
                   </p>
                   </div>
@@ -372,7 +372,7 @@ const TradelineCalculator = () => {
                     Get My Free Custom Plan
                   </Button>
 
-                  <p className="text-xs text-muted-foreground text-center">
+                  <p className="text-xs text-foreground/75 text-center">
                     Estimates are scenario-based (not guarantees). Highest accuracy is typically for clean/thin files; lower when there are negatives, recent lates, or major utilization swings.
                   </p>
                 </CardContent>
