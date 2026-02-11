@@ -19,7 +19,7 @@ const HeroSection = () => {
         
         <AnimatedSection delay={100}>
           <p className="text-lg sm:text-xl md:text-2xl text-[hsl(var(--on-dark))] opacity-80 max-w-xs sm:max-w-xl md:max-w-3xl mx-auto leading-relaxed">
-            Tradelines are credit accounts that appear on your credit report. Through A1 Tradelines, you can purchase authorized-user tradelines to potentially strengthen key factors like age and utilization—backed by clear education, transparent pricing, and realistic expectations.
+            We help you add seasoned authorized-user tradelines to your credit profile through trusted cardholder accounts. Our team guides you step-by-step, explains what to expect, and helps you choose the right tradelines for your goals—without hype or false promises.
           </p>
         </AnimatedSection>
         
