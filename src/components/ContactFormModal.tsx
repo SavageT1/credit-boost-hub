@@ -35,7 +35,32 @@ const ContactFormModal = ({ open, onOpenChange, title = "Get Started" }: Contact
   const HUBSPOT_PORTAL_ID = "244921424";
   const HUBSPOT_FORM_ID = "f738963e-9243-43e3-848c-df584038fa1a";
 
-  const submitToBackend = async () => {
+  const buildTrackingData = () => {
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get("utm_source") || "";
+    const utmMedium = params.get("utm_medium") || "";
+    const utmCampaign = params.get("utm_campaign") || "";
+    const gclid = params.get("gclid") || "";
+    const fbclid = params.get("fbclid") || "";
+    const hutk = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("hubspotutk="))
+      ?.split("=")[1] || "";
+
+    const trackingSummary = [
+      utmSource ? `utm_source=${utmSource}` : "",
+      utmMedium ? `utm_medium=${utmMedium}` : "",
+      utmCampaign ? `utm_campaign=${utmCampaign}` : "",
+      gclid ? `gclid=${gclid}` : "",
+      fbclid ? `fbclid=${fbclid}` : "",
+    ]
+      .filter(Boolean)
+      .join(" | ");
+
+    return { hutk, trackingSummary };
+  };
+
+  const submitToBackend = async (messageForStorage: string) => {
     try {
       const { error } = await supabase.functions.invoke("submit-contact-lead", {
         body: {
@@ -43,7 +68,7 @@ const ContactFormModal = ({ open, onOpenChange, title = "Get Started" }: Contact
           lastName: formData.lastName,
           email: formData.email,
           phone: formData.phone,
-          notes: formData.message,
+          notes: messageForStorage,
           source: "modal",
         },
       });
@@ -60,6 +85,11 @@ const ContactFormModal = ({ open, onOpenChange, title = "Get Started" }: Contact
     setIsSubmitting(true);
 
     try {
+      const tracking = buildTrackingData();
+      const messageWithTracking = tracking.trackingSummary
+        ? `${formData.message}\n\nTracking: ${tracking.trackingSummary}`
+        : formData.message;
+
       // Submit to both HubSpot and backend in parallel
       const hubspotPromise = fetch(
         `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_ID}`,
@@ -74,9 +104,10 @@ const ContactFormModal = ({ open, onOpenChange, title = "Get Started" }: Contact
               { name: "lastname", value: formData.lastName },
               { name: "email", value: formData.email },
               { name: "phone", value: formData.phone },
-              { name: "message", value: formData.message },
+              { name: "message", value: messageWithTracking },
             ],
             context: {
+              hutk: tracking.hutk,
               pageUri: window.location.href,
               pageName: document.title,
             },
@@ -85,7 +116,7 @@ const ContactFormModal = ({ open, onOpenChange, title = "Get Started" }: Contact
       );
 
       // Fire backend submission without blocking
-      submitToBackend();
+      submitToBackend(messageWithTracking);
 
       const response = await hubspotPromise;
 
