@@ -19,7 +19,7 @@ const HeroSection = () => {
         
         <AnimatedSection delay={100}>
           <p className="text-lg sm:text-xl md:text-2xl text-[hsl(var(--on-dark))] opacity-80 max-w-xs sm:max-w-xl md:max-w-3xl mx-auto leading-relaxed">
-            A1 Tradelines helps you buy seasoned authorized-user tradelines to strengthen key credit profile factors like utilization and account age. Get transparent pricing, clear guidance, and realistic expectations from a trusted tradeline company.
+            We help you add seasoned authorized-user tradelines to your credit profile through trusted cardholder accounts. Our team guides you step-by-step, explains what to expect, and helps you choose the right tradelines for your goals—without hype or false promises.
           </p>
         </AnimatedSection>
         
