@@ -19,6 +19,45 @@ import { Link } from "react-router-dom";
 import Seo from "@/components/Seo";
 
 const Tradelines101 = () => {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What is an authorized user tradeline?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "An authorized user tradeline is when you are added to an existing credit card account and that account history may appear on your credit report."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "How long does a tradeline usually take to report?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "In many cases, tradelines may appear after one to two reporting cycles, but timing can vary by issuer and bureau."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Are tradelines guaranteed to increase my score?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. Tradelines are not a guaranteed score increase and results depend on your full credit profile, including payment history, utilization, and derogatory items."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Should I repair negative items before buying tradelines?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Often yes. Addressing inaccurate or unresolved negative items first can create a cleaner foundation before adding tradelines."
+        }
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -27,6 +66,7 @@ const Tradelines101 = () => {
           title="Tradelines 101 | What Tradelines Are & How They Work"
           description="Understand what tradelines are, who they help, utilization basics, and realistic timelines before buying authorized-user tradelines."
           path="/tradelines-101"
+          jsonLd={faqSchema}
         />
         {/* Hero Section */}
         <section className="py-16 md:py-24 px-4 sm:px-8 gradient-dark">
