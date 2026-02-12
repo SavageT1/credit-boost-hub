@@ -357,25 +357,25 @@ const Contact = () => {
               <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '100ms' }}>
                 <CardContent className="pt-6">
                   <h3 className="font-display text-primary mb-2">How long does it take to see results?</h3>
-                  <p className="text-muted-foreground text-sm">Most clients see their tradeline appear on their credit report within 15–30 days after being added.</p>
+                  <p className="text-white opacity-95 text-sm">Most clients see their tradeline appear on their credit report within 15–30 days after being added.</p>
                 </CardContent>
               </Card>
               <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '200ms' }}>
                 <CardContent className="pt-6">
                   <h3 className="font-display text-primary mb-2">Is this legal?</h3>
-                  <p className="text-muted-foreground text-sm">Yes, becoming an authorized user on someone else's credit card is completely legal and a common credit-building strategy.</p>
+                  <p className="text-white opacity-95 text-sm">Yes, becoming an authorized user on someone else's credit card is completely legal and a common credit-building strategy.</p>
                 </CardContent>
               </Card>
               <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '300ms' }}>
                 <CardContent className="pt-6">
                   <h3 className="font-display text-primary mb-2">What information do you need from me?</h3>
-                  <p className="text-muted-foreground text-sm">We only collect basic contact details here so we can follow up. We’ll explain any required information privately during your consultation.</p>
+                  <p className="text-white opacity-95 text-sm">We only collect basic contact details here so we can follow up. We’ll explain any required information privately during your consultation.</p>
                 </CardContent>
               </Card>
               <Card className="gradient-card border-border animate-fade-in" style={{ animationDelay: '400ms' }}>
                 <CardContent className="pt-6">
                   <h3 className="font-display text-primary mb-2">Do you offer refunds?</h3>
-                  <p className="text-muted-foreground text-sm">Yes, we offer a full refund if your tradeline doesn't post to your credit report within 60 days.</p>
+                  <p className="text-white opacity-95 text-sm">Yes, we offer a full refund if your tradeline doesn't post to your credit report within 60 days.</p>
                 </CardContent>
               </Card>
             </div>
