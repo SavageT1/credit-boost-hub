@@ -255,7 +255,7 @@ const Contact = () => {
                           value={formData.firstName}
                           onChange={handleChange}
                           required
-                          className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
+                          className="bg-white text-black placeholder:text-gray-500 border-gray-300"
                         />
                       </div>
                       <div className="space-y-2">
@@ -267,7 +267,7 @@ const Contact = () => {
                           value={formData.lastName}
                           onChange={handleChange}
                           required
-                          className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
+                          className="bg-white text-black placeholder:text-gray-500 border-gray-300"
                         />
                       </div>
                     </div>
@@ -281,7 +281,7 @@ const Contact = () => {
                         placeholder="(908) 767-5309"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
+                        className="bg-white text-black placeholder:text-gray-500 border-gray-300"
                       />
                     </div>
                     
@@ -295,7 +295,7 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
+                        className="bg-white text-black placeholder:text-gray-500 border-gray-300"
                       />
                     </div>
 
@@ -307,7 +307,7 @@ const Contact = () => {
                         placeholder="How can we help?"
                         value={formData.subject}
                         onChange={handleChange}
-                        className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
+                        className="bg-white text-black placeholder:text-gray-500 border-gray-300"
                       />
                     </div>
                     
@@ -321,7 +321,7 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         rows={5}
-                        className="bg-background/50 text-foreground placeholder:text-muted-foreground/50 border-border"
+                        className="bg-white text-black placeholder:text-gray-500 border-gray-300"
                       />
                     </div>
                     
