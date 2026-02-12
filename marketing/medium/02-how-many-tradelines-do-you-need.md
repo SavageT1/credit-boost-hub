@@ -1,30 +1,42 @@
 # How Many Tradelines Do You Actually Need?
 
-Most buyers ask this too late. They shop by price first, then try to reverse-engineer results. Better approach: diagnose your profile first.
+Most people ask this after they already started shopping by price. Better sequence: diagnose first, then buy with purpose.
 
 ## There is no magic number
 
-Some people need one targeted line. Others benefit from two. Many overbuy because they skip diagnostics.
+Some people benefit from one tradeline. Others may need two. Many people overbuy because they cannot explain what each tradeline is supposed to fix.
 
-## Start with profile categories
+## Practical profile framework
 
-- **Thin file, clean history:** often one to two lines can create visible support
-- **Moderate file, mixed factors:** one to three based on age/utilization goals
-- **Negative-heavy file:** repair-first usually outperforms more tradelines
+### Thin file + mostly clean report
+Often one to two tradelines can create meaningful support.
+
+### Moderate file + mixed factors
+Usually one to three, depending on age/utilization goals.
+
+### Negative-heavy file
+Repair-first is often a better first move than adding more lines.
 
 ## Signs you are overbuying
 
-- You cannot explain what each line is fixing
-- You are ignoring utilization or payment behavior
-- You are expecting tradelines to override active derogatories
+- You cannot define a target metric
+- You are adding lines while utilization is still high
+- You expect tradelines to offset unresolved negatives
 
 ## Smart sequencing
 
 1. Pull and review all three reports
-2. Fix obvious inaccuracies
-3. Improve utilization first
-4. Add the minimum tradelines needed for your target
+2. Correct inaccuracies
+3. Improve utilization discipline
+4. Add the minimum number of targeted lines
+5. Reassess before buying more
 
 ## Final takeaway
 
-Buy strategy, not quantity. One aligned tradeline can outperform several random ones.
+Buy strategy, not quantity. One properly matched tradeline can outperform several random ones.
+
+---
+
+*Educational content only. No guaranteed outcomes.*
+
+Need help mapping your profile first? **https://a1tradelines.com/contact**

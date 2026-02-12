@@ -1,28 +1,31 @@
-# Tradelines vs Credit Repair: Which Comes First?
+# Tradelines vs Credit Repair: Which Should Come First?
 
-People often treat these as competitors. They are better viewed as sequence tools.
+People often treat tradelines and credit repair like competitors. In reality, they are sequence tools.
 
-## Credit repair first when...
+## Repair-first is usually better when:
+- You have inaccurate negatives
+- You have unresolved derogatory errors
+- Your report integrity is weak
 
-- Your file has inaccurate negatives
-- You have duplicate or outdated derogatory data
-- You have unresolved collections errors
+Why: fixing bad data often removes direct drag before you add profile support.
 
-In these cases, cleanup can remove drag before adding profile support.
-
-## Tradelines first when...
-
-- Your file is mostly clean
-- You need stronger age/utilization support
+## Tradelines-first may make sense when:
+- Your report is mostly clean
+- You need age/utilization support
 - Timing matters for a financing window
 
-## The best hybrid
-
-- Correct errors
-- Stabilize utilization
-- Add one targeted tradeline
-- Maintain on-time payments and low balances
+## Best hybrid approach
+1. Correct inaccuracies
+2. Lower utilization
+3. Add one targeted tradeline
+4. Keep payment behavior tight
 
 ## Bottom line
 
-Repair improves integrity. Tradelines support profile structure. Used together in the right order, they work better.
+Credit repair improves report integrity. Tradelines improve profile structure. In the right order, they can work better together.
+
+---
+
+*Educational content only. No guarantees.*
+
+For a practical sequence plan: **https://a1tradelines.com/contact**
