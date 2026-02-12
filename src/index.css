@@ -122,6 +122,17 @@
     font-family: 'Orbitron', sans-serif;
     @apply font-bold tracking-tight;
   }
+
+  /* Slightly increase spacing for display font to improve neon-green readability */
+  .font-display {
+    letter-spacing: 0.015em;
+  }
+
+  @media (max-width: 640px) {
+    .font-display {
+      letter-spacing: 0.02em;
+    }
+  }
 }
 
 @layer utilities {
