@@ -101,14 +101,20 @@ export default function InventoryPortal() {
   const [form, setForm] = useState<OrderForm>(initialForm);
   const [statusMsg, setStatusMsg] = useState<string>("");
   const [countrySearch, setCountrySearch] = useState("");
+  const [portalKeyInput, setPortalKeyInput] = useState("");
+  const [portalKey, setPortalKey] = useState<string>(() => sessionStorage.getItem("portal_key") || "");
 
   const { data, isLoading, isError, refetch, isFetching } = useQuery({
     queryKey: ["vendor-tradelines"],
     queryFn: async () => {
-      const { data, error } = await supabase.functions.invoke("vendor-tradelines", { method: "GET" });
+      const { data, error } = await supabase.functions.invoke("vendor-tradelines", {
+        method: "GET",
+        headers: { "x-portal-key": portalKey },
+      });
       if (error) throw error;
       return data as { tradelines: TradelineRow[]; markupPct: number };
     },
+    enabled: Boolean(portalKey),
     refetchInterval: 60_000,
   });
 
@@ -139,6 +145,7 @@ export default function InventoryPortal() {
 
       const { data, error } = await supabase.functions.invoke("vendor-order-request", {
         method: "POST",
+        headers: { "x-portal-key": portalKey },
         body: payload,
       });
       if (error) throw error;
@@ -162,6 +169,35 @@ export default function InventoryPortal() {
     if (!q) return allCitizenshipOptions;
     return allCitizenshipOptions.filter((c) => c.name.toLowerCase().includes(q) || String(c.id) === q);
   }, [countrySearch]);
+
+  if (!portalKey) {
+    return (
+      <main className="min-h-screen bg-black text-white p-6 md:p-10">
+        <Seo title="Inventory Portal Access" description="Private inventory portal" path="/inventory-portal-x7k9" noindex />
+        <div className="max-w-lg mx-auto mt-16 border border-gray-700 rounded-lg bg-gray-950 p-6">
+          <h1 className="text-2xl font-bold mb-2">Private Portal Access</h1>
+          <p className="text-sm text-gray-300 mb-4">Enter your portal key to access inventory and order tools.</p>
+          <input
+            type="password"
+            className="bg-black border border-gray-700 rounded px-3 py-2 w-full mb-3"
+            placeholder="Portal key"
+            value={portalKeyInput}
+            onChange={(e) => setPortalKeyInput(e.target.value)}
+          />
+          <button
+            className="bg-cyan-400 text-black font-semibold px-4 py-2 rounded hover:bg-cyan-300"
+            onClick={() => {
+              if (!portalKeyInput.trim()) return;
+              sessionStorage.setItem("portal_key", portalKeyInput.trim());
+              setPortalKey(portalKeyInput.trim());
+            }}
+          >
+            Unlock Portal
+          </button>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-black text-white p-6 md:p-10">

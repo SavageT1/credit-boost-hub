@@ -2,7 +2,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-portal-key",
 };
 
 type OrderRequestBody = {
@@ -43,6 +43,16 @@ serve(async (req) => {
   }
 
   try {
+    const portalSecret = Deno.env.get("PORTAL_SHARED_SECRET");
+    const portalKey = req.headers.get("x-portal-key");
+
+    if (!portalSecret || portalKey !== portalSecret) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const userKey = Deno.env.get("VENDOR_API_USER_KEY");
     const passKey = Deno.env.get("VENDOR_API_PASS_KEY");
     const apiVersion = Deno.env.get("VENDOR_API_VERSION") ?? "3";
