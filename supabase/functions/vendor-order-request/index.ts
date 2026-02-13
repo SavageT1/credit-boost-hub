@@ -1,8 +1,9 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-portal-key",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
 type OrderRequestBody = {
@@ -43,10 +44,22 @@ serve(async (req) => {
   }
 
   try {
-    const portalSecret = Deno.env.get("PORTAL_SHARED_SECRET");
-    const portalKey = req.headers.get("x-portal-key");
+    const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+    const anonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
+    const allowedEmails = (Deno.env.get("PORTAL_ALLOWED_EMAILS") || "")
+      .split(",")
+      .map((e) => e.trim().toLowerCase())
+      .filter(Boolean);
 
-    if (!portalSecret || portalKey !== portalSecret) {
+    const authHeader = req.headers.get("Authorization") || "";
+    const supabase = createClient(supabaseUrl, anonKey, {
+      global: { headers: { Authorization: authHeader } },
+    });
+
+    const { data: userData, error: userError } = await supabase.auth.getUser();
+    const email = userData?.user?.email?.toLowerCase() || "";
+
+    if (userError || !userData?.user || (allowedEmails.length > 0 && !allowedEmails.includes(email))) {
       return new Response(JSON.stringify({ error: "Unauthorized" }), {
         status: 401,
         headers: { ...corsHeaders, "Content-Type": "application/json" },

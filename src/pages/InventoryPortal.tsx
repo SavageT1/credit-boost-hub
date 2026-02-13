@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import Seo from "@/components/Seo";
 import { supabase } from "@/integrations/supabase/client";
@@ -23,7 +23,6 @@ type OrderForm = {
   email: string;
   phone: string;
   dob: string;
-  ssn: string;
   genderId: number;
   maritalStatusId: number;
   citizenshipStatusId: number;
@@ -32,8 +31,6 @@ type OrderForm = {
   stateCode: string;
   zipCode: string;
   creditReportAgencyURL: string;
-  creditReportAgencyUsername: string;
-  creditReportAgencyPassword: string;
 };
 
 const money = (n: number) => `$${n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
@@ -84,7 +81,6 @@ const initialForm: OrderForm = {
   email: "",
   phone: "",
   dob: "",
-  ssn: "",
   genderId: 1,
   maritalStatusId: 1,
   citizenshipStatusId: 1,
@@ -93,34 +89,49 @@ const initialForm: OrderForm = {
   stateCode: "",
   zipCode: "",
   creditReportAgencyURL: "",
-  creditReportAgencyUsername: "",
-  creditReportAgencyPassword: "",
 };
 
 export default function InventoryPortal() {
   const [form, setForm] = useState<OrderForm>(initialForm);
   const [statusMsg, setStatusMsg] = useState<string>("");
   const [countrySearch, setCountrySearch] = useState("");
-  const [portalKeyInput, setPortalKeyInput] = useState("");
-  const [portalKey, setPortalKey] = useState<string>(() => sessionStorage.getItem("portal_key") || "");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [accessToken, setAccessToken] = useState<string>("");
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => {
+      if (data.session?.access_token) setAccessToken(data.session.access_token);
+    });
+
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+      setAccessToken(session?.access_token || "");
+    });
+
+    return () => sub.subscription.unsubscribe();
+  }, []);
 
   const { data, isLoading, isError, refetch, isFetching } = useQuery({
-    queryKey: ["vendor-tradelines"],
+    queryKey: ["vendor-tradelines", Boolean(accessToken)],
     queryFn: async () => {
       const { data, error } = await supabase.functions.invoke("vendor-tradelines", {
         method: "GET",
-        headers: { "x-portal-key": portalKey },
+        headers: { Authorization: `Bearer ${accessToken}` },
       });
       if (error) throw error;
       return data as { tradelines: TradelineRow[]; markupPct: number };
     },
-    enabled: Boolean(portalKey),
+    enabled: Boolean(accessToken),
     refetchInterval: 60_000,
   });
 
   const submitOrder = useMutation({
     mutationFn: async () => {
       if (!form.tradelineId) throw new Error("Select a tradeline first");
+      const ssn = window.prompt("Enter SSN (9 digits) for this submission only:") || "";
+      const creditUsername = window.prompt("Credit report username (optional):") || "";
+      const creditPassword = window.prompt("Credit report password (optional):") || "";
+
       const payload = {
         tradelineId: Number(form.tradelineId),
         client: {
@@ -129,7 +140,7 @@ export default function InventoryPortal() {
           email: form.email,
           phone: form.phone,
           dob: form.dob,
-          ssn: form.ssn,
+          ssn,
           genderId: form.genderId,
           maritalStatusId: form.maritalStatusId,
           citizenshipStatusId: form.citizenshipStatusId,
@@ -138,14 +149,14 @@ export default function InventoryPortal() {
           stateCode: form.stateCode,
           zipCode: form.zipCode,
           creditReportAgencyURL: form.creditReportAgencyURL,
-          creditReportAgencyUsername: form.creditReportAgencyUsername,
-          creditReportAgencyPassword: form.creditReportAgencyPassword,
+          creditReportAgencyUsername: creditUsername,
+          creditReportAgencyPassword: creditPassword,
         },
       };
 
       const { data, error } = await supabase.functions.invoke("vendor-order-request", {
         method: "POST",
-        headers: { "x-portal-key": portalKey },
+        headers: { Authorization: `Bearer ${accessToken}` },
         body: payload,
       });
       if (error) throw error;
@@ -170,30 +181,38 @@ export default function InventoryPortal() {
     return allCitizenshipOptions.filter((c) => c.name.toLowerCase().includes(q) || String(c.id) === q);
   }, [countrySearch]);
 
-  if (!portalKey) {
+  if (!accessToken) {
     return (
       <main className="min-h-screen bg-black text-white p-6 md:p-10">
         <Seo title="Inventory Portal Access" description="Private inventory portal" path="/inventory-portal-x7k9" noindex />
         <div className="max-w-lg mx-auto mt-16 border border-gray-700 rounded-lg bg-gray-950 p-6">
           <h1 className="text-2xl font-bold mb-2">Private Portal Access</h1>
-          <p className="text-sm text-gray-300 mb-4">Enter your portal key to access inventory and order tools.</p>
+          <p className="text-sm text-gray-300 mb-4">Sign in with your authorized portal account.</p>
+          <input
+            type="email"
+            className="bg-black border border-gray-700 rounded px-3 py-2 w-full mb-3"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
           <input
             type="password"
             className="bg-black border border-gray-700 rounded px-3 py-2 w-full mb-3"
-            placeholder="Portal key"
-            value={portalKeyInput}
-            onChange={(e) => setPortalKeyInput(e.target.value)}
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <button
             className="bg-cyan-400 text-black font-semibold px-4 py-2 rounded hover:bg-cyan-300"
-            onClick={() => {
-              if (!portalKeyInput.trim()) return;
-              sessionStorage.setItem("portal_key", portalKeyInput.trim());
-              setPortalKey(portalKeyInput.trim());
+            onClick={async () => {
+              setStatusMsg("");
+              const { error } = await supabase.auth.signInWithPassword({ email, password });
+              if (error) setStatusMsg(`Login failed: ${error.message}`);
             }}
           >
-            Unlock Portal
+            Sign In
           </button>
+          {statusMsg ? <p className="text-sm text-red-300 mt-3">{statusMsg}</p> : null}
         </div>
       </main>
     );
@@ -214,13 +233,21 @@ export default function InventoryPortal() {
             <h1 className="text-3xl font-bold">Tradeline Inventory Portal</h1>
             <p className="text-gray-300 mt-1">Internal page • Client pricing includes {data?.markupPct ?? 50}% markup.</p>
           </div>
-          <button
-            onClick={() => refetch()}
-            className="bg-cyan-400 text-black font-semibold px-4 py-2 rounded hover:bg-cyan-300"
-            disabled={isFetching}
-          >
-            {isFetching ? "Refreshing…" : "Refresh"}
-          </button>
+          <div className="flex gap-2">
+            <button
+              onClick={() => refetch()}
+              className="bg-cyan-400 text-black font-semibold px-4 py-2 rounded hover:bg-cyan-300"
+              disabled={isFetching}
+            >
+              {isFetching ? "Refreshing…" : "Refresh"}
+            </button>
+            <button
+              onClick={() => supabase.auth.signOut()}
+              className="bg-gray-800 text-white font-semibold px-4 py-2 rounded hover:bg-gray-700"
+            >
+              Sign Out
+            </button>
+          </div>
         </div>
 
         {isLoading && <p className="text-gray-300">Loading tradelines…</p>}
@@ -281,7 +308,7 @@ export default function InventoryPortal() {
             <input className="bg-black border border-gray-700 rounded px-3 py-2" placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
             <input className="bg-black border border-gray-700 rounded px-3 py-2" placeholder="Phone" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
             <input className="bg-black border border-gray-700 rounded px-3 py-2" placeholder="DOB (YYYY-MM-DD)" value={form.dob} onChange={(e) => setForm({ ...form, dob: e.target.value })} />
-            <input className="bg-black border border-gray-700 rounded px-3 py-2" placeholder="SSN (9 digits)" value={form.ssn} onChange={(e) => setForm({ ...form, ssn: e.target.value })} />
+            {/* SSN collected at submit time only */}
             <select className="bg-black border border-gray-700 rounded px-3 py-2" value={form.genderId} onChange={(e) => setForm({ ...form, genderId: Number(e.target.value) })}>
               <option value={1}>Gender: Male (1)</option>
               <option value={2}>Gender: Female (2)</option>
@@ -312,8 +339,7 @@ export default function InventoryPortal() {
             <input className="bg-black border border-gray-700 rounded px-3 py-2" placeholder="State Code (AZ)" value={form.stateCode} onChange={(e) => setForm({ ...form, stateCode: e.target.value })} />
             <input className="bg-black border border-gray-700 rounded px-3 py-2" placeholder="Zip Code" value={form.zipCode} onChange={(e) => setForm({ ...form, zipCode: e.target.value })} />
             <input className="bg-black border border-gray-700 rounded px-3 py-2" placeholder="Credit Report URL (optional)" value={form.creditReportAgencyURL} onChange={(e) => setForm({ ...form, creditReportAgencyURL: e.target.value })} />
-            <input className="bg-black border border-gray-700 rounded px-3 py-2" placeholder="Credit Report Username (optional)" value={form.creditReportAgencyUsername} onChange={(e) => setForm({ ...form, creditReportAgencyUsername: e.target.value })} />
-            <input className="bg-black border border-gray-700 rounded px-3 py-2" placeholder="Credit Report Password (optional)" value={form.creditReportAgencyPassword} onChange={(e) => setForm({ ...form, creditReportAgencyPassword: e.target.value })} />
+            {/* Credit report credentials collected at submit time only */}
           </div>
 
           <div className="flex items-center gap-3">
