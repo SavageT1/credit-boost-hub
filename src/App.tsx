@@ -17,6 +17,7 @@ import Disclaimer from "./pages/Disclaimer";
 import TradelinesForSale from "./pages/TradelinesForSale";
 import BuyTradelines from "./pages/BuyTradelines";
 import SeasonedTradelines from "./pages/SeasonedTradelines";
+import InventoryPortal from "./pages/InventoryPortal";
 import NotFound from "./pages/NotFound";
 import FloatingLeadButton from "@/components/FloatingLeadButton";
 
@@ -44,6 +45,7 @@ const App = () => (
           <Route path="/tradelines-for-sale" element={<TradelinesForSale />} />
           <Route path="/buy-tradelines" element={<BuyTradelines />} />
           <Route path="/seasoned-tradelines" element={<SeasonedTradelines />} />
+          <Route path="/inventory-portal-x7k9" element={<InventoryPortal />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
