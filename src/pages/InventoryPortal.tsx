@@ -39,20 +39,43 @@ type OrderForm = {
 const money = (n: number) => `$${n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 const shortDate = (iso: string) => new Date(iso).toLocaleDateString();
 
-const commonCountries = [
-  { id: 1, name: "United States" },
-  { id: 39, name: "Canada" },
-  { id: 230, name: "United Kingdom" },
-  { id: 229, name: "United Arab Emirates" },
-  { id: 174, name: "Peru" },
-  { id: 236, name: "Venezuela" },
-  { id: 237, name: "Vietnam" },
-  { id: 100, name: "India" },
-  { id: 45, name: "China" },
-  { id: 110, name: "Jamaica" },
-  { id: 223, name: "Turkey" },
-  { id: 191, name: "Saudi Arabia" },
-];
+const knownCountryNames: Record<number, string> = {
+  1: "United States",
+  2: "Afghanistan",
+  3: "Albania",
+  4: "Algeria",
+  14: "Australia",
+  15: "Austria",
+  39: "Canada",
+  45: "China",
+  73: "France",
+  81: "Germany",
+  100: "India",
+  105: "Ireland",
+  106: "Israel",
+  107: "Italy",
+  110: "Jamaica",
+  112: "Jordan",
+  174: "Peru",
+  191: "Saudi Arabia",
+  203: "Spain",
+  211: "Sweden",
+  212: "Switzerland",
+  223: "Turkey",
+  229: "United Arab Emirates",
+  230: "United Kingdom",
+  236: "Venezuela",
+  237: "Vietnam",
+  246: "Zimbabwe",
+};
+
+const allCitizenshipOptions = Array.from({ length: 246 }, (_, idx) => {
+  const id = idx + 1;
+  return {
+    id,
+    name: knownCountryNames[id] ?? `Country ID ${id}`,
+  };
+});
 
 const initialForm: OrderForm = {
   tradelineId: "",
@@ -77,6 +100,7 @@ const initialForm: OrderForm = {
 export default function InventoryPortal() {
   const [form, setForm] = useState<OrderForm>(initialForm);
   const [statusMsg, setStatusMsg] = useState<string>("");
+  const [countrySearch, setCountrySearch] = useState("");
 
   const { data, isLoading, isError, refetch, isFetching } = useQuery({
     queryKey: ["vendor-tradelines"],
@@ -132,6 +156,12 @@ export default function InventoryPortal() {
     () => data?.tradelines?.find((t) => t.id === Number(form.tradelineId)),
     [data?.tradelines, form.tradelineId]
   );
+
+  const filteredCountries = useMemo(() => {
+    const q = countrySearch.trim().toLowerCase();
+    if (!q) return allCitizenshipOptions;
+    return allCitizenshipOptions.filter((c) => c.name.toLowerCase().includes(q) || String(c.id) === q);
+  }, [countrySearch]);
 
   return (
     <main className="min-h-screen bg-black text-white p-6 md:p-10">
@@ -224,11 +254,23 @@ export default function InventoryPortal() {
               <option value={1}>Marital: Single (1)</option>
               <option value={2}>Marital: Married (2)</option>
             </select>
-            <select className="bg-black border border-gray-700 rounded px-3 py-2" value={form.citizenshipStatusId} onChange={(e) => setForm({ ...form, citizenshipStatusId: Number(e.target.value) })}>
-              {commonCountries.map((c) => (
-                <option key={c.id} value={c.id}>{c.name} ({c.id})</option>
-              ))}
-            </select>
+            <div className="md:col-span-1 space-y-2">
+              <input
+                className="bg-black border border-gray-700 rounded px-3 py-2 w-full"
+                placeholder="Search citizenship country or ID"
+                value={countrySearch}
+                onChange={(e) => setCountrySearch(e.target.value)}
+              />
+              <select
+                className="bg-black border border-gray-700 rounded px-3 py-2 w-full"
+                value={form.citizenshipStatusId}
+                onChange={(e) => setForm({ ...form, citizenshipStatusId: Number(e.target.value) })}
+              >
+                {filteredCountries.map((c) => (
+                  <option key={c.id} value={c.id}>{c.name} ({c.id})</option>
+                ))}
+              </select>
+            </div>
             <input className="bg-black border border-gray-700 rounded px-3 py-2 md:col-span-2" placeholder="Physical Address" value={form.physicalAddress} onChange={(e) => setForm({ ...form, physicalAddress: e.target.value })} />
             <input className="bg-black border border-gray-700 rounded px-3 py-2" placeholder="City" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })} />
             <input className="bg-black border border-gray-700 rounded px-3 py-2" placeholder="State Code (AZ)" value={form.stateCode} onChange={(e) => setForm({ ...form, stateCode: e.target.value })} />
